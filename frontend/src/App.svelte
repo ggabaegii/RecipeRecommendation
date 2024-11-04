@@ -1,6 +1,7 @@
 <script>
     import { writable } from 'svelte/store';
-    import Main from './Main.svelte';
+    import Main from './pages/Main.svelte';
+	
     //import Login from './Login.svelte';
     //import Signup from './Signup.svelte';
     // 다른 페이지 컴포넌트 import

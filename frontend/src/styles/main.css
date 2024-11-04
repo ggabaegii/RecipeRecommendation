@@ -1,0 +1,144 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #042C57;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  .menu-button {
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
+  }
+  
+  .title {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .search-bar {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+  }
+  
+  .search-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  
+  .search-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+  
+  .search-buttons button:last-child {
+    margin-right: 0;
+  }
+  
+  .recent-keywords {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .keyword {
+    background-color: #D7F6E1;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .tips-section {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #D7F6E1;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .cards-section {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .card {
+    flex: 1;
+    padding: 20px;
+    background-color: #F2EDEC;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #042C57;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .nav-item {
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .auth-buttons button {
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #fff;
+    color: #042C57;
+    border: none;
+    border-radius: 4px;
+  }
+  
