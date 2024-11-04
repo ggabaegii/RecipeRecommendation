@@ -1,30 +1,20 @@
 <script>
-	export let name;
+    import { writable } from 'svelte/store';
+    import Main from './Main.svelte';
+    //import Login from './Login.svelte';
+    //import Signup from './Signup.svelte';
+    // 다른 페이지 컴포넌트 import
+
+    import { wrap } from 'svelte-spa-router/wrap';
+	import Router from 'svelte-spa-router';
+
+    // 라우터 설정
+    const routes = {
+        '/': wrap({ component: Main }),
+        //'/login': wrap({ component: Login }),
+        //'/signup': wrap({ component: Signup }),
+        // 나머지 페이지 경로 추가
+    };
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+<Router {routes} />
