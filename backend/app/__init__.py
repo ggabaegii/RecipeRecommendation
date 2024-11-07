@@ -1,1 +1,20 @@
-#Flask 앱 초기화
+from flask import Flask, render_template
+
+def create_app():
+    app = Flask(__name__, template_folder='templates')
+    #app.secret_key = 'your_secret_key'
+
+    # 라우트 정의
+    @app.route('/')
+    def home():
+        return render_template('main.html')
+
+    @app.route('/recipe_search')
+    def recipe_search():
+        return render_template('recipe_search.html')
+
+    @app.route('/camera')
+    def camera():
+        return render_template('camera.html')
+
+    return app
