@@ -16,5 +16,9 @@ def create_app():
     @app.route('/camera')
     def camera():
         return render_template('camera.html')
+    
+    @app.route('/cooktip')
+    def cookingtips():
+        return render_template('cooktip.html')
 
     return app
