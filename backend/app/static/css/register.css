@@ -1,0 +1,138 @@
+/* 기본 스타일 */
+
+/* 외할머니 글씨 스타일 (한글) */
+.korean-font {
+  font-family: 'Nanum Pen Script', sans-serif;
+  font-weight: 600;
+  font-size: 1.1em; /* 폰트 크기 키움 */
+}
+
+/* Marcellus (영어) */
+.english-font {
+  font-family: 'Marcellus', serif;
+  font-size: 1.1em; /* 폰트 크기 키움 */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F2EDEC;
+  color: #333;
+  font-size: 1.1em; /* 기본 폰트 크기 키움 */
+}
+
+/* 메뉴 네비게이션 스타일 */
+.menu {
+  background-color: #fff;
+  padding: 12px; /* 패딩 약간 증가 */
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em; /* 폰트 크기 키움 */
+}
+
+/* 컨테이너 */
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* 헤더 */
+h1 {
+  font-size: 2em; /* 제목 폰트 크기 키움 */
+  margin-top: 25px;
+  text-align: center;
+  color: #333;
+}
+
+/* 검색 바 스타일 */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.search-bar input {
+  padding: 12px; /* 패딩 증가 */
+  font-size: 1.1em; /* 폰트 크기 키움 */
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  width: 70%;
+}
+
+.search-bar button {
+  padding: 12px;
+  background-color: #a8d5ba;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em; /* 폰트 크기 키움 */
+}
+
+/* 인기 태그 스타일 */
+.popular-tags {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.popular-tags span {
+  display: inline-block;
+  background-color: #e0e0e0;
+  padding: 10px 14px; /* 패딩 증가 */
+  margin: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #333;
+  font-size: 1.05em; /* 폰트 크기 키움 */
+}
+
+/* 레시피 그리드 스타일 */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 두 개의 열 */
+  gap: 25px;
+}
+
+/* 레시피 카드 스타일 */
+.recipe-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px; /* 패딩 증가 */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px); /* 호버 시 카드가 약간 올라오도록 */
+}
+
+.recipe-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: #F5F5F5;
+  object-fit: cover;
+}
+
+/* 레시피 제목과 해시태그 */
+.recipe-card p:first-of-type {
+  font-weight: bold;
+  font-size: 1.2em; /* 폰트 크기 키움 */
+  color: #333;
+  margin: 12px 0 6px;
+}
+
+.recipe-card p:last-of-type {
+  font-size: 1em; /* 폰트 크기 키움 */
+  color: #666;
+  margin-bottom: 6px;
+}
