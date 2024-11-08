@@ -16,5 +16,9 @@ def create_app():
     @app.route('/camera')
     def camera():
         return render_template('camera.html')
+    
+    @app.route('/login')
+    def login():
+        return render_template('login.html')
 
     return app
