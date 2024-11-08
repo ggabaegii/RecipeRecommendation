@@ -66,11 +66,13 @@ button {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 }
 
 button:hover {
-    background-color: #d7f6e1;
-    color: black;
+    background-color: #bea2a1;
+    color: white;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 p {
