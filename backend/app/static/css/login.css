@@ -64,11 +64,13 @@ button.submit-btn {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 }
 
 button.submit-btn:hover {
-    background-color: #d7f6e1;
-    color: black;
+    background-color: #bea2a1;
+    color: white;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 p {
@@ -100,11 +102,13 @@ p {
     transition: background-color 0.3s;
     box-sizing: border-box; /* padding 포함 크기 계산 */
     margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 }
 
 .google-btn {
-    background-color: #db4437;
-    color: white;
+    background-color: #ffffff;
+    color: black;
+    # border: 0.1px solid #c9c9c9; /* 테두리 추가 */
 }
 
 .naver-btn {
@@ -119,4 +123,5 @@ p {
 
 .social-btn:hover {
     opacity: 0.8;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* hover 시 그림자 강조 */
 }
