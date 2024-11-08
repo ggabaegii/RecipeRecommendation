@@ -50,7 +50,7 @@ h2 {
 }
 
 .input-group input:focus {
-    border-color: #042c57;
+    border-color: #d7f6e1;
     outline: none;
 }
 
@@ -62,11 +62,13 @@ button.submit-btn {
     border: none;
     border-radius: 4px;
     font-size: 18px;
+    font-weight: bold; /* 텍스트 굵게 */
     cursor: pointer;
 }
 
 button.submit-btn:hover {
-    background-color: #042c57;
+    background-color: #d7f6e1;
+    color: black
 }
 
 p {
