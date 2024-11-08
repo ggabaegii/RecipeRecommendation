@@ -50,14 +50,14 @@ h2 {
 }
 
 .input-group input:focus {
-    border-color: #4CAF50;
+    border-color: #042c57;
     outline: none;
 }
 
 button.submit-btn {
     width: 100%;
     padding: 12px;
-    background-color: #4CAF50;
+    background-color: #bea2a1;
     color: white;
     border: none;
     border-radius: 4px;
@@ -66,7 +66,7 @@ button.submit-btn {
 }
 
 button.submit-btn:hover {
-    background-color: #45a049;
+    background-color: #042c57;
 }
 
 p {
@@ -75,7 +75,7 @@ p {
 
 .signup-link {
     text-decoration: none;
-    color: #4CAF50;
+    color: #042c57;
 }
 
 .signup-link:hover {
