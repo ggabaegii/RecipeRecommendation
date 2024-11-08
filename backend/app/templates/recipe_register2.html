@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 등록</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register2.css') }}">
+</head>
+<body>
+    <!-- 메뉴 네비게이션 -->
+    <nav class="menu">
+        <button class="menu-toggle">☰</button>
+        <a href="#" class="korean-font">모든 레시피</a>
+        <a href="#" class="korean-font">화제의 레시피</a>
+        <a href="#" class="korean-font">제철 레시피</a>
+        <a href="#" class="korean-font">특색 레시피</a>
+        <a href="#" class="korean-font">레시피 등록</a>
+    </nav>
+
+    <div class="container">
+        <h1>레시피 등록</h1>
+        
+        <form action="{{ url_for('recipe_register2') }}" method="post" enctype="multipart/form-data">
+            <label for="title">레시피 제목</label>
+            <input type="text" id="title" name="title" placeholder="Ex) 소고기 미역국" required>
+
+            <div class="info-group">
+                <label>요리 정보</label>
+                <select name="cook_time">
+                    <option>소요 시간</option>
+                    <option value="30분 이내">30분 이내</option>
+                    <option value="1시간 이내">1시간 이내</option>
+                    <option value="1시간 이상">1시간 이상</option>
+                </select>
+                <select name="difficulty">
+                    <option>난이도</option>
+                    <option value="쉬움">쉬움</option>
+                    <option value="보통">보통</option>
+                    <option value="어려움">어려움</option>
+                </select>
+            </div>
+
+            <div class="ingredient-group">
+                <label>요리 재료</label>
+                <input type="text" name="ingredient" placeholder="재료명">
+                <input type="text" name="ingredient" placeholder="재료양">
+                <input type="text" name="sauce_name" placeholder="소스명">
+                <input type="text" name="sauce_amount" placeholder="소스양">
+            </div>
+
+            <div class="substitute-group">
+                <label>대체 재료</label>
+                <input type="text" name="substitute" placeholder="원재료">
+                <input type="text" name="substitute" placeholder="대체 재료">
+            </div>
+
+            <div class="photo-group">
+                <label>요리 사진</label>
+                <input type="file" name="photo" accept="image/*">
+                <p>완성된 요리의 대표 사진을 삽입해주세요</p>
+            </div>
+
+            <label for="steps">조리 순서</label>
+            <textarea id="steps" name="steps" placeholder="1. ...&#10;2. ..."></textarea>
+
+            <label for="tags">해시태그</label>
+            <input type="text" id="tags" name="tags" placeholder="#고기 #미역국 #새우젓" maxlength="30">
+            <p>최대 10가지 가능 #고기 #미역국 #새우젓</p>
+
+            <button type="submit">작성 완료</button>
+        </form>
+    </div>
+</body>
+</html>
