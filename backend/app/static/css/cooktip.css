@@ -1,7 +1,18 @@
 /* 기본 스타일 */
+
+/* 외할머니 글씨 (한글) */
+.korean-font {
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-weight: 600;
+}
+
+/* Marcellus (영어) */
+.english-font {
+    font-family: 'Marcellus', serif;
+}
+
 body {
-    font-family: 'NanumOeHarMeoNiGeurSsi';
-    font-weight: bold;
+    background-color: #F2EDEC;
     margin: 0;
     padding: 0;
 }
@@ -22,7 +33,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #333;
+    background-color: #042C57; /* 메뉴창 배경색 변경 */
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -67,6 +78,8 @@ header {
 }
 
 .category-tabs button {
+    font-family: 'NanumOeHarMeoNiGeurSsi';
+    font-weight: 600;
     padding: 10px 15px;
     border: none;
     background-color: #007bff;

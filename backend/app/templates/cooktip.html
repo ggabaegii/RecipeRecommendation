@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>요리 꿀팁</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cooktip.css') }}">
+    <!-- Marcellus 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
 <body>
@@ -14,9 +17,9 @@
     <!-- 슬라이드 메뉴 -->
     <div id="menu" class="menu">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
-        <a href="/">메인</a>
-        <a href="/specialproducts">특산물</a>
-        <a href="/cookingtips">요리 꿀팁</a>
+        <a href="/">Home</a>
+        <a href="/specialproducts">레시피</a>
+        <a href="/cookingtips">정보</a>
     </div>
 
     <!-- 상단 내비게이션 -->
@@ -52,18 +55,9 @@
         <!-- 보관법 및 기타 정보는 동일하게 구성 -->
     </div>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById("menu");
-            menu.style.width = menu.style.width === "250px" ? "0" : "250px";
-        }
-
-        function showCategory(category) {
-            document.querySelectorAll(".category-content").forEach((content) => {
-                content.style.display = "none";
-            });
-            document.getElementById(category).style.display = "grid";
-        }
-    </script>
+    <!-- toggleMenu.js 파일 적용 메뉴바 나오도록 하기위해서 -->
+    <script src="{{ url_for('static', filename='./js/toggleMenu.js') }}"></script>
+    <!-- 한국어랑 영어 글꼴 다르게 하기위한 js 파일 적용 -->
+    <script src="{{ url_for('static', filename='./js/fonts.js') }}"></script>
 </body>
 </html>
