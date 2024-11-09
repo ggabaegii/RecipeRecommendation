@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>레시피 검색</title>
 
-    <!-- 구글 폰트 - Marcellus (영어)와 Nanum Pen Script (한글) 불러오기 -->
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-
+    <!-- Marcellus 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
     <!-- 외부 CSS 파일 링크 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
 </head>
 <body>
-  <h1>요리의 정원</h1>
+  <h1 class="korean-font">요리의 정원</h1>
     <!-- 메뉴 네비게이션 -->
     <nav class="menu">
         <button class="menu-toggle">☰</button>

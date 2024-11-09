@@ -1,11 +1,26 @@
+/* 기본 스타일 */
+
+/* 외할머니 글씨 (한글) */
+.korean-font {
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+  font-weight: 600;
+}
+
+/* Marcellus (영어) */
+.english-font {
+  font-family: 'Marcellus', serif;
+}
+
+/* 전체 본문 스타일 */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif; /* 외할머니 글씨 (한글) 기본 적용 */
   background-color: #F2EDEC;
   color: #333;
   margin: 0;
   padding: 0;
 }
 
+/* 메뉴 스타일 */
 .menu {
   background-color: #fff;
   padding: 10px;
@@ -18,8 +33,10 @@ body {
   text-decoration: none;
   color: #333;
   font-weight: bold;
+  font-family: 'Marcellus', serif; /* 영어 폰트 적용 */
 }
 
+/* 컨테이너 스타일 */
 .container {
   width: 60%;
   margin: auto;
@@ -36,8 +53,10 @@ h1 {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
+  font-family: 'Marcellus', serif; /* 영어 폰트 적용 */
 }
 
+/* 폼 스타일 */
 form {
   display: flex;
   flex-direction: column;
@@ -46,6 +65,7 @@ form {
 label {
   font-weight: bold;
   margin-top: 15px;
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif; /* 외할머니 글씨 (한글) 적용 */
 }
 
 input[type="text"], select, textarea {
@@ -70,4 +90,5 @@ button[type="submit"] {
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif; /* 외할머니 글씨 (한글) 적용 */
 }
