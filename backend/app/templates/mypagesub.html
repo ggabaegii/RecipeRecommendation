@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 모음</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mypagesub.css') }}">
+    <!-- Marcellus 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+</head>
+<body>
+    {% extends "layout.html" %}
+    {% block title %}레시피 모음{% endblock %}
+
+    {% block content %}
+    <!-- 메뉴 아이콘 -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- 슬라이드 메뉴 -->
+    <div id="menu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
+        <a href="/">홈</a>
+        <a href="/mypage">마이 페이지</a>
+        <a href="/recipes">레시피</a>
+    </div>
+
+    <!-- 상단 내비게이션 -->
+    <header>
+        <h1>레시피 모음</h1>
+    </header>
+
+    <div class="container">
+        <!-- 프로필 섹션 -->
+        <div class="profile-section">
+            <div class="profile-picture">
+                <img id="profile-image" src="{{ url_for('static', filename='images/default-profile.png') }}" alt="프로필 사진">
+            </div>
+            <div class="nickname">
+                <span>닉네임</span>
+            </div>
+        </div>
+
+        <!-- 유저 정보 -->
+        <div class="user-info">
+            <p>이름: 홍길동</p>
+            <p>성별: 남자</p>
+            <p>전화번호: 010-1234-5678</p>
+            <p>이메일: example@example.com</p>
+            <p>알레르기 정보: 없음</p>
+        </div>
+    </div>
+
+    <!-- 작성한 댓글 & 게시물 섹션 -->
+    <div class="post-section">
+        <h2>작성한 댓글</h2>
+        <div class="comment-list">
+            <!-- 예시 댓글 -->
+            <div class="comment-item">
+                <p><strong>게시글 제목:</strong> 맛있는 파스타 레시피</p>
+                <p><strong>댓글 내용:</strong> 이 레시피 정말 좋아요! 가족들도 만족했어요.</p>
+                <p><strong>작성일:</strong> 2024-11-10</p>
+            </div>
+            <!-- 추가 댓글들 -->
+        </div>
+
+        <h2>작성한 게시물</h2>
+        <div class="post-list">
+            <!-- 예시 게시물 -->
+            <div class="post-item">
+                <p><strong>게시물 제목:</strong> 내가 만든 특별한 요리법</p>
+                <p><strong>내용:</strong> 오늘 저녁으로 특별한 요리를 만들었어요. 재료와 과정은 아래와 같습니다...</p>
+                <p><strong>작성일:</strong> 2024-11-09</p>
+            </div>
+            <!-- 추가 게시물들 -->
+        </div>
+    </div>
+    {% endblock %}
+    <script src="{{ url_for('static', filename='js/mypagesub.js') }}"></script>
+</body>
+</html>
