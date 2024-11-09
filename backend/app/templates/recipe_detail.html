@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 상세 페이지</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_detail.css') }}">
+</head>
+<body>
+    <!-- 메뉴 아이콘 -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div id="menu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
+        <a href="/">홈</a>
+        <a href="/mypage">마이 페이지</a>
+        <a href="/recipes">레시피</a>
+    </div>
+
+    <!-- 제목 및 음식 사진 -->
+    <header>
+        <h1>요리의 정원</h1>
+    </header>
+
+    <div class="content">
+        <!-- 음식 사진 업로드 섹션 -->
+        <section class="image-upload">
+            <p class="upload-instructions">음식 사진 업로드를 위한 파일창 열기 (jpeg, png, jpg만 허용)</p>
+            <input type="file" id="food-image-input" accept=".jpeg, .png, .jpg" onchange="previewImage(event)">
+            <div class="image-preview">
+                <img id="food-image" src="" alt="음식 사진">
+            </div>
+        </section>
+
+        <!-- 음식 정보 -->
+        <section class="food-info">
+            <h2>음식 이름</h2>
+            <input type="text" placeholder="음식 이름 입력">
+            <div class="info-inputs">
+                <input type="text" placeholder="소요 시간">
+                <input type="text" placeholder="난이도">
+            </div>
+        </section>
+
+        <!-- 음식 재료 -->
+        <section class="ingredients">
+            <h2>음식 재료</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>재료명</th>
+                        <th>필요한 양</th>
+                        <th>추가</th>
+                    </tr>
+                </thead>
+                <tbody id="ingredient-list">
+                    <tr>
+                        <td><input type="text" placeholder="재료명"></td>
+                        <td><input type="text" placeholder="필요한 양"></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="addIngredientRow()">재료 추가</button>
+        </section>
+
+        <!-- 조리 순서 -->
+        <section class="cooking-steps">
+            <h2>조리 순서</h2>
+            <textarea placeholder="조리 방법을 단계별로 입력하세요"></textarea>
+        </section>
+
+        <!-- 해시태그 -->
+        <section class="hashtags">
+            <h2>#해시태그 (최대 10개)</h2>
+            <input type="text" placeholder="해시태그 입력">
+        </section>
+
+        <!-- 사용자 정보 및 상호작용 아이콘 -->
+        <section class="user-interaction">
+            <div class="profile">
+                <img src="{{ url_for('static', filename='images/default-profile.png') }}" alt="프로필 사진">
+                <span>닉네임</span>
+            </div>
+            <div class="icons">
+                <span class="icon like">❤️</span>
+                <span class="icon scrap">📘</span>
+                <span class="icon share">🔗</span>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/recipe_detail.js') }}"></script>
+</body>
+</html>
