@@ -24,5 +24,9 @@ def create_app():
     @app.route('/mypagemain')
     def mypagemain():
         return render_template('mypagemain.html')
+    
+    @app.route('/mypagesub')
+    def mypagesub():
+        return render_template('mypagesub.html')
 
     return app
