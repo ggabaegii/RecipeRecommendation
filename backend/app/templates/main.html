@@ -1,4 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}요리의 정원{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainpage.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+</head>
 
+{% extends "layout.html" %}
+
+{% block content %}
 <div class="search-bar">
     <input type="text" id="ingredient-search" placeholder="재료를 입력하세요">
     <button onclick="window.location.href='/recipe_search'">&#128269;</button>
@@ -16,21 +29,14 @@
 
 <div class="tip-section">
     <h3>오늘의 꿀팁</h3>
-    <p><a href="/tip1">맛있는 꿀팁1</a></p>
 </div>
 
 <div class="recipe-cards">
     <h3>인기 레시피</h3>
-    <div class="card">
-        <a href="/recipe1">레시피1</a>
-    </div>
-    <div class="card">
-        <a href="/recipe2">레시피2</a>
-    </div>
-    <div class="card">
-        <a href="/recipe3">레시피3</a>
-    </div>
-    <div class="card">
-        <a href="/recipe4">레시피4</a>
+        <div class="card"><a href="/recipe1">레시피 1</a></div>
+        <div class="card"><a href="/recipe2">레시피 2</a></div>
+        <div class="card"><a href="/recipe3">레시피 3</a></div>
+        <div class="card"><a href="/recipe4">레시피 4</a></div>
     </div>
 </div>
+{% endblock %}
