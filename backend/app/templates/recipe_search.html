@@ -1,12 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 검색</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_search.css') }}">
+</head>
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>재료 검색</h2>
-<div class="ingredient-list">
-    <ul>
-        <li><a href="/recipe1">레시피1</a></li>
-        <li><a href="/recipe2">레시피2</a></li>
-        <li><a href="/recipe3">레시피3</a></li>
-    </ul>
-</div>
-{% endblock %}
+<body>
+    <div class="container">
+        <!-- 페이지 제목 -->
+        <h1 class="title korean-font">레시피 검색</h1>
+
+        <!-- 검색 바 -->
+        <div class="search-bar">
+            <input type="text" placeholder="재료 검색">
+            <button type="submit">&#128269;</button>
+        </div>
+
+        <!-- 해시태그 -->
+        <div class="trending">
+            <a href="#">#해시태그</a>
+            <a href="#">#레시피</a>
+            <a href="#">#요리꿀팁</a>
+        </div>
+
+        <!-- 음식 사진 박스 -->
+        <div class="food-photo">음식 사진</div>
+
+        <!-- 음식 이름 및 태그 -->
+        <div class="food-info">음식 이름</div>
+        <div class="food-tags">
+            <span class="food-tag">소요 시간</span>
+            <span class="food-tag">난이도</span>
+        </div>
+    </div>
+
+    {% endblock content %}
+</body>
+</html>

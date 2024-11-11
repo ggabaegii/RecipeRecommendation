@@ -20,5 +20,9 @@ def create_app():
     @app.route('/cooktip')
     def cookingtips():
         return render_template('cooktip.html')
+    
+    @app.route('/recipesearch')
+    def recopesearch():
+        return render_template('recipe_search.html')
 
     return app

@@ -6,26 +6,29 @@
     font-weight: 600;
 }
 
-/* Marcellus (영어) */
-.english-font {
-    font-family: 'Marcellus', serif;
-}
-
+/* 기본 스타일 */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif; /* 기본 폰트를 한글 폰트로 설정 */
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+}
+
+.title {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 40px;
+    font-weight: bold;
+    color: #1A4B8C;
 }
 
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 2;
-    color: #ffffff;
-    font-family: 'Marcellus', serif; /* 아이콘은 영어 폰트를 사용 */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    color: #000000;
 }
 
 .menu {
@@ -41,30 +44,47 @@ body {
     transition: transform 0.5s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding-top: 20px;
-    z-index: 1;
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    z-index: 1000;
 }
 
-.menu .profile {
+/* 닫기 버튼 스타일 */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* 프로필 섹션 */
+.profile {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 20px 0;
     border-bottom: 1px solid #fff;
+    margin-bottom: 15px;
 }
 
-.menu .profile img {
+.profile img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
     margin-bottom: 10px;
 }
 
+.profile span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 메뉴 링크 스타일 */
 .menu a {
-    padding: 12px 20px;
+    padding: 15px 20px;
     text-decoration: none;
     font-size: 18px;
     color: white;
@@ -77,27 +97,37 @@ body {
     background-color: #1A4B8C;
 }
 
-.menu .closebtn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 36px;
-    cursor: pointer;
-    font-family: 'Marcellus', serif;
+/* 구분선 스타일 */
+.divider {
+    width: 80%;
+    height: 1px;
+    background-color: #ffffff;
+    margin: 10px auto;
+}
+
+/* 버튼 스타일 (로그인, 회원가입 등) */
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    margin-top: auto;
 }
 
 .menu-buttons button {
-    background-color: #444;
-    color: white;
+    background-color: white;
+    color: #042C57;
     border: none;
     padding: 12px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.2s;
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+    margin-bottom: 0.5cm;
 }
 
 .menu-buttons button:hover {
-    background-color: #666;
+    background-color: #1A4B8C;
+    color: white;
 }
