@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카메라 검색</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search_camera.css') }}">
+</head>
+<body>
+    <h1>재료 인식</h1>
+    <p>사진을 찍거나 갤러리에서 사진을 선택하여 재료를 인식하세요.</p>
+
+    <div class="input-container">
+        <!-- 파일 입력 (모바일/데스크탑 호환) -->
+        <input type="file" id="imageInput" accept="image/*" capture="environment" style="display: none;" onchange="handleImageUpload(event)">
+        
+        <!-- 카메라 버튼 -->
+        <button onclick="openCamera()">카메라 열기</button>
+    </div>
+
+    <!-- 결과 출력 -->
+    <div id="result">
+        <p>인식된 재료: <span id="ingredients"></span></p>
+    </div>
+
+    <script>
+        // 모바일과 데스크탑 감지 후 파일 입력을 열기
+        function openCamera() {
+            const input = document.getElementById('imageInput');
+            input.click();  // 모바일: 카메라/갤러리 선택 가능, 데스크탑: 파일 선택기 열기
+        }
+
+        // 파일이 선택되거나 사진이 찍혔을 때 호출되는 함수
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // 선택된 이미지를 서버로 보내 YOLO 모델에 입력
+                sendImageToYOLO(file);
+            }
+        }
+
+        // YOLO 모델로 이미지를 전송하여 재료 인식 요청
+        function sendImageToYOLO(file) {
+            const formData = new FormData();
+            formData.append('image', file);
+
+            // 서버로 이미지 전송
+            fetch('/process_image', {  // 서버의 이미지 처리 엔드포인트 설정 필요
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // YOLO 모델이 반환한 재료 인식 결과 표시
+                document.getElementById('ingredients').textContent = data.ingredients.join(', ');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('이미지 처리 중 오류가 발생했습니다.');
+            });
+        }
+    </script>
+</body>
+</html>
