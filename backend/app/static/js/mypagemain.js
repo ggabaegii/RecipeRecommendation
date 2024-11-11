@@ -65,6 +65,7 @@ function previewProfileImage(event) {
 
 function resetProfileImage() {
     const profileImage = document.getElementById('profile-image');
+    // 기본 이미지로 되돌리기
     profileImage.src = "{{ url_for('static', filename='images/default-profile.png') }}";
     profileImage.style.objectFit = "cover";
 }
