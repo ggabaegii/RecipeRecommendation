@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
 </head>
 <body>
-  <h1 class="korean-font">요리의 정원</h1>
+    <!-- 상단 제목에 링크 추가 -->
+    <h1 class="korean-font main-title">
+      <a href="main.html" style="text-decoration: none; color: inherit;">요리의 정원</a>
+  </h1>
     <!-- 메뉴 네비게이션 -->
     <nav class="menu">
         <button class="menu-toggle">☰</button>
@@ -21,7 +24,7 @@
         <a href="#" class="korean-font">화제의 레시피</a>
         <a href="#" class="korean-font">제철 레시피</a>
         <a href="#" class="korean-font">특색 레시피</a>
-        <a href="#" class="korean-font">레시피 작성</a>
+        <a href="#" class="korean-font">레시피 등록</a>
     </nav>
 
     <div class="container">

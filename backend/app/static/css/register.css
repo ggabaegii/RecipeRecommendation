@@ -44,10 +44,15 @@ body {
   font-size: 25px; /* 폰트 크기 키움 */
 }
 
-/* 컨테이너 */
+/* 컨테이너 스타일 */
 .container {
-  width: 80%;
-  margin: 0 auto;
+  width: 60%;
+  margin: 20px auto;
+  padding: 25px; /* 패딩 증가 */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 헤더 */

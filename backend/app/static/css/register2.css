@@ -24,18 +24,17 @@ body {
 /* 메뉴 스타일 */
 .menu {
   background-color: #fff;
-  padding: 15px; /* 패딩 증가 */
+  padding: 12px; /* 패딩 증가 */
   display: flex;
   justify-content: space-around;
   border-bottom: 1px solid #ddd;
 }
 
 .menu a {
-  text-decoration: none;
   color: #333;
+  text-decoration: none;
   font-weight: bold;
-  font-size: 1.3em; /* 메뉴 글씨 크기 키움 */
-  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+  font-size: 25px; /* 폰트 크기 키움 */
 }
 
 /* 컨테이너 스타일 */
