@@ -20,5 +20,9 @@ def create_app():
     @app.route('/cooktip')
     def cookingtips():
         return render_template('cooktip.html')
+    
+    @app.route('/locspepage')
+    def locspepage():
+        return render_template('locspepage.html')
 
     return app
