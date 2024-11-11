@@ -1,20 +1,12 @@
-/* 색상 변수 설정 */
-:root {
-    --background-color: #F2EDEC;
-    --primary-color: #042C57;
-    --accent-color: #D7F6E1;
-    --border-color: #bea2a1;
-}
-
+/* 기본 스타일 */
 body {
-    background-color: var(--background-color);
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    background-color: #F2EDEC;
     margin: 0;
     padding: 0;
-    color: var(--primary-color);
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
 }
 
-/* 메뉴 아이콘 */
+/* 메뉴 아이콘 스타일 */
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
@@ -23,25 +15,27 @@ body {
     left: 15px;
 }
 
-/* 슬라이드 메뉴 */
+/* 슬라이드 메뉴 스타일 */
 .menu {
     height: 100%;
     width: 0;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: var(--primary-color);
+    background-color: #042C57;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    z-index: 1000;
 }
 
 .menu a {
     padding: 10px 15px;
-    color: white;
     text-decoration: none;
     font-size: 20px;
+    color: white;
     display: block;
+    transition: 0.3s;
 }
 
 .menu .closebtn {
@@ -51,105 +45,140 @@ body {
     font-size: 36px;
 }
 
-/* 제목 */
+/* 로고 텍스트 스타일 */
+.logo-text {
+    font-size: 36px;
+    font-weight: bold;
+    color: #042C57;
+    font-family: 'Marcellus', serif;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    text-decoration: none;
+}
+
+/* 상단 내비게이션 스타일 */
 header {
+    font-size: 25px;
     text-align: center;
     margin-top: 20px;
-    font-size: 32px;
-    color: var(--primary-color);
 }
 
-/* 컨텐츠 */
+/* 콘텐츠 영역 */
 .content {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* 레시피 사진 */
+/* 레시피 이미지 스타일 */
 .recipe-image img {
     width: 100%;
     border-radius: 8px;
     margin-bottom: 20px;
 }
 
-/* 레시피 정보 */
+/* 레시피 정보 섹션 스타일 */
+.recipe-info {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
 .recipe-info h2 {
     font-size: 24px;
-    margin-bottom: 10px;
+    font-family: 'Marcellus', serif;
+    color: #042C57;
 }
 
-.recipe-info p {
-    font-size: 16px;
-    margin: 5px 0;
+.recipe-info hr {
+    border: none;
+    border-top: 1px solid #042C57;
+    margin: 10px 0;
 }
 
-/* 재료 목록 */
+/* 재료 목록 스타일 */
+.ingredients, .cooking-steps, .hashtags {
+    margin-bottom: 20px;
+}
+
 .ingredients h3, .cooking-steps h3, .hashtags h3 {
     font-size: 20px;
-    color: var(--primary-color);
-    margin-top: 20px;
-    margin-bottom: 10px;
+    color: #042C57;
+    font-family: 'Marcellus', serif;
+    border-bottom: 1px solid #bea2a1;
+    padding-bottom: 5px;
 }
 
-.ingredients ul {
-    list-style-type: disc;
+.ingredients ul, .cooking-steps ol {
+    margin: 10px 0;
     padding-left: 20px;
 }
 
-.ingredients li, .cooking-steps ol li {
+.ingredients li, .cooking-steps li {
     font-size: 16px;
-    margin-bottom: 8px;
+    line-height: 1.6;
 }
 
-/* 조리 방법 */
-.cooking-steps ol {
-    padding-left: 20px;
-}
-
-.cooking-steps ol li {
-    margin-bottom: 10px;
-}
-
-/* 해시태그 */
+/* 해시태그 스타일 */
 .hashtags p {
     font-size: 16px;
-    color: #555;
-    margin-top: 5px;
+    color: #042C57;
 }
 
 /* 사용자 정보 및 상호작용 아이콘 */
 .user-interaction {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* 수직 배열 */
+    align-items: center; /* 중앙 정렬 */
     margin-top: 20px;
     padding-top: 10px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid #bea2a1;
 }
 
-.profile {
+.user-interaction .profile {
     display: flex;
     align-items: center;
+    font-size: 16px;
+    color: #042C57;
+    margin-bottom: 10px; /* 아이콘과 간격 */
+    text-align: center;
 }
 
-.profile img {
+.user-interaction .profile img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
-    border: 1px solid var(--border-color);
 }
 
 .icons {
-    font-size: 24px;
-    color: var(--primary-color);
+    display: flex;
+    flex-direction: column; /* 수직 배열 */
+    align-items: center;
+    gap: 15px;
+    font-size: 20px;
 }
 
-.icon {
-    margin: 0 5px;
-    cursor: pointer;
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+    }
+    
+    .menu-icon {
+        top: 10px;
+        left: 10px;
+    }
+
+    .user-interaction {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .icons {
+        margin-top: 10px;
+    }
 }
