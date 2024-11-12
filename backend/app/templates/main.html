@@ -1,36 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}요리의 정원{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainpage.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+</head>
 
-<div class="search-bar">
-    <input type="text" id="ingredient-search" placeholder="재료를 입력하세요">
-    <button onclick="window.location.href='/recipe_search'">&#128269;</button>
-    <button onclick="window.location.href='/camera'">&#128247;</button>
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="search-containter">
+    <h1>재료로 레시피 찾기</h1>
+    <label for="ingredient-input" class="input-label">여러 개의 재료 입력 시에 각 재료는 띄어쓰기로 구분해주십시오.</label>
+    <div class="search-bar">
+        <input type="text" id="ingredient-search" placeholder="재료를 입력하세요">
+        <button class="clear-btn1" onclick="clearInput('ingredient-search')">×</button>
+        <button class="search-btn" onclick="submitSearch()">&#128269;</button>
+        <button class="camera-btn" onclick="window.location.href='/search_camera'">&#128247;</button>
+    </div>
+
+    <label for="excluded-ingredient" class="input-label">제외 재료</label>
+    <div class="search-bar excluded">
+        <input type="text" id="excluded-ingredient" placeholder="제외할 재료 입력">
+        <button class="clear-btn2" onclick="clearInput('excluded-ingredient')">×</button>
+    </div>
+
+    <div class="search-recent">
+        <p>최근 검색어</p>
+        <div id="recent-ingredients"></div>
+    </div>
 </div>
-
-<div class="trending">
-    <h3>최근 인기 해시태그</h3>
-    <ul>
-        <li><a href="/hashtag1">#해시태그1</a></li>
-        <li><a href="/hashtag2">#해시태그2</a></li>
-        <li><a href="/hashtag3">#해시태그3</a></li>
-    </ul>
-</div>
-
 <div class="tip-section">
-    <h3>오늘의 꿀팁</h3>
-    <p><a href="/tip1">맛있는 꿀팁1</a></p>
+    <h1>오늘의 꿀팁</h1>
 </div>
 
 <div class="recipe-cards">
-    <h3>인기 레시피</h3>
-    <div class="card">
-        <a href="/recipe1">레시피1</a>
-    </div>
-    <div class="card">
-        <a href="/recipe2">레시피2</a>
-    </div>
-    <div class="card">
-        <a href="/recipe3">레시피3</a>
-    </div>
-    <div class="card">
-        <a href="/recipe4">레시피4</a>
-    </div>
+    <h1>인기 레시피</h1>
+    <br>
+    <div class="card"><a href="/recipe1">레시피 1</a></div>
+    <div class="card"><a href="/recipe2">레시피 2</a></div>
+    <div class="card"><a href="/recipe3">레시피 3</a></div>
+    <div class="card"><a href="/recipe4">레시피 4</a></div>
 </div>
+
+<!-- JavaScript 파일 불러오기 -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

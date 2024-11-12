@@ -1,37 +1,50 @@
-<!--공통 레이아웃 템플릿 메뉴 바-->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}요리의 정원{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
 <body>
     <!-- 메뉴 아이콘 -->
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
     <header>
-        <div class="menu-icon" onclick="toggleMenu()" aria-label="메뉴 열기">☰</div>
-        <div id="menu" class="menu">
-            <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
-            <a href="/mypagemain">마이페이지</a>
-            <a href="/">Home</a>
-            <a href="/recipes">레시피</a>
-            <a href="/recent">최근 본 레시피</a>
-            <a href="/favorites">즐겨찾기</a>
-            <a href="/board">게시판</a>
-            <a href="/info">정보</a>
-
-                    <a href="/create_recipe">레시피 작성</a>
-                    <a href="/logout">로그아웃</a>
-
-                    <a href="/login">로그인</a>
-                    <a href="/signup">회원가입</a>
-
-        </div>
+        <div class="title" onclick="window.location.href='/'">요리의 정원</div>
     </header>
+
+
+    <!-- 슬라이드 메뉴 (왼쪽에서 슬라이드) -->
+    <div id="menu" class="menu">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>   
+    <!-- 프로필 섹션 -->
+    <div class="profile">
+        <img src="프로필_이미지_URL" alt="프로필 사진">
+        <span class="korean-font">닉네임</span>
+    </div>
+        
+        <a href="/mypage">마이페이지</a>
+        <a href="/">Home</a>
+        <a href="/recipes">레시피</a>
+        <a href="/recent">최근 본 레시피</a>
+        <a href="/favorites">즐겨찾기</a>
+        <a href="/board">게시판</a>
+        <a href="/info">정보</a>
+        <a href="/create_recipe">레시피 작성</a>
+
+        <!-- 로그인 상태에 따른 버튼 형식 메뉴 -->
+        <div class="menu-buttons">
+            {% if session['user_logged_in'] %}
+                <button onclick="window.location.href='/mypage'">마이페이지</button>
+                <button onclick="window.location.href='/logout'">로그아웃</button>
+            {% else %}
+                <button onclick="window.location.href='/login'">로그인</button>
+                <button onclick="window.location.href='/signup'">회원가입</button>
+            {% endif %}
+        </div>
+    </div>
 
     <!-- 메인 콘텐츠 영역 -->
     <main>
