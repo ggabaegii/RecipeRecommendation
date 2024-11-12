@@ -18,8 +18,12 @@ def create_app():
         return render_template('camera.html')
     
     @app.route('/cooktip')
-    def cookingtips():
+    def cooktip():
         return render_template('cooktip.html')
+    
+    @app.route('/cooktip_detail')
+    def cooktip_detail():
+        return render_template('cooktip_detail.html')
     
     @app.route('/recipesearch')
     def recopesearch():
