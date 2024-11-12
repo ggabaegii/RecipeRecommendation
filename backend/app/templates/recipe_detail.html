@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 상세 페이지</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_detail.css') }}">
+    <!-- Font Awesome 아이콘 라이브러리 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Marcellus 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 요리의 정원 로고 -->
+    <header>
+        <a href="/" class="logo-text">요리의 정원</a>
+        <h1>레시피 상세 페이지</h1>
+    </header>
+
+    <!-- 메뉴 아이콘 -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div id="menu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
+        <a href="/">홈</a>
+        <a href="/mypagemain">마이 페이지</a>
+        <a href="/recipes">레시피</a>
+    </div>
+
+    <div class="content">
+        <!-- 레시피 사진 -->
+        <section class="recipe-image">
+            <img src="{{ url_for('static', filename='images/recipe-image.png') }}" alt="레시피 사진">
+        </section>
+
+        <!-- 레시피 기본 정보 -->
+        <section class="recipe-info">
+            <h2>요리 이름: 스파게티</h2>
+            <hr> <!-- 구분선 추가 -->
+            <p><strong>소요 시간:</strong> 30분</p>
+            <p><strong>난이도:</strong> 중급</p>
+        </section>
+
+        <!-- 재료 목록 -->
+        <section class="ingredients">
+            <h3>재료</h3>
+            <ul>
+                <li>스파게티 면 200g</li>
+                <li>마늘 3쪽</li>
+                <li>올리브 오일 2큰술</li>
+                <li>소금, 후추</li>
+            </ul>
+        </section>
+
+        <!-- 조리 방법 -->
+        <section class="cooking-steps">
+            <h3>조리 방법</h3>
+            <ol>
+                <li>스파게티 면을 소금물에 삶습니다.</li>
+                <li>마늘을 얇게 썰어 올리브 오일에 볶습니다.</li>
+                <li>삶은 면을 넣고 소금과 후추로 간합니다.</li>
+                <li>완성된 요리를 접시에 담습니다.</li>
+            </ol>
+        </section>
+
+        <!-- 해시태그 -->
+        <section class="hashtags">
+            <h3>해시태그</h3>
+            <p>#이탈리안 #스파게티 #간단한요리</p>
+        </section>
+
+        <!-- 사용자 정보 및 상호작용 아이콘 -->
+        <section class="user-interaction">
+            <div class="profile">
+                <img src="{{ url_for('static', filename='images/default-profile.png') }}" alt="작성자 프로필 사진">
+                <span>작성자: 홍길동</span>
+            </div>
+            <div class="icons">
+                <span class="icon like">💘</span> <!-- 좋아요 아이콘 -->
+                <span class="icon scrap">💾</span> <!-- 스크랩 아이콘 -->
+                <span class="icon share">🔗</span> <!-- 공유 아이콘 -->
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/recipe_detail.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이 페이지</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mypagemain.css') }}">
+    <!-- Font Awesome 아이콘 라이브러리 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Marcellus 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+</head>
+<body>
+    {% extends "layout.html" %}
+    {% block title %}마이 페이지{% endblock %}
+
+    {% block content %}
+    <!-- 메뉴 아이콘 -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- 슬라이드 메뉴 -->
+    <div id="menu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
+        <a href="/">홈</a>
+        <a href="/mypage">마이 페이지</a>
+        <a href="/recipes">레시피</a>
+    </div>
+
+    <!-- 상단 내비게이션 -->
+    <header>
+        <h1>마이 페이지</h1>
+    </header>
+
+    <div class="container">
+        <!-- 프로필 섹션 -->
+        <div class="profile-section">
+            <div class="profile-picture" onclick="document.getElementById('profile-input').click()">
+                <img id="profile-image" src="{{ url_for('static', filename='images/default-profile.png') }}" alt="프로필 사진">
+            </div>
+            <input type="file" id="profile-input" accept="image/*" style="display: none" onchange="previewProfileImage(event)">
+            
+            <button class="reset-image-button" onclick="resetProfileImage()">기본 이미지로 변경</button>
+
+            <div class="nickname">
+                <span id="nickname-display">닉네임</span>
+                <input type="text" id="nickname-input" value="닉네임" style="display: none;" onblur="saveNickname()">
+                <span class="edit-icon" onclick="editNickname()">✏️</span>
+            </div>
+        </div>
+
+        <!-- 유저 정보 -->
+        <div class="user-info">
+            <p>이름: <span id="name-display">홍길동</span>
+                <input type="text" id="name-input" value="홍길동" style="display: none;">
+            </p>
+            <p>성별:
+                <label><input type="radio" id="male" name="gender" value="male"> 남자</label>
+                <label><input type="radio" id="female" name="gender" value="female"> 여자</label>
+            </p>
+            <p>전화번호: <span id="phone-display">010-1234-5678</span>
+                <input type="text" id="phone-input" value="010-1234-5678" style="display: none;">
+            </p>
+            <p>이메일: <span id="email-display">example@example.com</span>
+                <input type="text" id="email-input" value="example@example.com" style="display: none;">
+            </p>
+            <p>알레르기 정보: <span id="allergy-display">없음</span>
+                <input type="text" id="allergy-input" value="없음" style="display: none;">
+            </p>
+
+            <button class="edit-info-button" onclick="toggleEditMode()">정보 수정하기</button>
+
+            <a href="/mypagesub">작성한 댓글 & 게시물 모음</a>
+        </div>
+    </div>
+
+    <!-- 레시피 섹션 -->
+    <div class="recipe-sections">
+        <div class="recipe-category">
+            <h3>스크랩한 레시피 <span>💾</span></h3>
+            <div class="recipe-thumbnails">
+                <div class="recipe-thumbnail">레시피 1</div>
+                <div class="recipe-thumbnail">레시피 2</div>
+                <div class="recipe-thumbnail">레시피 3</div>
+            </div>
+            <div class="more-icon" onclick="showMoreRecipes('scrapped')">...</div>
+        </div>
+        <div class="recipe-category">
+            <h3>좋아요한 레시피 <span>💘</span></h3> <!-- 화살 맞은 하트 이모지 -->
+            <div class="recipe-thumbnails">
+                <div class="recipe-thumbnail">레시피 1</div>
+                <div class="recipe-thumbnail">레시피 2</div>
+                <div class="recipe-thumbnail">레시피 3</div>
+            </div>
+            <div class="more-icon" onclick="showMoreRecipes('liked')">...</div>
+        </div>
+        <div class="recipe-category">
+            <h3>사용한 레시피 <span>🍴</span></h3>
+            <div class="recipe-thumbnails">
+                <div class="recipe-thumbnail">레시피 1</div>
+                <div class="recipe-thumbnail">레시피 2</div>
+                <div class="recipe-thumbnail">레시피 3</div>
+            </div>
+            <div class="more-icon" onclick="showMoreRecipes('used')">...</div>
+        </div>
+        <div class="recipe-category">
+            <h3>최근 본 레시피 <span>🎞️</span></h3>
+            <div class="recipe-thumbnails">
+                <div class="recipe-thumbnail">레시피 1</div>
+                <div class="recipe-thumbnail">레시피 2</div>
+                <div class="recipe-thumbnail">레시피 3</div>
+            </div>
+            <div class="more-icon" onclick="showMoreRecipes('recent')">...</div>
+        </div>
+    </div>    
+
+    {% endblock %}
+    <script src="{{ url_for('static', filename='js/mypagemain.js') }}"></script>
+</body>
+</html>
