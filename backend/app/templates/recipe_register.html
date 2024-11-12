@@ -13,19 +13,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
 </head>
 <body>
-    <!-- 상단 제목에 링크 추가 -->
-    <h1 class="korean-font main-title">
+<!-- 상단 내비게이션 -->
+<header>
+  <h1 class="korean-font main-title">
       <a href="main.html" style="text-decoration: none; color: inherit;">요리의 정원</a>
   </h1>
-    <!-- 메뉴 네비게이션 -->
-    <nav class="menu">
-        <button class="menu-toggle">☰</button>
-        <a href="#" class="korean-font">모든 레시피</a>
-        <a href="#" class="korean-font">화제의 레시피</a>
-        <a href="#" class="korean-font">제철 레시피</a>
-        <a href="#" class="korean-font">특색 레시피</a>
-        <a href="#" class="korean-font">레시피 등록</a>
-    </nav>
+  <div class="navigation">
+      <a href="/all_recipe" class="korean-font">모든 레시피</a>
+      <div class="divider"></div> <!-- 구분선 -->
+      <a href="/popular_recipes" class="korean-font active">화제의 레시피</a>
+      <div class="divider"></div>
+      <a href="/seasonal_recipes" class="korean-font">제철 레시피</a>
+      <div class="divider"></div>
+      <a href="/special_recipes" class="korean-font">특색 레시피</a>
+      <div class="divider"></div>
+      <a href="/register_recipe" class="korean-font">레시피 등록</a>
+  </div>
+</header>
+
 
     <div class="container">
         <h1 class="korean-font">레시피 검색</h1> <!-- 한글 제목에 한글 폰트 적용 -->

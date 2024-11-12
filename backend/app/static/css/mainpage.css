@@ -1,0 +1,258 @@
+/* main.css: 메인 페이지 스타일 */
+
+/* 외할머니 글씨 (한글) */
+.korean-font {
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-weight: 600;
+}
+
+/* Marcellus (영어) */
+.english-font {
+    font-family: 'Marcellus', serif;
+}
+
+body {
+    background-color: #F2EDEC;
+    margin: 0;
+    padding: 0;
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+}
+
+/* 페이지 제목 */
+.title {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 40px;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.title:hover {
+    color: #1A4B8C;
+}
+
+
+.search-containter {
+    position:relative;
+    width: 50%;
+    margin: 20px auto;
+}
+
+.input-label{
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* 검색 바 스타일 */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 100%;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+.camera-btn, .search-btn {
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    background-color: #1A4B8C;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.2s;
+}
+
+.camera-btn:hover, .camera-btn:hover {
+    background-color: #2C63A2;
+}
+
+.search-bar.excluded{
+    border-color: #ccc;
+}
+
+.clear-btn1{
+    position: absolute;
+    right: 120px;
+    background: #ddd;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.clear-btn2{
+    position: absolute;
+    right: 10px;
+    background: #ddd;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-btn1:hover, .clear-btn2:hover{
+    background: #bbb;
+    color: #fff;
+}
+
+/* 최근 검색어 스타일 */
+.search-recent {
+    margin: 15px 0;
+    font-size: 20px;
+    color: #1A4B8C;
+}
+
+#recent-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.recent-item {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #888;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.remove-btn:hover {
+    color: #555;
+}
+
+
+/* 해시태그 스타일 */
+.trending {
+    position: absolute;
+    bottom: -35px;
+    left: 0px;
+    font-size: 16px;
+    color: #1A4B8C;
+}
+
+.trending ul {
+    list-style: none;
+    margin-right: 10px;
+}
+
+.trending li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.trending a {
+    color: #1A4B8C;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.trending a:hover {
+    text-decoration: underline;
+}
+
+/* 오늘의 꿀팁 섹션 */
+.tip-section {
+    background-color: #E2F7D3;
+    padding: 20px;
+    text-align: center;
+    margin: 30px auto;
+    width: 60%;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #1A4B8C;
+    font-weight: bold;
+}
+
+/* 인기 레시피 카드 */
+.recipe-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
+    gap: 20px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.recipe-cards .card {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* 둥근 모서리 */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    font-size: 18px;
+    color: #1A4B8C;
+}
+
+.recipe-cards .card:hover {
+    transform: scale(1.05);
+}
+
+.recipe-cards .card a {
+    color: #1A4B8C;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* 반응형 - 화면이 768px 이하일 때 1열로 변경 */
+@media (max-width: 768px) {
+    .recipe-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* 반응형 - 화면이 768px 이하일 때 1열로 변경 */
+@media (max-width: 768px) {
+    .search-bar {
+        width: 80%;
+    }
+
+    .recipe-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .tip-section {
+        width: 80%;
+    }
+}
+
