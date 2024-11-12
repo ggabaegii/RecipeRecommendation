@@ -48,4 +48,9 @@ def create_app():
     def recipe_detail():
         return render_template('recipe_detail.html')
 
+    
+    @app.route('/locspepage')
+    def locspepage():
+        return render_template('locspepage.html')
+
     return app

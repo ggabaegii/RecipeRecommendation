@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>특산물 페이지</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/locspepage.css') }}">
+    <!-- Marcellus 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <!-- 카카오맵 API 불러오기 -->
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=47caa90b3b1c9bb5a87ba018dd6a480c"></script>
+</head>
+<body>
+    <!-- 상단 내비게이션 -->
+    <!--<header>
+        <h1>요리의 정원</h1>
+        <div class="navigation">
+            <a href="/specialproducts">특산물</a>
+            <div class="divider"></div> 
+            <a href="/cookingtips" class="active">요리 꿀팁</a>
+        </div>
+    </header> -->
+
+    <!-- 상단 메뉴 바 -->
+    <header>
+        <h1>요리의 정원</h1>
+        <div class="top-bar">
+            <a href="/specialty" class="active">특산물</a>
+            <div class="divider"></div> <!-- 구분선 추가 -->
+            <a href="/cookingtips">요리꿀팁</a>
+        </div> 
+    </header>
+    
+    <!-- 지도 표시 영역 -->
+    <div id="map"></div>
+
+    <script src="{{ url_for('static', filename='js/locspepage.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/fonts.js') }}"></script>
+</body>
+</html>
+
