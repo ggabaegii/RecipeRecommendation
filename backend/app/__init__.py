@@ -33,6 +33,6 @@ def create_app():
         image_file = request.files['image']
         #ingredients = detect_ingredients(image_file)  # YOLO 모델로 재료 인식
     
-        return jsonify({'ingredients': ingredients})
+        #return jsonify({'ingredients': ingredients})
 
     return app
