@@ -61,6 +61,10 @@ def create_app():
     @app.route('/recipe_register2')
     def recipe_register2():
         return render_template('recipe_register2.html')
+    
+    @app.route('/recipe_list')
+    def recipe_list():
+        return render_template('recipe_list.html')
 
 
     return app
