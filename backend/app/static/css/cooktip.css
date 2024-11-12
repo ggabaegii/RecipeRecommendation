@@ -114,10 +114,14 @@ header {
 }
 
 .category-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 20px;
+    display: none;
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* gap: 20px;
+    margin-top: 20px; */
+}
+
+#preparation {
+    display: block; /* 손질법을 기본으로 보이도록 설정 */
 }
 
 .item-box {
@@ -154,8 +158,8 @@ header {
 }
 
 /* 반응형 - 화면이 768px 이하일 때 1열로 변경 */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .category-content {
         grid-template-columns: 1fr;
     }
-}
+} */
