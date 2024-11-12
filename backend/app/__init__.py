@@ -31,7 +31,7 @@ def create_app():
             return jsonify({'error': 'No image provided'}), 400
     
         image_file = request.files['image']
-        ingredients = detect_ingredients(image_file)  # YOLO 모델로 재료 인식
+        #ingredients = detect_ingredients(image_file)  # YOLO 모델로 재료 인식
     
         return jsonify({'ingredients': ingredients})
 
