@@ -2,37 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='./css/signup.css') }}">
+    
+    <!-- 스타일 시트 링크 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cooktip.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+
+    <!-- Marcellus 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
 <body>
     <div class="signup-container">
-        <h2>개인정보 입력</h2>
+        <h2 class="korean-font">개인정보 입력</h2>
         <form action="{{ url_for('signup') }}" method="post">
             <div class="input-group">
-                <label for="username">아이디</label>
+                <label for="username" class="korean-font">아이디</label>
                 <input type="text" id="username" name="username" required>
             </div>
             
             <div class="input-group">
-                <label for="email">이메일</label>
+                <label for="email" class="korean-font">이메일</label>
                 <input type="email" id="email" name="email" required>
             </div>
             
             <div class="input-group">
-                <label for="password">비밀번호</label>
+                <label for="password" class="korean-font">비밀번호</label>
                 <input type="password" id="password" name="password" required>
             </div>
             
             <div class="input-group">
-                <label for="confirm_password">비밀번호 확인</label>
+                <label for="confirm_password" class="korean-font">비밀번호 확인</label>
                 <input type="password" id="confirm_password" name="confirm_password" required>
             </div>
             
-            <button type="submit">회원가입</button>
+            <button type="submit" class="korean-font">회원가입</button>
         </form>
         
-        <p>이미 계정이 있으신가요? <a href="{{ url_for('login') }}">로그인</a></p>
+        <p class="korean-font">이미 계정이 있으신가요? <a href="{{ url_for('login') }}">로그인</a></p>
     </div>
 </body>
 </html>
