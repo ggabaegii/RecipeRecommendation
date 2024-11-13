@@ -5,9 +5,20 @@
     box-sizing: border-box;
 }
 
+/* 외할머니 글씨 (한글) */
+.korean-font {
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-weight: 600;
+}
+
+/* Marcellus (영어) */
+.english-font {
+    font-family: 'Marcellus', serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2edec;
+    font-family: 'NanumOeHarMeoNiGeurSsi', Arial, sans-serif; /* 폰트 충돌 방지 */
+    background-color: #F2EDEC;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,6 +26,7 @@ body {
     margin: 0;
 }
 
+/* 로그인 컨테이너 */
 .login-container {
     background-color: white;
     padding: 30px;
@@ -25,11 +37,14 @@ body {
     text-align: center;
 }
 
+/* 제목 스타일 */
 h2 {
     margin-bottom: 20px;
     color: #333;
+    font-family: 'NanumOeHarMeoNiGeurSsi', serif; /* 제목에 Marcellus 폰트 적용 */
 }
 
+/* 입력 그룹 */
 .input-group {
     margin-bottom: 15px;
     text-align: left;
@@ -51,9 +66,11 @@ h2 {
 
 .input-group input:focus {
     border-color: #d7f6e1;
+    background-color: #f0fdf4; /* 포커스 시 배경색 추가 */
     outline: none;
 }
 
+/* 로그인 버튼 */
 button.submit-btn {
     width: 100%;
     padding: 12px;
@@ -65,6 +82,16 @@ button.submit-btn {
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    transition: background-color 0.3s, box-shadow 0.3s; /* 부드러운 변환 효과 추가 */
+}
+
+/* 버튼 텍스트 폰트 적용: 한국어는 외할머니, 영어는 Marcellus */
+button.submit-btn {
+    font-family: 'Marcellus', serif; /* 기본 폰트는 영어로 설정 */
+}
+
+button.submit-btn:lang(ko) {
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif; /* 버튼 텍스트가 한국어일 때 외할머니 글씨 */
 }
 
 button.submit-btn:hover {
@@ -73,6 +100,7 @@ button.submit-btn:hover {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* 회원가입 링크 */
 p {
     margin-top: 10px;
 }
@@ -86,7 +114,7 @@ p {
     text-decoration: underline;
 }
 
-/* 소셜 로그인 버튼 스타일 */
+/* 소셜 로그인 버튼 */
 .social-login-buttons {
     margin-top: 20px;
 }
@@ -99,12 +127,14 @@ p {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
     box-sizing: border-box; /* padding 포함 크기 계산 */
     margin-top: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    font-family: 'NanumOeHarMeoNiGeurSsi', serif; /* 소셜 로그인 버튼 폰트 Marcellus로 설정 */
 }
 
+/* 소셜 버튼 색상 */
 .google-btn {
     background-color: #ffffff;
     color: black;
@@ -123,4 +153,20 @@ p {
 .social-btn:hover {
     opacity: 0.8;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* hover 시 그림자 강조 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 600px) {
+    .login-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .social-btn {
+        font-size: 16px;
+    }
+
+    .input-group input {
+        font-size: 14px;
+    }
 }
