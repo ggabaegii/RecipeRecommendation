@@ -41,7 +41,8 @@ body {
 h2 {
     margin-bottom: 20px;
     color: #333;
-    font-family: 'NanumOeHarMeoNiGeurSsi', serif; /* 제목에 Marcellus 폰트 적용 */
+    font-family: 'NanumOeHarMeoNiGeurSsi', serif; /* 제목에 NanumOeHarMeoNiGeurSsi 폰트 적용 */
+    font-size: 35px;
 }
 
 /* 입력 그룹 */
@@ -78,7 +79,7 @@ button.submit-btn {
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 18px;
+    font-size: 23px;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
@@ -102,7 +103,8 @@ button.submit-btn:hover {
 
 /* 회원가입 링크 */
 p {
-    margin-top: 10px;
+    margin-top: 12px;
+    font-weight: bold;
 }
 
 .signup-link {
@@ -131,7 +133,7 @@ p {
     box-sizing: border-box; /* padding 포함 크기 계산 */
     margin-top: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-    font-family: 'NanumOeHarMeoNiGeurSsi', serif; /* 소셜 로그인 버튼 폰트 Marcellus로 설정 */
+    font-family: 'NanumOeHarMeoNiGeurSsi', serif; /* 소셜 로그인 버튼 폰트 NanumOeHarMeoNiGeurSsi로 설정 */
 }
 
 /* 소셜 버튼 색상 */
