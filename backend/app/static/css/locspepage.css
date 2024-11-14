@@ -50,12 +50,29 @@ header {
     margin: 0 10px; /* 좌우 간격 */
 }
 
+
 /* 지도 스타일 */
 #map {
-    width: 50%;
+    width: 90%;
+    max-width: 700px;
     height: 80vh;
-    margin: 40px auto 0 auto;  /* 상단에 20px 간격을 두고 가운데 정렬 */
-    border: 1px solid #ccc; /* 보더 추가 (옵션) */
+    margin: 40px auto;  /* 상단에 40px 간격을 두고 가운데 정렬 */
+    border: 1px solid #ccc; /* 보더 추가 */
+}
+
+/* 반응형 지도 스타일 */
+@media (max-width: 768px) {
+    #map {
+        width: 100%;
+        height: 60vh;
+    }
+}
+
+@media (max-width: 480px) {
+    #map {
+        width: 100%;
+        height: 50vh;
+    }
 }
 
 /* 정보 창 스타일 */
@@ -66,4 +83,8 @@ header {
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
+
+    /* width: auto;
+    max-width: 150px;
+    text-align: center; */
 }
