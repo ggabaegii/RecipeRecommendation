@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>레시피 상세 페이지</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_detail.css') }}">
-    <!-- Font Awesome 아이콘 라이브러리 추가 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Marcellus 폰트 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
 <body>
     <!-- 요리의 정원 로고 -->
     <header>
         <a href="/" class="logo-text">요리의 정원</a>
-        <h1>레시피 상세 페이지</h1>
+        <h1 class="page-title">레시피 상세 페이지</h1> <!-- 중앙 정렬 -->
     </header>
 
-    <!-- 메뉴 아이콘 -->
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <div id="menu" class="menu">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
@@ -37,7 +33,7 @@
         <!-- 레시피 기본 정보 -->
         <section class="recipe-info">
             <h2>요리 이름: 스파게티</h2>
-            <hr> <!-- 구분선 추가 -->
+            <hr>
             <p><strong>소요 시간:</strong> 30분</p>
             <p><strong>난이도:</strong> 중급</p>
         </section>
@@ -46,10 +42,26 @@
         <section class="ingredients">
             <h3>재료</h3>
             <ul>
-                <li>스파게티 면 200g</li>
-                <li>마늘 3쪽</li>
-                <li>올리브 오일 2큰술</li>
-                <li>소금, 후추</li>
+                <li>
+                    <span class="ingredient-name">스파게티 면</span>
+                    <span class="ingredient-amount">200g</span>
+                    <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 우동 면')">
+                </li>
+                <li>
+                    <span class="ingredient-name">마늘</span>
+                    <span class="ingredient-amount">3쪽</span>
+                    <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 양파')">
+                </li>
+                <li>
+                    <span class="ingredient-name">올리브 오일</span>
+                    <span class="ingredient-amount">2큰술</span>
+                    <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 식용유')">
+                </li>
+                <li>
+                    <span class="ingredient-name">소금</span>
+                    <span class="ingredient-amount">적당량</span>
+                    <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 간장')">
+                </li>
             </ul>
         </section>
 
@@ -77,9 +89,9 @@
                 <span>작성자: 홍길동</span>
             </div>
             <div class="icons">
-                <span class="icon like">💘</span> <!-- 좋아요 아이콘 -->
-                <span class="icon scrap">💾</span> <!-- 스크랩 아이콘 -->
-                <span class="icon share">🔗</span> <!-- 공유 아이콘 -->
+                <span class="icon like" onclick="toggleLike()">💘</span>
+                <span class="icon scrap" onclick="toggleScrap()">💾</span>
+                <span class="icon share" onclick="shareRecipe()">🔗</span>
             </div>
         </section>
     </div>

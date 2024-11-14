@@ -1,5 +1,4 @@
 from flask import Flask, render_template,request,jsonify
-from flask import Flask, render_template,request,jsonify
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
@@ -33,6 +32,11 @@ def create_app():
     
         #return jsonify({'ingredients': ingredients})
 
+    @app.route('/locspepage')
+    def locspepage():
+        return render_template('locspepage.html')
+    
+
     
     @app.route('/mypagemain')
     def mypagemain():
@@ -45,12 +49,6 @@ def create_app():
     @app.route('/recipe_detail')
     def recipe_detail():
         return render_template('recipe_detail.html')
-
-    
-    @app.route('/locspepage')
-    def locspepage():
-        return render_template('locspepage.html')
-    
 
     
     @app.route('/recipe_register')
