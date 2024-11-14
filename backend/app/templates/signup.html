@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    
+
     <!-- 스타일 시트 링크 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cooktip.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
 
-    <!-- Marcellus 폰트 불러오기 -->
+    <!-- 폰트 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
 <body>
@@ -19,44 +18,31 @@
         <h2 class="korean-font">개인정보 입력</h2>
         <form action="{{ url_for('signup') }}" method="post" enctype="multipart/form-data">
             <div class="input-group">
-                <label for="profile_picture" class="korean-font">프로필 사진</label>
-                <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
-            </div>
+                <label class="korean-font">프로필 사진</label>
+                <div class="profile-picture-container">
+                    <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+                    <img id="profile-picture-preview" class="profile-picture-preview" src="#" alt="프로필 미리보기" />
+                </div>
+            </div>            
 
-            <div class="input-group">
-                <label for="username" class="korean-font">아이디</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="password" class="korean-font">비밀번호</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="confirm_password" class="korean-font">비밀번호 확인</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
-            </div>
-            
             <div class="input-group">
                 <label for="nickname" class="korean-font">닉네임</label>
                 <input type="text" id="nickname" name="nickname" required>
             </div>
-            
+
             <div class="input-group">
                 <label for="real_name" class="korean-font">이름</label>
                 <input type="text" id="real_name" name="real_name" required>
             </div>
-            
+
             <div class="input-group">
-                <label for="gender" class="korean-font">성별</label>
-                <select id="gender" name="gender" required>
-                    <option value="male">남성</option>
-                    <option value="female">여성</option>
-                    <option value="other">기타</option>
-                </select>
+                <label class="korean-font">성별</label>
+                <div class="gender-group">
+                    <label class="gender-option"><input type="checkbox" name="gender" value="male"> 남성</label>
+                    <label class="gender-option"><input type="checkbox" name="gender" value="female"> 여성</label>
+                </div>
             </div>
-            
+
             <div class="input-group">
                 <label for="age" class="korean-font">나이</label>
                 <input type="number" id="age" name="age" required min="1">
@@ -66,16 +52,40 @@
                 <label for="phone_number" class="korean-font">전화번호</label>
                 <input type="text" id="phone_number" name="phone_number" required>
             </div>
-            
+
             <div class="input-group">
                 <label for="email" class="korean-font">이메일</label>
                 <input type="email" id="email" name="email" required>
             </div>
-            
+
+            <div class="input-group">
+                <label for="username" class="korean-font">아이디</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password" class="korean-font">비밀번호</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="input-group">
+                <label for="confirm_password" class="korean-font">비밀번호 확인</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+
             <button type="submit" class="korean-font">회원가입</button>
         </form>
-        
+
         <p class="korean-font">이미 계정이 있으신가요? <a href="{{ url_for('login') }}">로그인</a></p>
     </div>
+
+    <!-- 이미지 미리보기 스크립트 -->
+    <script>
+        function previewProfilePicture(event) {
+            const preview = document.getElementById('profile_picture_preview');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+            preview.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
