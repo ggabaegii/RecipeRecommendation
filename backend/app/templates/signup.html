@@ -19,11 +19,13 @@
         <form action="{{ url_for('signup') }}" method="post" enctype="multipart/form-data">
             <div class="input-group">
                 <div class="profile-picture-container">
-                    <img id="profile-picture-preview" class="profile-picture-preview" src="#" alt="프로필 사진" />
+                    <div class="profile-picture-preview-wrapper">
+                        <img id="profile-picture-preview" class="profile-picture-preview" src="#" alt="프로필 사진" />
+                    </div>                    
                     <div class="upload-text-container">
                         <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
                         <label for="profile-picture" class="upload-text korean-font">이미지 업로드</label>
-                    </div>                                                                               
+                    </div>
                 </div>
             </div>                         
 

@@ -99,35 +99,50 @@ h2 {
     display: flex;  /* 수평 정렬 */
     align-items: center;  /* 세로로 가운데 정렬 */
     justify-content: center;  /* 가로로 가운데 정렬 */
-    gap: 70px;  /* 이미지와 텍스트 간의 간격 */
+    gap: 80px;  /* 이미지와 텍스트 간의 간격 */
     margin-bottom: 20px;  /* 아래쪽 여백 */
 }
 
 /* 프로필 사진 미리보기 원형 */
 .profile-picture-preview {
-    width: 250px;  /* 크기 변경 */
-    height: 250px; /* 크기 변경 */
-    border-radius: 50%;  /* 원 모양 유지 */
-    object-fit: cover;   /* 이미지 비율 유지 */
-    border: 2px solid #ccc;  /* 테두리 */
-    margin-left: 60px;  /* 원형 이미지 오른쪽으로 이동 */
+    width: 200px;  /* 원하는 크기 조정 (너비) */
+    height: 200px; /* 원하는 크기 조정 (높이) */
+    border-radius: 50%;  /* 원형으로 만들기 */
+    object-fit: cover;   /* 이미지 비율 유지하며 크기 맞추기 */
+    overflow: hidden;    /* 원형 안으로 이미지를 잘라내기 */
+    border: 2px solid #ccc;  /* 테두리 (선택사항) */
 }
 
-/* 업로드 텍스트와 파일 입력 스타일 */
+/* 프로필 사진을 감싸는 컨테이너 */
+.profile-picture-preview-wrapper {
+    width: 250px;   /* 부모 컨테이너 크기 (너비) */
+    height: 250px;  /* 부모 컨테이너 크기 (높이) */
+    border-radius: 50%;  /* 원형으로 만들기 */
+    overflow: hidden;    /* 원형 안으로 이미지를 잘라내기 */
+    display: flex;   /* Flexbox로 중앙 정렬 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 업로드 버튼 컨테이너 */
 .upload-text-container {
     display: flex;
+    justify-content: center;
     align-items: center;
-    position: relative;
-    gap: 10px;  /* 텍스트와 입력 필드 간 간격 */
+    margin-top: 10px;
 }
 
-/* 업로드 텍스트 스타일 */
+/* 업로드 버튼 텍스트 */
 .upload-text {
-    font-size: 18px;
-    color: #555;
+    margin-left: 10px;
     cursor: pointer;
-    text-decoration: none;
-    z-index: 2; /* 텍스트가 다른 요소 위에 올 수 있도록 설정 */
+    font-weight: bold;
+    color: #333;
+}
+
+/* 파일 입력 스타일 숨기기 */
+#profile-picture {
+    display: none;  /* 실제 input[type="file"]은 숨기고 label로 클릭 가능 */
 }
 
 .upload-text:hover {
