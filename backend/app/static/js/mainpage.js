@@ -12,6 +12,11 @@ function addRecentIngredient(ingredient) {
     ingredientItem.className = "recent-item";
     ingredientItem.textContent = ingredient;
 
+      // 클릭 시 해당 재료로 검색 수행
+      ingredientItem.onclick = function () {
+        searchWithIngredient(ingredient);
+    };
+
     // 삭제 버튼 추가
     const removeBtn = document.createElement("button");
     removeBtn.className = "remove-btn";
@@ -23,6 +28,12 @@ function addRecentIngredient(ingredient) {
 
     ingredientItem.appendChild(removeBtn);
     recentIngredientsContainer.appendChild(ingredientItem);
+}
+
+// 클릭된 최근 검색어로 검색 수행
+function searchWithIngredient(ingredient) {
+    document.getElementById('ingredient-search').value = ingredient;
+    submitSearch();
 }
 
 // 로컬 스토리지에 최근 검색어 저장
