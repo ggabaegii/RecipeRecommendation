@@ -1,4 +1,4 @@
-// 최근 검색어 추가 및 삭제 기능 (로컬 스토리지 저장 없이 화면에만 추가)
+// 최근 검색어 추가 및 삭제 기능 (ingredient-search 필드만 저장)
 function addRecentIngredient(ingredient) {
     const recentIngredientsContainer = document.getElementById("recent-ingredients");
 
@@ -54,27 +54,34 @@ function clearInput(inputId) {
     document.getElementById(inputId).value = '';
 }
 
-// Enter 키 입력 처리 및 재료 추가 (검색은 submitSearch에서 처리)
+// Enter 키 입력 처리 및 재료 추가 (ingredient-search 필드만 최근 검색어에 저장)
 function handleIngredientInput(event) {
+    const ingredientInput = document.getElementById('ingredient-search').value.trim();
+    const excludedInput = document.getElementById('excluded-ingredient').value.trim();
+
     if (event.key === "Enter") {
-        const inputField = event.target;
+        const inputField = event.target; // 엔터키가 눌린 input 필드
         const ingredients = inputField.value.trim().split(' ').filter(Boolean); // 공백으로 구분된 재료들
         
         if (ingredients.length > 0) {
-            ingredients.forEach(ingredient => addRecentIngredient(ingredient));
+            // ingredient-search에 입력된 재료들만 최근 검색어에 추가
+            if (inputField.id === "ingredient-search") {
+                ingredients.forEach(ingredient => addRecentIngredient(ingredient));
+            }
             inputField.value = ""; // 입력창 초기화
             event.preventDefault(); // 폼 제출 방지
-            submitSearch(ingredients); // 검색 수행 및 최근 검색어 저장
+            
+            // 검색 함수 호출
+            submitSearch(ingredientInput, excludedInput);
         } else {
             alert("사용할 재료 혹은 제외할 재료를 입력해 주세요.");
         }
     }
 }
 
-// 검색 제출 함수 (검색 시 로컬 스토리지에 저장)
-function submitSearch(ingredients = []) {
-    const ingredientInput = document.getElementById('ingredient-search').value.trim();
-    const excludedInput = document.getElementById('excluded-ingredient').value.trim();
+// 검색 제출 함수 (검색 시 ingredient-search 재료들만 로컬 스토리지에 저장)
+function submitSearch(ingredientInput, excludedInput) {
+
 
     if (!ingredientInput && !excludedInput) {
         alert("사용할 재료 혹은 제외할 재료를 입력해 주세요.");
@@ -91,7 +98,7 @@ function submitSearch(ingredients = []) {
         return;
     }
 
-    // 로컬 스토리지에 최근 검색어 저장
+    // ingredient-search에 입력된 재료만 로컬 스토리지에 최근 검색어로 저장
     saveRecentIngredients(ingredientsArray);
 
     // URL 파라미터로 전달

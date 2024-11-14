@@ -3,41 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>재료 검색</title>
+    <title>{% block title %}요리의 정원{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ingrespage.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
+
 {% extends "layout.html" %}
 
+
 {% block content %}
-<body>
-    <div class="container">
-        <!-- 페이지 제목 -->
-        <h1 class="title korean-font">재료 검색</h1>
+<div class="search-results-container">
+    <h2 class="title">재료로 찾는 레시피</h2>
+    <button class="selected-ingredient">토마토</button>
+    <p class="instruction">재료를 누르면 선택 취소/선택이 가능합니다</p>
 
-        <!-- 검색 바 -->
-        <div class="search-bar">
-            <input type="text" placeholder="재료 검색">
-            <button type="submit">&#128269;</button>
-        </div>
-
-        <!-- 해시태그 -->
-        <div class="trending">
-            <a href="#">#해시태그</a>
-            <a href="#">#레시피</a>
-            <a href="#">#요리꿀팁</a>
-        </div>
-
-        <!-- 음식 사진 박스 -->
-        <div class="food-photo">음식 사진</div>
-
-        <!-- 음식 이름 및 태그 -->
-        <div class="food-info">음식 이름</div>
-        <div class="food-tags">
-            <span class="food-tag">소요 시간</span>
-            <span class="food-tag">난이도</span>
-        </div>
+    <!-- 카테고리 필터 -->
+    <div class="filter-categories">
+        <button class="filter-btn active">전체 (3,951)</button>
+        <button class="filter-btn">토마토달걀볶음 (67)</button>
+        <button class="filter-btn">토마토주스 (61)</button>
+        <button class="filter-btn">라따뚜이 (47)</button>
+        <button class="filter-btn">샌드위치 (46)</button>
+        <button class="filter-btn">과일샐러드 (44)</button>
+        <!-- 더 많은 카테고리 버튼 추가 가능 -->
     </div>
 
-    {% endblock content %}
-</body>
+    <!-- 레시피 리스트 -->
+    <div class="recipe-list">
+        <div class="recipe-item">
+            <img src="이미지_URL" alt="레시피 이미지" class="recipe-img">
+            <div class="recipe-info">
+                <h3 class="recipe-title">바삭바삭하고 촉촉한 감자치즈전</h3>
+                <p class="recipe-author">닉네임</p>
+            </div>
+        </div>
+        
+        <div class="recipe-item">
+            <img src="이미지_URL" alt="레시피 이미지" class="recipe-img">
+            <div class="recipe-info">
+                <h3 class="recipe-title">다이어트용식 닭가슴살 토마토 계란볶음 저탄고지식단</h3>
+                <p class="recipe-author">배고픈엄마</p>
+            </div>
+        </div>
+
+        <!-- 추가 레시피 아이템들 -->
+    </div>
+</div>
+
+{% endblock %}
 </html>
