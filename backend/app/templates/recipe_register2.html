@@ -3,80 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title class="korean-font">레시피 등록</title>
-    <!-- Marcellus 폰트 불러오기 -->
+    <title>레시피 등록</title>
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/register2.css') }}">
 </head>
 <body>
-    <!-- 상단 제목에 링크 추가 -->
-    <h1 class="korean-font main-title">
-      <a href="main.html" style="text-decoration: none; color: inherit;">요리의 정원</a>
-  </h1>
-    <!-- 메뉴 네비게이션 -->
-    <nav class="menu">
-        <button class="menu-toggle">☰</button>
-        <a href="#" class="korean-font">모든 레시피</a>
-        <a href="#" class="korean-font">화제의 레시피</a>
-        <a href="#" class="korean-font">제철 레시피</a>
-        <a href="#" class="korean-font">특색 레시피</a>
-        <a href="#" class="korean-font">레시피 등록</a>
-    </nav>
+    <!-- 상단 내비게이션 -->
+    <header>
+        <h1 class="korean-font main-title">
+            <a href="/" style="text-decoration: none; color: inherit;">요리의 정원</a>
+        </h1>
+        <nav class="menu">
+            <div class="navigation">
+                <a href="#" class="korean-font">모든 레시피</a>
+                <div class="divider"></div>
+                <a href="#" class="korean-font">화제의 레시피</a>
+                <div class="divider"></div>
+                <a href="#" class="korean-font">제철 레시피</a>
+                <div class="divider"></div>
+                <a href="#" class="korean-font">특색 레시피</a>
+                <div class="divider"></div>
+                <a href="#" class="korean-font">레시피 등록</a>
+            </div>
+        </nav>
+    </header>
 
+    <!-- 레시피 등록 컨테이너 -->
     <div class="container">
         <h1 class="korean-font">레시피 등록</h1>
         
         <form action="{{ url_for('recipe_register2') }}" method="post" enctype="multipart/form-data">
-            <label for="title" class="korean-font">레시피 제목</label>
+            <label for="title">레시피 제목</label>
             <input type="text" id="title" name="title" placeholder="Ex) 소고기 미역국" required>
 
             <div class="info-group">
-                <label class="korean-font">요리 정보</label>
-                <select name="cook_time">
-                    <option class="korean-font">소요 시간</option>
-                    <option value="30분 이내" class="korean-font">30분 이내</option>
-                    <option value="1시간 이내" class="korean-font">1시간 이내</option>
-                    <option value="1시간 이상" class="korean-font">1시간 이상</option>
+                <label for="cook_time">소요 시간</label>
+                <select name="cook_time" id="cook_time" required>
+                    <option value="30분 이내">30분 이내</option>
+                    <option value="1시간 이내">1시간 이내</option>
+                    <option value="1시간 이상">1시간 이상</option>
                 </select>
-                <select name="difficulty">
-                    <option class="korean-font">난이도</option>
-                    <option value="쉬움" class="korean-font">쉬움</option>
-                    <option value="보통" class="korean-font">보통</option>
-                    <option value="어려움" class="korean-font">어려움</option>
+                <label for="difficulty">난이도</label>
+                <select name="difficulty" id="difficulty" required>
+                    <option value="쉬움">쉬움</option>
+                    <option value="보통">보통</option>
+                    <option value="어려움">어려움</option>
                 </select>
             </div>
 
             <div class="ingredient-group">
-                <label class="korean-font">요리 재료</label>
-                <input type="text" name="ingredient" placeholder="재료명" class="korean-font">
-                <input type="text" name="ingredient" placeholder="재료양" class="korean-font">
-                <input type="text" name="sauce_name" placeholder="소스명" class="korean-font">
-                <input type="text" name="sauce_amount" placeholder="소스양" class="korean-font">
+                <label for="ingredient">요리 재료</label>
+                <input type="text" name="ingredient" id="ingredient" placeholder="재료명" required>
+                <input type="text" name="ingredient_amount" id="ingredient_amount" placeholder="재료양" required>
+                <button type="button" onclick="addIngredientField()">재료 추가</button>
+            </div>
+
+            <div class="sauce-group">
+                <label for="sauce_name">소스</label>
+                <input type="text" name="sauce_name" id="sauce_name" placeholder="소스명">
+                <input type="text" name="sauce_amount" id="sauce_amount" placeholder="소스양">
+                <button type="button" onclick="addSauceField()">소스 추가</button>
             </div>
 
             <div class="substitute-group">
-                <label class="korean-font">대체 재료</label>
-                <input type="text" name="substitute" placeholder="원재료" class="korean-font">
-                <input type="text" name="substitute" placeholder="대체 재료" class="korean-font">
+                <label for="substitute">대체 재료</label>
+                <input type="text" name="substitute" id="substitute" placeholder="원재료">
+                <input type="text" name="substitute_alt" id="substitute_alt" placeholder="대체 재료">
+                <button type="button" onclick="addSubstituteField()">대체 재료 추가</button>
             </div>
 
             <div class="photo-group">
-                <label class="korean-font">요리 사진</label>
-                <input type="file" name="photo" accept="image/*">
-                <p class="korean-font">완성된 요리의 대표 사진을 삽입해주세요</p>
+                <label for="photo">요리 사진</label>
+                <input type="file" name="photo" id="photo" accept="image/*">
+                <p>완성된 요리의 대표 사진을 삽입해주세요.</p>
             </div>
 
-            <label for="steps" class="korean-font">조리 순서</label>
-            <textarea id="steps" name="steps" placeholder="1. ...&#10;2. ..." class="korean-font"></textarea>
+            <label for="steps">조리 순서</label>
+            <textarea id="steps" name="steps" placeholder="1. ...&#10;2. ..." required></textarea>
 
-            <label for="tags" class="korean-font">해시태그</label>
-            <input type="text" id="tags" name="tags" placeholder="#고기 #미역국 #새우젓" maxlength="30" class="korean-font">
-            <p class="korean-font">최대 10가지 가능 #고기 #미역국 #새우젓</p>
+            <label for="tags">해시태그</label>
+            <input type="text" id="tags" name="tags" placeholder="#고기 #미역국 #새우젓" maxlength="30" required>
 
-            <button type="submit" class="korean-font">작성 완료</button>
+            <button type="submit">작성 완료</button>
         </form>
     </div>
+
+    <!-- JavaScript 파일 연결 -->
+    <script src="{{ url_for('static', filename='js/recipe_register2.js') }}"></script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 검색</title>
+
+    <!-- Google Fonts 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+
+    <!-- CSS 스타일 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recipelist.css') }}">
+</head>
+<body>
+    <!-- 상단 내비게이션 -->
+    <header>
+        <button class="menu-toggle">☰</button>
+        <h1>레시피 검색</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" placeholder="레시피 검색">
+        <button>🔍</button>
+    </div>
+
+    <div class="popular-tags">
+        <span>#해시태그</span>
+        <span>#레시피</span>
+        <span>#요리꿀팁</span>
+    </div>
+
+    <div class="recipe-list">
+        <table>
+            {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.id }}</td>
+                <td>{{ recipe.title }}</td>
+                <td>{{ recipe.author }}</td>
+                <td>{{ recipe.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
