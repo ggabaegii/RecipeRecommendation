@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제철 레시피</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/searecpage.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 로고 및 제목 -->
+    <header>
+        <a href="/" class="logo-text">요리의 정원</a>
+        <h1>제철 레시피</h1>
+    </header>
+
+    <!-- 네비게이션 바 -->
+    <nav class="navigation">
+        <a href="/recipes">모든 레시피</a>
+        <span class="divider"></span>
+        <a href="/trending">화제의 레시피</a>
+        <span class="divider"></span>
+        <a href="/searecpage" class="active">제철 레시피</a>
+        <span class="divider"></span>
+        <a href="/recipe_register">레시피 등록</a>
+    </nav>
+
+    <!-- 제철 레시피 섹션 -->
+    <div class="content">
+        <section class="category-tabs">
+            <button onclick="showSeasonalRecipes('spring')">봄</button>
+            <button onclick="showSeasonalRecipes('summer')">여름</button>
+            <button onclick="showSeasonalRecipes('fall')">가을</button>
+            <button onclick="showSeasonalRecipes('winter')">겨울</button>
+        </section>
+
+        <div class="category-content" id="seasonal-recipes">
+            <!-- 봄 레시피 예시 -->
+            <div class="item-box">
+                <img src="{{ url_for('static', filename='images/spring_recipe.jpg') }}" alt="봄 레시피">
+                <hr>
+                <h3>딸기 샐러드</h3>
+                <p>상큼한 봄 딸기를 활용한 신선한 샐러드</p>
+            </div>
+            <!-- 나머지 계절별 레시피는 JavaScript로 추가 -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/searecpage.js') }}"></script>
+</body>
+</html>

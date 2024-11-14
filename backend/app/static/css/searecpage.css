@@ -1,0 +1,114 @@
+/* 기본 스타일 */
+body {
+    background-color: #F2EDEC;
+    margin: 0;
+    padding: 0;
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+}
+
+/* 로고 텍스트 스타일 */
+.logo-text {
+    font-size: 36px;
+    font-weight: bold;
+    color: #042C57;
+    font-family: 'Marcellus', serif;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    text-decoration: none;
+}
+
+/* 네비게이션 바 스타일 */
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.navigation a {
+    font-size: 23px;
+    text-decoration: none;
+    color: #042C57;
+}
+
+.navigation a.active, .navigation a:hover {
+    font-weight: bold;
+}
+
+.divider {
+    width: 1px;
+    height: 30px;
+    background-color: #cccccc;
+    margin: 0 10px;
+}
+
+/* 계절 선택 버튼 스타일 */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.category-tabs button {
+    font-family: 'NanumOeHarMeoNiGeurSsi';
+    font-size: 17px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #042C57;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.content {
+    padding: 20px;
+}
+
+/* 계절별 레시피 콘텐츠 스타일 */
+.category-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.item-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.item-box:hover {
+    transform: scale(1.05);
+}
+
+.item-box img {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item-box hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.item-box h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .category-content {
+        grid-template-columns: 1fr;
+    }
+}

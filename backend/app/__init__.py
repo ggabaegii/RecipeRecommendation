@@ -59,5 +59,8 @@ def create_app():
     def recipe_register2():
         return render_template('recipe_register2.html')
 
+    @app.route('/searecpage')
+    def searecpage():
+        return render_template('searecpage.html')
 
     return app
