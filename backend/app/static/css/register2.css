@@ -27,7 +27,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: #F2EDEC; /* 배경색을 바디 배경색과 동일하게 */
-  border-bottom: 1px solid #ddd;
+  border-bottom: none;
 }
 
 .navigation {
