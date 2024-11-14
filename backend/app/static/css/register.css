@@ -26,15 +26,19 @@ body {
 .main-title {
   font-size: 30px; /* 요리의 정원 제목에 대한 폰트 크기 */
   font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  color: #042C57;
+  background: none; /* 배경색 제거 */
 }
 
 /* 메뉴 네비게이션 스타일 */
 .menu {
-  background-color: #fff;
   padding: 12px; /* 패딩 약간 증가 */
   display: flex;
   justify-content: space-around;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: none; /* 그림자 제거 */
+  background: none; /* 배경 제거 */
 }
 
 .menu a {
@@ -44,31 +48,12 @@ body {
   font-size: 25px; /* 폰트 크기 키움 */
 }
 
-/* 컨테이너 스타일 */
-.container {
-  width: 60%;
-  margin: 20px auto;
-  padding: 25px; /* 패딩 증가 */
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* 헤더 */
-h1 {
-  font-size: 2em; /* 제목 폰트 크기 키움 */
-  margin-top: 25px;
-  text-align: center;
-  color: #333;
-}
 header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #f8f8f8;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  box-shadow: none; /* 그림자 제거 */
 }
 
 .navigation {
@@ -83,18 +68,23 @@ header {
   font-size: 1em;
 }
 
-.navigation a.active {
-  color: #ff6347; /* 활성화된 메뉴의 색상 */
-  font-weight: bold;
-}
-
-.divider {
+.navigation .divider {
   width: 1px;
   height: 20px;
   background-color: #ccc;
   margin: 0 10px;
 }
 
+.navigation a.active {
+  color: #333; /* 활성화된 메뉴의 색상 */
+  font-weight: bold;
+}
+
+/* 컨테이너 내의 제목 스타일 */
+.container h1 {
+  text-align: center; /* 중앙 정렬 */
+  margin-top: 20px;   /* 상단 여백 */
+}
 
 /* 검색 바 스타일 */
 .search-bar {
