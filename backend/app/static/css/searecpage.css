@@ -1,4 +1,3 @@
-/* 기본 스타일 */
 body {
     background-color: #F2EDEC;
     margin: 0;
@@ -45,7 +44,6 @@ body {
     font-size: 36px;
 }
 
-/* 로고 텍스트 스타일 */
 .logo-text {
     font-size: 36px;
     font-weight: bold;
@@ -53,13 +51,11 @@ body {
     font-family: 'Marcellus', serif;
     text-align: center;
     display: block;
-    margin: 0 auto; /* 좌우 중앙 정렬 */
+    margin: 0 auto;
     text-decoration: none;
-    width: fit-content; /* 요소 크기를 텍스트에 맞게 조절 */
     padding-top: 20px;
 }
 
-/* 네비게이션 바 스타일 */
 .navigation {
     display: flex;
     justify-content: center;
@@ -78,23 +74,19 @@ body {
     font-weight: bold;
 }
 
-/* 세로 구분선 */
 .divider {
     width: 1px;
     height: 30px;
     background-color: #cccccc;
 }
 
-/* 콘텐츠 영역 */
 .content {
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
-
     border-radius: 8px;
 }
 
-/* 계절 선택 버튼 */
 .category-tabs {
     display: flex;
     justify-content: center;
@@ -112,6 +104,12 @@ body {
     color: white;
     border-radius: 25px;
     cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.category-tabs button.active {
+    background-color: #bea2a1;
+    transform: scale(1.1);
 }
 
 .category-content {
@@ -142,7 +140,6 @@ body {
     border-radius: 5px;
 }
 
-/* 이미지와 제목 사이의 선 */
 .item-box hr {
     border: 0;
     border-top: 1px solid #ccc;
@@ -152,11 +149,4 @@ body {
 .item-box h3 {
     margin-top: 10px;
     font-size: 18px;
-}
-
-/* 반응형 - 화면이 768px 이하일 때 1열로 변경 */
-@media (max-width: 768px) {
-    .category-content {
-        grid-template-columns: 1fr;
-    }
 }
