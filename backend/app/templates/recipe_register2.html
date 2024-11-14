@@ -4,18 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title class="korean-font">레시피 등록</title>
-    <!-- Marcellus 폰트 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/register2.css') }}">
 </head>
 <body>
-    <!-- 상단 제목에 링크 추가 -->
     <h1 class="korean-font main-title">
-      <a href="main.html" style="text-decoration: none; color: inherit;">요리의 정원</a>
-  </h1>
-    <!-- 메뉴 네비게이션 -->
+      <a href="/" style="text-decoration: none; color: inherit;">요리의 정원</a>
+    </h1>
     <nav class="menu">
         <button class="menu-toggle">☰</button>
         <a href="#" class="korean-font">모든 레시피</a>
@@ -51,15 +47,22 @@
             <div class="ingredient-group">
                 <label class="korean-font">요리 재료</label>
                 <input type="text" name="ingredient" placeholder="재료명" class="korean-font">
-                <input type="text" name="ingredient" placeholder="재료양" class="korean-font">
+                <input type="text" name="ingredient_amount" placeholder="재료양" class="korean-font">
+                <button type="button" onclick="addIngredientField()" class="korean-font">재료 추가</button>
+            </div>
+
+            <div class="sauce-group">
+                <label class="korean-font">소스</label>
                 <input type="text" name="sauce_name" placeholder="소스명" class="korean-font">
                 <input type="text" name="sauce_amount" placeholder="소스양" class="korean-font">
+                <button type="button" onclick="addSauceField()" class="korean-font">소스 추가</button>
             </div>
 
             <div class="substitute-group">
                 <label class="korean-font">대체 재료</label>
                 <input type="text" name="substitute" placeholder="원재료" class="korean-font">
-                <input type="text" name="substitute" placeholder="대체 재료" class="korean-font">
+                <input type="text" name="substitute_alt" placeholder="대체 재료" class="korean-font">
+                <button type="button" onclick="addSubstituteField()" class="korean-font">대체 재료 추가</button>
             </div>
 
             <div class="photo-group">
@@ -78,5 +81,8 @@
             <button type="submit" class="korean-font">작성 완료</button>
         </form>
     </div>
+
+    <!-- JavaScript 파일 연결 -->
+    <script src="{{ url_for('static', filename='js/recipe_register2.js') }}"></script>
 </body>
 </html>
