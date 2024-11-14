@@ -95,19 +95,17 @@ h2 {
 
 /* 프로필 사진 미리보기 */
 .profile-picture-container {
-    position: relative;
-    display: flex;
-    align-items: center;
+    display: flex;  /* 수평으로 정렬 */
+    align-items: center;  /* 수직 가운데 정렬 */
+    gap: 60px;  /* 이미지와 텍스트 간의 간격 */
 }
 
 .profile-picture-preview {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ccc;
-    display: block;
-    margin-right: 30px; /* 미리보기 이미지와 텍스트 간 간격 */
+    width: 250px;  /* 크기 변경 */
+    height: 250px; /* 크기 변경 */
+    border-radius: 50%;  /* 원 모양 유지 */
+    object-fit: cover;   /* 이미지 비율 유지 */
+    border: 2px solid #ccc;  /* 테두리 */
 }
 
 /* 업로드 텍스트와 파일 입력 스타일 */
@@ -115,6 +113,7 @@ h2 {
     display: flex;
     align-items: center;
     position: relative; /* 파일 입력 요소를 정확히 배치하기 위한 상대적 위치 설정 */
+    margin-left: 10px;  /* 텍스트가 이미지 바로 옆에 오도록 조정 */
 }
 
 .upload-text {
@@ -123,7 +122,7 @@ h2 {
     margin-left: 10px;
     cursor: pointer; /* 텍스트 클릭 가능하게 설정 */
     text-decoration: none; /* 기본 언더라인 제거 */
-    z-index: 1; /* 텍스트가 다른 요소 위에 올 수 있도록 설정 */
+    z-index: 2; /* 텍스트가 다른 요소 위에 올 수 있도록 설정 */
 }
 
 .upload-text:hover {
@@ -131,14 +130,14 @@ h2 {
 }
 
 .upload-text-container input[type="file"] {
-    position: absolute;
+    position: absolute;  /* 파일 선택 창을 위치시킬 수 있도록 설정 */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     opacity: 0; /* 투명하게 만들어 파일 입력 칸을 표시하지 않음 */
     cursor: pointer;
-    z-index: -1; /* 텍스트 뒤로 보낼 수 있도록 설정 */
+    z-index: 1; /* 파일 선택 요소가 텍스트보다 뒤에 위치하도록 설정 */
 }
 
 /* 입력 그룹 스타일 */
@@ -169,8 +168,8 @@ h2 {
 
 /* 파일 입력 스타일 */
 .input-group input[type="file"] {
-    padding: 5px;
-    font-size: 14px;
+    padding: 1px;
+    font-size: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fafafa;
