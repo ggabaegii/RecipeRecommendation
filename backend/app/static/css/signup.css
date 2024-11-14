@@ -94,39 +94,44 @@ h2 {
 }
 
 /* 프로필 사진 미리보기 */
+/* 프로필 사진과 이미지 업로드 텍스트를 감싸는 부모 요소 */
 .profile-picture-container {
-    display: flex;  /* 수평으로 정렬 */
-    align-items: center;  /* 수직 가운데 정렬 */
-    gap: 60px;  /* 이미지와 텍스트 간의 간격 */
+    display: flex;  /* 수평 정렬 */
+    align-items: center;  /* 세로로 가운데 정렬 */
+    justify-content: center;  /* 가로로 가운데 정렬 */
+    gap: 70px;  /* 이미지와 텍스트 간의 간격 */
+    margin-bottom: 20px;  /* 아래쪽 여백 */
 }
 
+/* 프로필 사진 미리보기 원형 */
 .profile-picture-preview {
     width: 250px;  /* 크기 변경 */
     height: 250px; /* 크기 변경 */
     border-radius: 50%;  /* 원 모양 유지 */
     object-fit: cover;   /* 이미지 비율 유지 */
     border: 2px solid #ccc;  /* 테두리 */
+    margin-left: 60px;  /* 원형 이미지 오른쪽으로 이동 */
 }
 
 /* 업로드 텍스트와 파일 입력 스타일 */
 .upload-text-container {
     display: flex;
     align-items: center;
-    position: relative; /* 파일 입력 요소를 정확히 배치하기 위한 상대적 위치 설정 */
-    margin-left: 10px;  /* 텍스트가 이미지 바로 옆에 오도록 조정 */
+    position: relative;
+    gap: 10px;  /* 텍스트와 입력 필드 간 간격 */
 }
 
+/* 업로드 텍스트 스타일 */
 .upload-text {
     font-size: 18px;
     color: #555;
-    margin-left: 10px;
-    cursor: pointer; /* 텍스트 클릭 가능하게 설정 */
-    text-decoration: none; /* 기본 언더라인 제거 */
+    cursor: pointer;
+    text-decoration: none;
     z-index: 2; /* 텍스트가 다른 요소 위에 올 수 있도록 설정 */
 }
 
 .upload-text:hover {
-    text-decoration: underline; /* 마우스를 올렸을 때 언더라인 추가 */
+    text-decoration: underline;  /* 마우스를 올렸을 때 언더라인 추가 */
 }
 
 .upload-text-container input[type="file"] {
@@ -139,6 +144,7 @@ h2 {
     cursor: pointer;
     z-index: 1; /* 파일 선택 요소가 텍스트보다 뒤에 위치하도록 설정 */
 }
+
 
 /* 입력 그룹 스타일 */
 .input-group {
