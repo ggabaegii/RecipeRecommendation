@@ -5,15 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>제철 레시피</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/searecpage.css') }}">
+    <!-- 폰트 및 아이콘 추가 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
 <body>
-    <!-- 로고 및 제목 -->
+    <!-- 요리의 정원 로고 중앙 정렬 -->
     <header>
         <a href="/" class="logo-text">요리의 정원</a>
-        <h1>제철 레시피</h1>
-    </header>
+    </header>    
+
+    <!-- 메뉴 아이콘 -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <!-- 슬라이드 메뉴 -->
+    <div id="menu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
+        <a href="/">홈</a>
+        <a href="/mypagemain">마이페이지</a>
+        <a href="/recipes">레시피</a>
+    </div>
 
     <!-- 네비게이션 바 -->
     <nav class="navigation">
@@ -26,27 +36,53 @@
         <a href="/recipe_register">레시피 등록</a>
     </nav>
 
-    <!-- 제철 레시피 섹션 -->
+    <!-- 계절 선택 섹션 -->
     <div class="content">
         <section class="category-tabs">
-            <button onclick="showSeasonalRecipes('spring')">봄</button>
-            <button onclick="showSeasonalRecipes('summer')">여름</button>
-            <button onclick="showSeasonalRecipes('fall')">가을</button>
-            <button onclick="showSeasonalRecipes('winter')">겨울</button>
+            <button onclick="filterRecipes('all')">전체</button>
+            <button onclick="filterRecipes('spring')">봄</button>
+            <button onclick="filterRecipes('summer')">여름</button>
+            <button onclick="filterRecipes('fall')">가을</button>
+            <button onclick="filterRecipes('winter')">겨울</button>
         </section>
 
+        <!-- 제철 레시피 콘텐츠 영역 -->
         <div class="category-content" id="seasonal-recipes">
-            <!-- 봄 레시피 예시 -->
-            <div class="item-box">
+            <!-- 레시피 항목들 -->
+            <div class="item-box" data-season="spring">
                 <img src="{{ url_for('static', filename='images/spring_recipe.jpg') }}" alt="봄 레시피">
                 <hr>
                 <h3>딸기 샐러드</h3>
                 <p>상큼한 봄 딸기를 활용한 신선한 샐러드</p>
             </div>
-            <!-- 나머지 계절별 레시피는 JavaScript로 추가 -->
+            <div class="item-box" data-season="spring">
+                <img src="{{ url_for('static', filename='images/spring_recipe2.jpg') }}" alt="봄 레시피">
+                <hr>
+                <h3>두릅 된장 무침</h3>
+                <p>고소한 두릅과 된장의 조화</p>
+            </div>
+            <div class="item-box" data-season="summer">
+                <img src="{{ url_for('static', filename='images/summer_recipe.jpg') }}" alt="여름 레시피">
+                <hr>
+                <h3>수박 화채</h3>
+                <p>시원한 수박으로 만든 여름 별미</p>
+            </div>
+            <div class="item-box" data-season="fall">
+                <img src="{{ url_for('static', filename='images/fall_recipe.jpg') }}" alt="가을 레시피">
+                <hr>
+                <h3>밤죽</h3>
+                <p>영양 가득한 가을밤으로 만든 죽</p>
+            </div>
+            <div class="item-box" data-season="winter">
+                <img src="{{ url_for('static', filename='images/winter_recipe.jpg') }}" alt="겨울 레시피">
+                <hr>
+                <h3>호박죽</h3>
+                <p>따뜻하고 달콤한 겨울 호박죽</p>
+            </div>
         </div>
     </div>
 
+    <!-- JavaScript 파일 -->
     <script src="{{ url_for('static', filename='js/searecpage.js') }}"></script>
 </body>
 </html>
