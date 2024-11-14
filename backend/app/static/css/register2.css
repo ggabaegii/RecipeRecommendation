@@ -23,37 +23,56 @@ body {
 
 /* 메뉴 스타일 */
 .menu {
-  background-color: #fff;
-  padding: 12px; /* 패딩 증가 */
+  padding: 12px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  background-color: #F2EDEC; /* 배경색을 바디 배경색과 동일하게 */
   border-bottom: 1px solid #ddd;
 }
 
-.menu a {
-  color: #333;
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigation a {
+  padding: 0 15px;
   text-decoration: none;
+  color: #333;
+  font-size: 1.1em;
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif; /* 한글 글꼴 적용 */
+}
+
+.navigation .divider {
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+  margin: 0 10px;
+}
+
+.navigation a.active {
+  color: #333;
   font-weight: bold;
-  font-size: 25px; /* 폰트 크기 키움 */
 }
 
 /* 컨테이너 스타일 */
 .container {
-  width: 60%;
-  margin: 20px auto;
-  padding: 25px; /* 패딩 증가 */
+  width: 90%; /* 넓이를 키움 */
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 30px; /* 패딩 증가 */
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 그림자 강화 */
 }
 
 /* 메인 제목 스타일 */
 h1 {
-  font-size: 32px; /* 제목 폰트 크기 키움 */
+  font-size: 36px; /* 제목 폰트 크기 키움 */
   text-align: center;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
 }
 
@@ -68,13 +87,13 @@ label {
   font-weight: bold;
   margin-top: 15px;
   font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
-  font-size: 1.2em; /* 라벨 폰트 크기 키움 */
+  font-size: 1.3em; /* 라벨 폰트 크기 키움 */
 }
 
 /* 입력 필드 스타일 */
 input[type="text"], select, textarea {
-  padding: 12px; /* 패딩 증가 */
-  font-size: 1.1em; /* 폰트 크기 키움 */
+  padding: 15px; /* 패딩 증가 */
+  font-size: 1.2em; /* 폰트 크기 키움 */
   margin-top: 5px;
   border-radius: 4px;
   border: 1px solid #ddd;
@@ -84,18 +103,24 @@ input[type="text"], select, textarea {
 /* 텍스트 영역 스타일 */
 textarea {
   resize: vertical;
+  min-height: 200px; /* 텍스트 영역의 최소 높이 증가 */
 }
 
 /* 제출 버튼 스타일 */
 button[type="submit"] {
   margin-top: 20px;
-  padding: 12px;
+  padding: 15px;
   background-color: #a8d5ba;
   border: none;
   color: white;
   font-weight: bold;
-  font-size: 1.1em; /* 버튼 폰트 크기 키움 */
+  font-size: 1.2em; /* 버튼 폰트 크기 키움 */
   cursor: pointer;
   border-radius: 4px;
   font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #86c1a9; /* 호버 색상 추가 */
 }
