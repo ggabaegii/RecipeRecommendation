@@ -18,12 +18,15 @@
         <h2 class="korean-font">개인정보 입력</h2>
         <form action="{{ url_for('signup') }}" method="post" enctype="multipart/form-data">
             <div class="input-group">
-                <label class="korean-font">프로필 사진</label>
                 <div class="profile-picture-container">
-                    <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
-                    <img id="profile-picture-preview" class="profile-picture-preview" src="#" alt="프로필 미리보기" />
+                    <img id="profile-picture-preview" class="profile-picture-preview" src="#" alt="프로필 사진" />
+                    <div class="upload-text-container">
+                        <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+                        <span class="upload-text korean-font">이미지 업로드</span>
+                    </div>
                 </div>
-            </div>            
+            </div>
+                               
 
             <div class="input-group">
                 <label for="nickname" class="korean-font">닉네임</label>
