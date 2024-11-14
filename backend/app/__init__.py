@@ -1,8 +1,13 @@
 from flask import Flask, render_template,request,jsonify
+import requests
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
-    #app.secret_key = 'your_secret_key'
+    
+    ROBOFLOW_API_KEY = "api_key"
+    ROBOFLOW_MODEL_ID = "model_id"
+    ROBOFLOW_VERSION_NUMBER = "1"
+    ROBOFLOW_API_URL = ""
 
     # 라우트 정의
     @app.route('/')
@@ -13,24 +18,31 @@ def create_app():
     def ingredients_search():
         return render_template('ingrespage.html')
 
-    @app.route('/camera')
-    def camera():
-        return render_template('camera.html')
     
     @app.route('/cooktip')
     def cooktip():
         return render_template('cooktip.html')
     
+    @app.route('/camera')
+    def camera():
+        return render_template('search_camera.html')
     
-    @app.route('/process_image', methods=['POST'])
-    def process_image():
-        if 'image' not in request.files:
+    @app.route('/prdict', methods=['POST'])
+    def predict():
+        if 'file' not in request.files:
             return jsonify({'error': 'No image provided'}), 400
     
-        image_file = request.files['image']
-        #ingredients = detect_ingredients(image_file)  # YOLO 모델로 재료 인식
-    
-        #return jsonify({'ingredients': ingredients})
+        image_file = request.files['file']
+        
+        response = requests.post(
+            ROBOFLOW_API_URL,
+            files={"file": file}
+        )
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Roboflow API 요청 실패", response.status_code }), 500
 
     @app.route('/locspepage')
     def locspepage():
