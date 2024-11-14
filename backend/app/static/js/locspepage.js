@@ -41,7 +41,13 @@ function initMap() {
             infoWindow.setMap(null);
         });
     });
+
+    // 화면 크기 변화에 따른 지도 반응형 적용
+    window.addEventListener('resize', () => {
+        map.relayout(); // 지도의 크기를 재조정
+    });
 }
 
 // 페이지 로딩 후 지도 초기화
 window.onload = initMap;
+
