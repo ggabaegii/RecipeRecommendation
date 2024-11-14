@@ -63,5 +63,8 @@ def create_app():
     def recipe_list():
         return render_template('recipe_list.html')
 
+    @app.route('/searecpage')
+    def searecpage():
+        return render_template('searecpage.html')
 
     return app
