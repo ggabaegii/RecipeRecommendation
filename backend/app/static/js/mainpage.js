@@ -95,7 +95,7 @@ function submitSearch(ingredients = []) {
     saveRecentIngredients(ingredientsArray);
 
     // URL 파라미터로 전달
-    const url = `/recipe_search?ingredients=${encodeURIComponent(ingredientsArray.join(','))}&excluded=${encodeURIComponent(excludedIngredients.join(','))}`;
+    const url = `/ingres?ingredients=${encodeURIComponent(ingredientsArray.join(','))}&excluded=${encodeURIComponent(excludedIngredients.join(','))}`;
     window.location.href = url;
 }
 
