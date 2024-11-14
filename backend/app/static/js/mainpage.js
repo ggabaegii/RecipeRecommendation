@@ -106,6 +106,96 @@ function submitSearch(ingredientInput, excludedInput) {
     window.location.href = url;
 }
 
+// 카메라 버튼 클릭 처리
+function openCameraOrFile() {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+        input.capture = "camera";
+
+        input.onchange = () => {
+            const file = input.files[0];
+            if (file) {
+                processImageWithRoboflow(file);
+            }
+        };
+
+        input.click();
+    } else {
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+
+        input.onchange = () => {
+            const file = input.files[0];
+            if (file) {
+                processImageWithRoboflow(file);
+            }
+        };
+
+        input.click();
+    }
+}
+
+// 로보플로우 API를 사용하여 이미지 처리
+async function processImageWithRoboflow(file) {
+    const apiKey = "YOUR_ROBOFLOW_API_KEY";
+    const roboflowUrl = `https://detect.roboflow.com/YOUR_PROJECT_NAME/1?api_key=${apiKey}`;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        const response = await fetch(roboflowUrl, {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+        if (result && result.predictions) {
+            const ingredients = result.predictions.map(prediction => prediction.class);
+            displayRecognizedIngredients(ingredients);
+            sendIngredientsToBackend(ingredients);
+        } else {
+            alert("이미지에서 재료를 인식하지 못했습니다.");
+        }
+    } catch (error) {
+        console.error("로보플로우 API 호출 중 오류 발생:", error);
+        alert("이미지 처리 중 오류가 발생했습니다.");
+    }
+}
+
+// 인식된 재료 화면에 표시
+function displayRecognizedIngredients(ingredients) {
+    const ingredientList = document.getElementById("ingredient-list");
+    ingredientList.innerHTML = ""; // 기존 목록 초기화
+
+    ingredients.forEach(ingredient => {
+        const listItem = document.createElement("li");
+        listItem.textContent = ingredient;
+        ingredientList.appendChild(listItem);
+    });
+}
+
+// 인식된 재료를 백엔드로 전달
+function sendIngredientsToBackend(ingredients) {
+    fetch("/process_ingredients", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ ingredients })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("백엔드에서 처리된 결과:", data);
+    })
+    .catch(error => console.error("백엔드로 재료 전송 중 오류:", error));
+}
+
 // 페이지 로드 시 로컬 스토리지에서 최근 검색어 로드
 window.addEventListener('DOMContentLoaded', loadRecentIngredients);
 
