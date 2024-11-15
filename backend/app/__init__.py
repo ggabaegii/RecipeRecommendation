@@ -67,4 +67,13 @@ def create_app():
     def searecpage():
         return render_template('searecpage.html')
 
+    
+    @app.route('/login')
+    def login():
+        return render_template('login.html')
+    
+    @app.route('/signup')
+    def signup():
+        return render_template('signup.html')
+
     return app
