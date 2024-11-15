@@ -161,20 +161,49 @@ h2 {
     z-index: 1; /* 파일 선택 요소가 텍스트보다 뒤에 위치하도록 설정 */
 }
 
+/* 보안 질문 1, 2 길이 맞추기 */
+.input-group-horizontal select {
+    /*flex: 2; /* 질문 필드의 너비 비율 */
+    min-width: 235px; /* 질문 필드의 최소 너비를 설정 */
+    width: auto; /* 내용에 맞춰 크기 자동 조정 */
+    margin-left: -20px; /* 왼쪽 여백을 줄여서 왼쪽으로 이동 */
+}
+
+/* 답변 칸 길이 오른쪽 끝에 맞추기 */
+.input-group-horizontal input[type="text"] {
+    /*flex: 3; /* 답변 필드의 너비 비율 */
+    width: 180px; /* 답변 칸이 남은 공간을 채우도록 설정 */
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+/* 질문 칸이 긴 경우에도 답변 칸 크기가 그에 맞게 조정 */
+.input-group-horizontal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px; /* 질문과 답변 간 간격 */
+}
 
 /* 입력 그룹 스타일 */
 .input-group {
     margin-bottom: 20px;
 }
+/* 닉네임과 입력 칸 사이의 간격을 줄임 */
 .input-group label {
     font-weight: bold;
-    margin-right: 8px;
+    margin-right: 4px; /* 기존 8px에서 4px로 줄임 */
     font-size: 18px;
     color: #555;
-    width: 25%;
+    width: 25%; /* 동일한 너비로 설정 */
     min-width: 80px;
     display: inline-block;
 }
+
+/* 입력 칸은 기존 스타일 그대로 두고, 간격만 줄이기 */
 .input-group input {
     padding: 8px;
     font-size: 14px;
@@ -183,6 +212,7 @@ h2 {
     width: 70%;
     transition: border-color 0.3s ease;
 }
+
 .input-group input:focus {
     border-color: #042c57;
     outline: none;
