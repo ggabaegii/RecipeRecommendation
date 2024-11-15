@@ -77,6 +77,24 @@
                 <input type="password" id="confirm_password" name="confirm_password" required>
             </div>
 
+            <div class="input-group">
+                <label for="security_question" class="korean-font">보안 질문</label>
+                <select id="security_question" name="security_question" required>
+                    <option value="" disabled selected>보안 질문을 선택하세요</option>
+                    <option value="mother_maiden">어머니의 성은?</option>
+                    <option value="father_maiden">아버지의 성은?</option>
+                    <option value="birth_city">태어난 도시는?</option>
+                    <option value="first_school">첫 학교의 이름은?</option>
+                    <option value="best_friend">어릴 적 가장 친했던 친구의 이름은?</option>
+                    <option value="favorite_teacher">가장 좋아하는 선생님의 성함은?</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="security_answer" class="korean-font">보안 질문 답변</label>
+                <input type="text" id="security_answer" name="security_answer" required>
+            </div>            
+
             <button type="submit" class="korean-font">회원가입</button>
         </form>
 
