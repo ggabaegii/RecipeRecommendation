@@ -1,14 +1,16 @@
 from flask import Flask, render_template,request,jsonify
 import requests
-# from inference_sdk import InferenceHTTPClient
+from inference_sdk import InferenceHTTPClient
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
     
     ROBOFLOW_API_KEY = "5dKfVfDaRwE3ueqLOz9s"
-    ROBOFLOW_MODEL_ID = "ingredients-detection-yolov8/2"
-    ROBOFLOW_VERSION_NUMBER = "2"
-    ROBOFLOW_API_URL = "https://detect.roboflow.com"
+    MODEL_ID = "ingredients-detection-yolov8/2"
+    API_URL = "https://detect.roboflow.com"
+
+    # Roboflow Inference Client 설정
+    client = InferenceHTTPClient(api_url=API_URL, api_key=ROBOFLOW_API_KEY)
 
     # 라우트 정의
     @app.route('/')
@@ -39,33 +41,22 @@ def create_app():
     
     @app.route('/prdict', methods=['POST'])
     def predict():
-        # 아래 코드는 추후 삭제
-        data = request.json
-        ingredients = data.get("ingredients", [])
-
-        # 테스트 코드
-        response = {
-            "message" : "인식된 재료가 성공적으로 전달되었습니다.",
-            "ingredients" : ingredients
-        }
-        return jsonify(response)
-    
-
         if 'file' not in request.files:
             return jsonify({'error': 'No image provided'}), 400
-    
-        image_file = request.files['file']
         
-        response = requests.post(
-            ROBOFLOW_API_URL,
-            files={"file": image_file}
-        )
+        file = request.files['file']
 
-        if response.status_code == 200:
-            return jsonify(response.json())
-        else:
-            return jsonify({"error": "Roboflow API 요청 실패", "status_code": response.status_code }), 500
-
+        try:
+            # Roboflow API로 이미지 예측
+            result = client.infer(file, model_id=MODEL_ID)
+            predictions = result.get("predictions", [])
+            
+            # 예측 결과에서 클래스 이름만 추출하여 반환
+            ingredients = [pred["class"] for pred in predictions]
+            return jsonify({"ingredients": ingredients})
+        
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
     @app.route('/locspepage')
     def locspepage():
         return render_template('locspepage.html')

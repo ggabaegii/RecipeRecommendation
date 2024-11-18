@@ -12,8 +12,8 @@ function addRecentIngredient(ingredient) {
     ingredientItem.className = "recent-item";
     ingredientItem.textContent = ingredient;
 
-      // 클릭 시 해당 재료로 검색 수행
-      ingredientItem.onclick = function () {
+    // 클릭 시 해당 재료로 검색 수행
+    ingredientItem.onclick = function () {
         searchWithIngredient(ingredient);
     };
 
@@ -92,8 +92,6 @@ function handleIngredientInput(event) {
 
 // 검색 제출 함수 (검색 시 ingredient-search 재료들만 로컬 스토리지에 저장)
 function submitSearch(ingredientInput, excludedInput) {
-
-
     if (!ingredientInput && !excludedInput) {
         alert("사용할 재료 혹은 제외할 재료를 입력해 주세요.");
         return;
@@ -121,60 +119,41 @@ function submitSearch(ingredientInput, excludedInput) {
 function openCameraOrFile() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    if (isMobile) {
-        const input = document.createElement("input");
-        input.type = "file";
-        input.accept = "image/*";
-        input.capture = "camera";
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.capture = isMobile ? "camera" : ""; // 모바일의 경우 카메라 사용
 
-        input.onchange = () => {
-            const file = input.files[0];
-            if (file) {
-                processImageWithRoboflow(file);
-            }
-        };
+    input.onchange = () => {
+        const file = input.files[0];
+        if (file) {
+            processImageWithServer(file); // 서버로 파일 전송
+        }
+    };
 
-        input.click();
-    } else {
-        const input = document.createElement("input");
-        input.type = "file";
-        input.accept = "image/*";
-
-        input.onchange = () => {
-            const file = input.files[0];
-            if (file) {
-                processImageWithRoboflow(file);
-            }
-        };
-
-        input.click();
-    }
+    input.click();
 }
 
-// 로보플로우 API를 사용하여 이미지 처리
-async function processImageWithRoboflow(file) {
-    const apiKey = "YOUR_ROBOFLOW_API_KEY";
-    const roboflowUrl = `https://detect.roboflow.com/YOUR_PROJECT_NAME/1?api_key=${apiKey}`;
-
+// 서버로 이미지를 전송하여 Roboflow API 호출을 처리
+async function processImageWithServer(file) {
     const formData = new FormData();
     formData.append("file", file);
 
     try {
-        const response = await fetch(roboflowUrl, {
+        // 서버로 이미지 전송
+        const response = await fetch("/prdict", {
             method: "POST",
             body: formData
         });
 
         const result = await response.json();
-        if (result && result.predictions) {
-            const ingredients = result.predictions.map(prediction => prediction.class);
-            displayRecognizedIngredients(ingredients);
-            sendIngredientsToBackend(ingredients);
+        if (result && result.ingredients) {
+            displayRecognizedIngredients(result.ingredients);
         } else {
             alert("이미지에서 재료를 인식하지 못했습니다.");
         }
     } catch (error) {
-        console.error("로보플로우 API 호출 중 오류 발생:", error);
+        console.error("서버 호출 중 오류 발생:", error);
         alert("이미지 처리 중 오류가 발생했습니다.");
     }
 }
