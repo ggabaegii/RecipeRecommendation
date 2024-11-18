@@ -12,6 +12,11 @@ function addRecentIngredient(ingredient) {
     ingredientItem.className = "recent-item";
     ingredientItem.textContent = ingredient;
 
+    // 클릭 시 해당 재료로 검색 수행
+    ingredientItem.onclick = function () {
+        searchWithIngredient(ingredient);
+    };
+
     // 삭제 버튼 추가
     const removeBtn = document.createElement("button");
     removeBtn.className = "remove-btn";
@@ -23,6 +28,12 @@ function addRecentIngredient(ingredient) {
 
     ingredientItem.appendChild(removeBtn);
     recentIngredientsContainer.appendChild(ingredientItem);
+}
+
+// 클릭된 최근 검색어로 검색 수행
+function searchWithIngredient(ingredient) {
+    document.getElementById('ingredient-search').value = ingredient;
+    submitSearch();
 }
 
 // 로컬 스토리지에 최근 검색어 저장
@@ -81,8 +92,6 @@ function handleIngredientInput(event) {
 
 // 검색 제출 함수 (검색 시 ingredient-search 재료들만 로컬 스토리지에 저장)
 function submitSearch(ingredientInput, excludedInput) {
-
-
     if (!ingredientInput && !excludedInput) {
         alert("사용할 재료 혹은 제외할 재료를 입력해 주세요.");
         return;
@@ -104,6 +113,77 @@ function submitSearch(ingredientInput, excludedInput) {
     // URL 파라미터로 전달
     const url = `/ingres?ingredients=${encodeURIComponent(ingredientsArray.join(','))}&excluded=${encodeURIComponent(excludedIngredients.join(','))}`;
     window.location.href = url;
+}
+
+// 카메라 버튼 클릭 처리
+function openCameraOrFile() {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.capture = isMobile ? "camera" : ""; // 모바일의 경우 카메라 사용
+
+    input.onchange = () => {
+        const file = input.files[0];
+        if (file) {
+            processImageWithServer(file); // 서버로 파일 전송
+        }
+    };
+
+    input.click();
+}
+
+// 서버로 이미지를 전송하여 Roboflow API 호출을 처리
+async function processImageWithServer(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        // 서버로 이미지 전송
+        const response = await fetch("/prdict", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+        if (result && result.ingredients) {
+            displayRecognizedIngredients(result.ingredients);
+        } else {
+            alert("이미지에서 재료를 인식하지 못했습니다.");
+        }
+    } catch (error) {
+        console.error("서버 호출 중 오류 발생:", error);
+        alert("이미지 처리 중 오류가 발생했습니다.");
+    }
+}
+
+// 인식된 재료 화면에 표시
+function displayRecognizedIngredients(ingredients) {
+    const ingredientList = document.getElementById("ingredient-list");
+    ingredientList.innerHTML = ""; // 기존 목록 초기화
+
+    ingredients.forEach(ingredient => {
+        const listItem = document.createElement("li");
+        listItem.textContent = ingredient;
+        ingredientList.appendChild(listItem);
+    });
+}
+
+// 인식된 재료를 백엔드로 전달
+function sendIngredientsToBackend(ingredients) {
+    fetch("/process_ingredients", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ ingredients })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("백엔드에서 처리된 결과:", data);
+    })
+    .catch(error => console.error("백엔드로 재료 전송 중 오류:", error));
 }
 
 // 페이지 로드 시 로컬 스토리지에서 최근 검색어 로드
