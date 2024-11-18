@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>레시피 검색</title>
+    <title>레시피 목록</title>
 
-    <!-- Marcellus 폰트 불러오기 -->
+    <!-- 폰트 추가 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
-    <!-- 외부 CSS 파일 링크 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_main.css') }}">
 </head>
 <body>
@@ -20,28 +18,29 @@
         </h1>
         <nav class="menu">
             <div class="navigation">
-                <a href="recipe_main" class="active korean-font">모든 레시피</a>
+                <a href="/recipe_main" class="active korean-font">모든 레시피</a>
                 <div class="divider"></div>
-                <a href="popular_recipes" class="korean-font">화제의 레시피</a>
+                <a href="/popular_recipes" class="korean-font">화제의 레시피</a>
                 <div class="divider"></div>
-                <a href="searecpage" class="korean-font">제철 레시피</a>
+                <a href="/searecpage" class="korean-font">제철 레시피</a>
                 <div class="divider"></div>
-                <a href="local_recipe" class="korean-font">특색 레시피</a>
+                <a href="/local_recipe" class="korean-font">특색 레시피</a>
                 <div class="divider"></div>
-                <a href="recipe_register" class="korean-font">레시피 등록</a>
+                <a href="/recipe_register" class="korean-font">레시피 등록</a>
             </div>
         </nav>
     </header>
 
-    <div class="container">
-        <h1 class="korean-font">레시피 검색</h1> <!-- 한글 제목에 한글 폰트 적용 -->
+    <div class="content">
+        <h2 class="korean-font">레시피 목록</h2>
 
-        <!-- 검색창과 인기 키워드 -->
+        <!-- 레시피 검색 -->
         <div class="search-bar">
-            <input type="text" placeholder="레시피 검색" id="searchInput">
-            <button id="searchBtn" class="english-font">🔍</button>
+            <input type="text" id="searchInput" placeholder="레시피 검색">
+            <button id="searchBtn" class="search-btn">🔍</button>
         </div>
 
+        <!-- 인기 태그 -->
         <div class="popular-tags">
             <span class="korean-font">#해시태그</span>
             <span class="korean-font">#레시피</span>
@@ -49,11 +48,12 @@
         </div>
 
         <!-- 레시피 리스트 -->
-        <div class="recipe-grid"></div> <!-- 레시피 카드가 동적으로 추가되는 영역 -->
+        <div id="recipe-grid">
+            <!-- 동적으로 추가될 레시피 카드 -->
+        </div>
     </div>
 
     <script>
-        // JavaScript 코드 - 레시피 데이터를 불러와 동적으로 렌더링
         const recipes = [
             { name: "김치찌개", searchCount: 120, url: "kimchi.html" },
             { name: "된장찌개", searchCount: 80, url: "doenjang.html" },
@@ -61,24 +61,13 @@
             { name: "불고기", searchCount: 90, url: "bulgogi.html" }
         ];
 
-        function sortRecipes(recipes) {
-            return recipes.sort((a, b) => {
-                if (b.searchCount === a.searchCount) {
-                    return a.name.localeCompare(b.name, "ko");
-                }
-                return b.searchCount - a.searchCount;
-            });
-        }
-
         function displayRecipes() {
-            const recipeGrid = document.querySelector('.recipe-grid');
-            recipeGrid.innerHTML = ""; // 기존 레시피 카드 초기화
+            const recipeGrid = document.querySelector('#recipe-grid');
+            recipeGrid.innerHTML = ""; // 기존 레시피 초기화
 
-            const sortedRecipes = sortRecipes(recipes);
-
-            sortedRecipes.forEach(recipe => {
+            recipes.forEach(recipe => {
                 const recipeCard = document.createElement('div');
-                recipeCard.classList.add('recipe-card');
+                recipeCard.classList.add('card');
 
                 const img = document.createElement('img');
                 img.src = "recipe-image-placeholder.jpg";
@@ -87,18 +76,15 @@
                     window.location.href = recipe.url;
                 });
 
-                const name = document.createElement('p');
+                const name = document.createElement('h3');
                 name.textContent = recipe.name;
                 name.classList.add('korean-font');
-
-                const tags = document.createElement('p');
-                tags.textContent = "#해시태그 #레시피";
-                tags.classList.add('korean-font');
+                name.addEventListener('click', () => {
+                    window.location.href = recipe.url;
+                });
 
                 recipeCard.appendChild(img);
                 recipeCard.appendChild(name);
-                recipeCard.appendChild(tags);
-
                 recipeGrid.appendChild(recipeCard);
             });
         }
