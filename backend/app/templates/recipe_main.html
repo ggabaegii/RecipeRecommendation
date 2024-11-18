@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 검색</title>
+
+    <!-- Marcellus 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <!-- 외부 CSS 파일 링크 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_main.css') }}">
+</head>
+<body>
+    <!-- 상단 내비게이션 -->
+    <header>
+        <h1 class="korean-font main-title">
+            <a href="/" style="text-decoration: none; color: inherit;">요리의 정원</a>
+        </h1>
+        <nav class="menu">
+            <div class="navigation">
+                <a href="recipe_main" class="active korean-font">모든 레시피</a>
+                <div class="divider"></div>
+                <a href="popular_recipes" class="korean-font">화제의 레시피</a>
+                <div class="divider"></div>
+                <a href="searecpage" class="korean-font">제철 레시피</a>
+                <div class="divider"></div>
+                <a href="local_recipe" class="korean-font">특색 레시피</a>
+                <div class="divider"></div>
+                <a href="recipe_register" class="korean-font">레시피 등록</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="korean-font">레시피 검색</h1> <!-- 한글 제목에 한글 폰트 적용 -->
+
+        <!-- 검색창과 인기 키워드 -->
+        <div class="search-bar">
+            <input type="text" placeholder="레시피 검색" id="searchInput">
+            <button id="searchBtn" class="english-font">🔍</button>
+        </div>
+
+        <div class="popular-tags">
+            <span class="korean-font">#해시태그</span>
+            <span class="korean-font">#레시피</span>
+            <span class="korean-font">#요리꿀팁</span>
+        </div>
+
+        <!-- 레시피 리스트 -->
+        <div class="recipe-grid"></div> <!-- 레시피 카드가 동적으로 추가되는 영역 -->
+    </div>
+
+    <script>
+        // JavaScript 코드 - 레시피 데이터를 불러와 동적으로 렌더링
+        const recipes = [
+            { name: "김치찌개", searchCount: 120, url: "kimchi.html" },
+            { name: "된장찌개", searchCount: 80, url: "doenjang.html" },
+            { name: "비빔밥", searchCount: 120, url: "bibimbap.html" },
+            { name: "불고기", searchCount: 90, url: "bulgogi.html" }
+        ];
+
+        function sortRecipes(recipes) {
+            return recipes.sort((a, b) => {
+                if (b.searchCount === a.searchCount) {
+                    return a.name.localeCompare(b.name, "ko");
+                }
+                return b.searchCount - a.searchCount;
+            });
+        }
+
+        function displayRecipes() {
+            const recipeGrid = document.querySelector('.recipe-grid');
+            recipeGrid.innerHTML = ""; // 기존 레시피 카드 초기화
+
+            const sortedRecipes = sortRecipes(recipes);
+
+            sortedRecipes.forEach(recipe => {
+                const recipeCard = document.createElement('div');
+                recipeCard.classList.add('recipe-card');
+
+                const img = document.createElement('img');
+                img.src = "recipe-image-placeholder.jpg";
+                img.alt = `${recipe.name} 사진`;
+                img.addEventListener('click', () => {
+                    window.location.href = recipe.url;
+                });
+
+                const name = document.createElement('p');
+                name.textContent = recipe.name;
+                name.classList.add('korean-font');
+
+                const tags = document.createElement('p');
+                tags.textContent = "#해시태그 #레시피";
+                tags.classList.add('korean-font');
+
+                recipeCard.appendChild(img);
+                recipeCard.appendChild(name);
+                recipeCard.appendChild(tags);
+
+                recipeGrid.appendChild(recipeCard);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', displayRecipes);
+    </script>
+</body>
+</html>

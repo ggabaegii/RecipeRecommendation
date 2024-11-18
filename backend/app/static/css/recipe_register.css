@@ -1,0 +1,115 @@
+/* 기본 스타일 */
+body {
+  background-color: #F2EDEC;
+  margin: 0;
+  padding: 0;
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+}
+
+/* 네비게이션 바 스타일 */
+.navigation {
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  margin-top: 20px;
+  padding: 10px 0;
+  background-color: #f2f2f2; /* 배경색 */
+  border-bottom: 1px solid #ccc; /* 하단 구분선 */
+}
+
+.navigation a {
+  font-size: 23px;
+  margin: 0 15px;
+  text-decoration: none;
+  color: #042C57;
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+  transition: color 0.3s;
+}
+
+.navigation a.active {
+  font-weight: bold;
+}
+
+.divider {
+  width: 1px;
+  height: 30px;
+  background-color: #cccccc;
+  margin: 0 10px;
+}
+
+/* 로고 텍스트 스타일 */
+.logo-text {
+  font-size: 36px;
+  font-weight: bold;
+  color: #042C57;
+  font-family: 'Marcellus', serif;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+  padding-top: 20px;
+}
+
+/* 컨테이너 스타일 */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #FFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+}
+
+/* 메인 제목 스타일 */
+h1 {
+  font-size: 36px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* 폼 스타일 */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 폼 라벨 스타일 */
+label {
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"], textarea, input[type="file"] {
+  padding: 15px;
+  font-size: 1.1em;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* 제출 버튼 스타일 */
+button[type="submit"] {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #a8d5ba;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #86c1a9;
+}

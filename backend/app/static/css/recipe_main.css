@@ -43,8 +43,8 @@ body {
 
 .menu a {
   color: #333;
+  font-weight: 500;
   text-decoration: none;
-  font-weight: bold;
   font-size: 25px; /* 폰트 크기 키움 */
 }
 
@@ -58,26 +58,26 @@ header {
 
 .navigation {
   display: flex;
+  justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .navigation a {
-  padding: 0 15px;
+  font-size: 23px;
+  margin: 0 15px;
   text-decoration: none;
-  color: #333;
-  font-size: 1.1em;
-}
-
-.navigation .divider {
-  width: 1px;
-  height: 20px;
-  background-color: #ccc;
-  margin: 0 10px;
+  color: #042C57;
 }
 
 .navigation a.active {
-  color: #333; /* 활성화된 메뉴의 색상 */
   font-weight: bold;
+}
+
+.divider {
+  width: 1px;
+  height: 30px;
+  background-color: #cccccc;
 }
 
 /* 컨테이너 내의 제목 스타일 */

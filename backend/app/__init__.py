@@ -9,7 +9,7 @@ def create_app():
     def home():
         return render_template('mainpage.html')
 
-    @app.route('/ingres')
+    @app.route('/ingr_sea')
     def ingredients_search():
         return render_template('ingrespage.html')
 
@@ -20,6 +20,10 @@ def create_app():
     @app.route('/cooktip')
     def cooktip():
         return render_template('cooktip.html')
+    
+    @app.route('/cooktip_detail')
+    def cooktip_detail():
+        return render_template('cooktip_detail.html')
     
     
     @app.route('/process_image', methods=['POST'])
@@ -51,17 +55,17 @@ def create_app():
         return render_template('recipe_detail.html')
 
     
+    @app.route('/recipe_main')
+    def recipe_main():
+        return render_template('recipe_main.html')
+    
     @app.route('/recipe_register')
     def recipe_register():
         return render_template('recipe_register.html')
     
-    @app.route('/recipe_register2')
-    def recipe_register2():
-        return render_template('recipe_register2.html')
-    
-    @app.route('/recipe_list')
-    def recipe_list():
-        return render_template('recipe_list.html')
+    @app.route('/recipe_search')
+    def recipe_search():
+        return render_template('recipe_search.html')
 
     @app.route('/searecpage')
     def searecpage():
