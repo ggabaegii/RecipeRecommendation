@@ -37,14 +37,16 @@ def create_app():
     def cooktip():
         return render_template('cooktip.html')
     
-    @app.route('/search_camera')
-    def camera():
-        return render_template('search_camera.html')
+
     @app.route('/cooktip_detail')
     def cooktip_detail():
         return render_template('cooktip_detail.html')
     
-    
+
+    @app.route('/search_camera')
+    def camera():
+        return render_template('search_camera.html')
+
     @app.route('/prdict', methods=['POST'])
     def predict():
         if 'file' not in request.files:
@@ -63,12 +65,14 @@ def create_app():
         
         except Exception as e:
             return jsonify({"error": str(e)}), 500
+        
+
     @app.route('/locspepage')
     def locspepage():
         return render_template('locspepage.html')
     
 
-    
+
     @app.route('/mypagemain')
     def mypagemain():
         return render_template('mypagemain.html')
@@ -81,18 +85,15 @@ def create_app():
     def recipe_detail():
         return render_template('recipe_detail.html')
 
-    
     @app.route('/recipe_main')
     def recipe_main():
         return render_template('recipe_main.html')
     
+
     @app.route('/recipe_register')
     def recipe_register():
         return render_template('recipe_register.html')
-    
-    @app.route('/recipe_register2')
-    def recipe_register2():
-        return render_template('recipe_register2.html')
+
 
 
     def search_recipes_by_ingredients(ingredients, excluded):
