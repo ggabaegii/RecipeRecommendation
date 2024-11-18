@@ -1,18 +1,15 @@
 from flask import Flask, render_template,request,jsonify
 import requests
-from inference_sdk import InferenceHTTPClient
+#from inference_sdk import InferenceHTTPClient
+from .api import predict_from_image
+import traceback
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
     
-    ROBOFLOW_API_KEY = "5dKfVfDaRwE3ueqLOz9s"
-    MODEL_ID = "ingredients-detection-yolov8/2"
-    API_URL = "https://detect.roboflow.com"
+    app.config["ROBOFLOW_API_KEY"] = "5dKfVfDaRwE3ueqLOz9s"
+    app.config["ROBOFLOW_API_URL"] = "https://detect.roboflow.com/ingredients-detection-yolov8/2"
 
-    # Roboflow Inference Client 설정
-    client = InferenceHTTPClient(api_url=API_URL, api_key=ROBOFLOW_API_KEY)
-
-    #app.secret_key = 'your_secret_key'
     
     # 라우트 정의
     @app.route('/')
@@ -22,16 +19,6 @@ def create_app():
     @app.route('/ingr_sea')
     def ingredients_search():
         return render_template('ingrespage.html')
-        #ingredients = request.args.get("ingredients", "").split(',')
-        #excluded = request.args.get("excluded", "").split(',')
-    
-    # DB에서 ingredients와 관련된 레시피를 검색하는 로직 추가 필요
-    # 예시: 레시피 목록 조회
-        #recipes = search_recipes_by_ingredients(ingredients, excluded)
-    
-        #return render_template("ingrespage.html", recipes=recipes)
-
-
     
     @app.route('/cooktip')
     def cooktip():
@@ -55,16 +42,16 @@ def create_app():
         file = request.files['file']
 
         try:
-            # Roboflow API로 이미지 예측
-            result = client.infer(file, model_id=MODEL_ID)
-            predictions = result.get("predictions", [])
-            
-            # 예측 결과에서 클래스 이름만 추출하여 반환
-            ingredients = [pred["class"] for pred in predictions]
-            return jsonify({"ingredients": ingredients})
-        
+            # API 호출 함수
+            result = predict_from_image(
+                file,
+                app.config['ROBOFLOW_API_URL'],
+                app.config['ROBOFLOW_API_KEY']
+            )
+            return jsonify(result)
         except Exception as e:
-            return jsonify({"error": str(e)}), 500
+            print("Error occurred:", traceback.format_exc())
+            return jsonify({'error': str(e)}), 500
         
 
     @app.route('/locspepage')
@@ -94,19 +81,6 @@ def create_app():
     def recipe_register():
         return render_template('recipe_register.html')
 
-
-
-    def search_recipes_by_ingredients(ingredients, excluded):
-    # DB 연결 및 검색 로직 예시 (실제 구현 시 DB 쿼리 필요)
-    # 이 함수는 DB에서 재료와 관련된 레시피를 조회하는 역할을 합니다.
-        dummy_recipes = [
-            {"title": "토마토 스파게티", "ingredients": ["토마토", "스파게티"]},
-            {"title": "감자 샐러드", "ingredients": ["감자", "마요네즈"]},
-            {"title": "버섯 리조또", "ingredients": ["버섯", "쌀"]},
-        ]
-        # 테스트 목적의 더미 데이터 사용
-    
-        return [recipe for recipe in dummy_recipes if any(ing in recipe["ingredients"] for ing in ingredients) and not any(excl in recipe["ingredients"] for excl in excluded)]
 
     @app.route('/recipe_search')
     def recipe_search():
