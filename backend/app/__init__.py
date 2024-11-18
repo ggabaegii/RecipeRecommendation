@@ -3,7 +3,7 @@ from flask import Flask, render_template,request,jsonify
 def create_app():
     app = Flask(__name__, template_folder='templates')
     #app.secret_key = 'your_secret_key'
-
+    
     # 라우트 정의
     @app.route('/')
     def home():
