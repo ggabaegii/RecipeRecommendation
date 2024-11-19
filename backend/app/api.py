@@ -1,6 +1,19 @@
 import base64
 import requests
 
+# 숫자-재료 매핑
+MATERIAL_MAPPING = {
+    1: "소고기", 2: "양배추", 3: "당근", 4: "닭고기", 5: "고추",
+    6: "검출 무시", 7: "오이", 8: "달걀", 9: "생선", 10: "마늘",
+    11: "생강", 12: "검출 무시", 13: "레몬", 14: "라임", 15: "우유",
+    16: "버섯", 17: "면", 18: "양파", 19: "오렌지", 20: "검출 무시",
+    21: "땅콩", 22: "돼지고기", 23: "감자", 24: "새우", 25: "밥",
+    26: "대파", 27: "검출 무시", 28: "토마토", 29: "검출 무시"
+}
+
+def map_class_to_material(class_id):
+    return MATERIAL_MAPPING.get(class_id, "알 수 없음")
+
 def predict_from_image(image_file, api_url, api_key):
     """
     Roboflow API를 호출하여 이미지에서 재료를 예측합니다.
