@@ -56,8 +56,15 @@ textarea {
     min-height: 100px;
 }
 
-.save-btn {
+.gender-options {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.save-btn, .random-btn {
     margin-top: 20px;
+    width: 200px;
     padding: 10px 20px;
     background-color: #042C57;
     color: white;
@@ -68,6 +75,30 @@ textarea {
     font-family: 'NanumOeHarMeoNiGeurSsi';
 }
 
-.save-btn:hover {
+.save-btn:hover, .random-btn:hover {
     background-color: #03508c;
+}
+
+.nickname-container {
+    display: flex;
+    width: 50%;
+    gap: 10px;
+}
+
+#user_name{
+    width: 50%;
+}
+
+#user_email{
+    width: 50%;
+}
+
+#phone{
+    width: 50%;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
 }
