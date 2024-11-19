@@ -9,21 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
-<body>
-    <!-- 요리의 정원 로고 중앙 정렬 -->
-    <header>
-        <a href="/" class="logo-text">요리의 정원</a>
-    </header>    
+{% extends "layout.html" %}
 
-    <!-- 메뉴 아이콘 -->
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <!-- 슬라이드 메뉴 -->
-    <div id="menu" class="menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
-        <a href="/">홈</a>
-        <a href="/mypagemain">마이페이지</a>
-        <a href="/recipes">레시피</a>
-    </div>
+{% block content %}
 
     <!-- 네비게이션 바 -->
     <nav class="navigation">
@@ -86,5 +74,5 @@
 
     <!-- JavaScript 파일 -->
     <script src="{{ url_for('static', filename='js/searecpage.js') }}"></script>
-</body>
+    {% endblock %}
 </html>

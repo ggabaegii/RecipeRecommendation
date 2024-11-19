@@ -1,9 +1,32 @@
 /* 기본 스타일 */
+@font-face {
+    font-family: 'basicfont'; /* 사용할 글꼴 이름 */
+    src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
+    font-weight: normal; /* 선택: 굵기 */
+    font-style: normal; /* 선택: 스타일 */
+}
+
+/* 외할머니 글씨 (한글) */
+.point-font {
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+}
+
+/* 본문 글씨 */
+.korean-font {
+    font-family: 'basicfont', sans-serif;
+    font-weight: 500;
+}
+
+/* Marcellus (영어) */
+.english-font {
+    font-family: 'Marcellus', serif;
+}
+
+/* 기본 스타일 */
 body {
-    background-color: #F2EDEC;
     margin: 0;
     padding: 0;
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-family: 'basicfont', sans-serif;
 }
 
 /* 페이지 제목 스타일 */
@@ -12,7 +35,7 @@ body {
     font-size: 28px;
     color: #042C57;
     margin-top: 10px;
-    font-family: 'Marcellus', serif;
+    font-family: 'basicfont', serif;
 }
 
 /* 메뉴 아이콘 스타일 */
@@ -59,7 +82,7 @@ body {
     font-size: 36px;
     font-weight: bold;
     color: #042C57;
-    font-family: 'Marcellus', serif;
+    font-family: 'basicfont', serif;
     text-align: center;
     display: block;
     margin: 20px auto;
@@ -95,7 +118,7 @@ body {
 
 .recipe-info h2 {
     font-size: 24px;
-    font-family: 'Marcellus', serif;
+    font-family: 'basicfont', serif;
     color: #042C57;
 }
 
@@ -113,7 +136,7 @@ body {
 .ingredients h3, .cooking-steps h3, .hashtags h3 {
     font-size: 20px;
     color: #042C57;
-    font-family: 'Marcellus', serif;
+    font-family: 'basicfont', serif;
     border-bottom: 1px solid #bea2a1;
     padding-bottom: 5px;
 }

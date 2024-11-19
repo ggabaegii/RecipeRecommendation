@@ -13,7 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
     <div class="signup-container">
         <h2 class="korean-font">개인정보 입력</h2>
         <form action="{{ url_for('signup') }}" method="post" enctype="multipart/form-data">
@@ -115,5 +117,5 @@
             preview.style.display = 'block';
         }
     </script>
-</body>
+    {% endblock %}
 </html>

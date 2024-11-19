@@ -1,9 +1,32 @@
+@font-face {
+  font-family: 'basicfont'; /* 사용할 글꼴 이름 */
+  src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
+  font-weight: normal; /* 선택: 굵기 */
+  font-style: normal; /* 선택: 스타일 */
+}
+
+/* 외할머니 글씨 (한글) */
+.point-font {
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+}
+
+/* 본문 글씨 */
+.korean-font {
+  font-family: 'basicfont', sans-serif;
+  font-weight: 500;
+}
+
+/* Marcellus (영어) */
+.english-font {
+  font-family: 'Marcellus', serif;
+}
+
 /* 기본 스타일 */
 body {
   background-color: #F2EDEC;
   margin: 0;
   padding: 0;
-  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+  font-family: 'basicfont', sans-serif;
 }
 
 /* 네비게이션 바 스타일 */
@@ -22,7 +45,7 @@ body {
   margin: 0 15px;
   text-decoration: none;
   color: #042C57;
-  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+  font-family: 'basicfont', sans-serif;
   transition: color 0.3s;
 }
 
@@ -42,7 +65,7 @@ body {
   font-size: 36px;
   font-weight: bold;
   color: #042C57;
-  font-family: 'Marcellus', serif;
+  font-family: 'basicfont', serif;
   text-align: center;
   display: block;
   margin: 0 auto;
@@ -58,7 +81,6 @@ body {
   background-color: #FFF;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
 }
 
 /* 메인 제목 스타일 */
@@ -98,6 +120,7 @@ textarea {
 
 /* 제출 버튼 스타일 */
 button[type="submit"] {
+  font-family: "basicfont";
   margin-top: 20px;
   padding: 15px;
   background-color: #a8d5ba;

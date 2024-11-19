@@ -9,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
-<body>
-    <!-- 요리의 정원 로고 -->
+{% extends "layout.html" %}
+
+{% block content %}
+
     <header>
-        <a href="/" class="logo-text">요리의 정원</a>
         <h1 class="page-title">레시피 상세 페이지</h1> <!-- 중앙 정렬 -->
     </header>
 
@@ -97,5 +98,5 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/recipe_detail.js') }}"></script>
-</body>
+    {% endblock %}
 </html>

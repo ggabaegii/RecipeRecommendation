@@ -1,3 +1,26 @@
+@font-face {
+    font-family: 'basicfont'; /* 사용할 글꼴 이름 */
+    src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
+    font-weight: normal; /* 선택: 굵기 */
+    font-style: normal; /* 선택: 스타일 */
+}
+
+/* 외할머니 글씨 (한글) */
+.point-font {
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+}
+
+/* 본문 글씨 */
+.korean-font {
+    font-family: 'basicfont', sans-serif;
+    font-weight: 500;
+}
+
+/* Marcellus (영어) */
+.english-font {
+    font-family: 'Marcellus', serif;
+}
+
 /* 기본 스타일 */
 body {
     background-color: #F2EDEC;

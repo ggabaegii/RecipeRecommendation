@@ -8,25 +8,21 @@
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_register.css') }}">
 </head>
-<body>
-    <!-- 상단 내비게이션 -->
+{% extends "layout.html" %}
+
+{% block content %}
     <header>
-        <h1 class="korean-font main-title">
-            <a href="/" style="text-decoration: none; color: inherit;">요리의 정원</a>
-        </h1>
-        <nav class="menu">
-            <div class="navigation">
-                <a href="recipe_main" class="korean-font">모든 레시피</a>
-                <div class="divider"></div>
-                <a href="popular_recipes" class="korean-font">화제의 레시피</a>
-                <div class="divider"></div>
-                <a href="searecpage" class="korean-font">제철 레시피</a>
-                <div class="divider"></div>
-                <a href="local_recipe" class="korean-font">특색 레시피</a>
-                <div class="divider"></div>
-                <a href="recipe_register" class="active">레시피 등록</a>
-            </div>
-        </nav>
+        <div class="navigation">
+            <a href="recipe_main" class="korean-font">모든 레시피</a>
+            <div class="divider"></div>
+            <a href="popular_recipes" class="korean-font">화제의 레시피</a>
+            <div class="divider"></div>
+            <a href="searecpage" class="korean-font">제철 레시피</a>
+            <div class="divider"></div>
+            <a href="local_recipe" class="korean-font">특색 레시피</a>
+            <div class="divider"></div>
+            <a href="recipe_register" class="active">레시피 등록</a>
+        </div>
     </header>
 
     <!-- 레시피 등록 컨테이너 -->
@@ -91,5 +87,5 @@
 
     <!-- JavaScript 파일 연결 -->
     <script src="{{ url_for('static', filename='js/recipe_register.js') }}"></script>
-</body>
+    {% endblock %}
 </html>
