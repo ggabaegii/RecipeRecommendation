@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,27 +11,18 @@
     <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
-<body>
-    <!-- 메뉴 아이콘 -->
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
-    <!-- 슬라이드 메뉴 -->
-    <div id="menu" class="menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
-        <a href="/">Home</a>
-        <a href="/specialproducts">레시피</a>
-        <a href="/cookingtips">정보</a>
+{% extends "layout.html" %}
+
+{% block content %}
+    <!-- 상단 내비게이션 -->
+
+    <div class="navigation">
+        <a href="./locspepage">특산물</a>
+        <div class="divider"></div> <!-- 구분선 추가 -->
+        <a href="./cooktip" class="active">요리 꿀팁</a>
     </div>
 
-    <!-- 상단 내비게이션 -->
-    <header>
-        <h1>요리의 정원</h1>
-        <div class="navigation">
-            <a href="./locspepage">특산물</a>
-            <div class="divider"></div> <!-- 구분선 추가 -->
-            <a href="./cooktip" class="active">요리 꿀팁</a>
-        </div>
-    </header>
 
     <!-- 요리 꿀팁 상세 내용 -->
     <div class="container my-5">
@@ -68,5 +59,4 @@
     <script src="{{ url_for('static', filename='./js/fonts.js') }}"></script>
 
     <script src="{{ url_for('static', filename='js/cooktip_detail.js') }}"></script>
-</body>
-</html>
+    {% endblock %}

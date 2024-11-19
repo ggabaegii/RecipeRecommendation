@@ -6,7 +6,9 @@
     <title>카메라 검색</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/search_camera.css') }}">
 </head>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
     <h1>재료 인식</h1>
     <p>사진을 찍거나 갤러리에서 사진을 선택하여 재료를 인식하세요.</p>
 
@@ -65,5 +67,5 @@
             });
         }
     </script>
-</body>
+    {% endblock %}
 </html>

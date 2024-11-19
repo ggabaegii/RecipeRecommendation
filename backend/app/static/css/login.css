@@ -1,14 +1,20 @@
 /* 기본 스타일 초기화 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@font-face {
+    font-family: 'basicfont'; /* 사용할 글꼴 이름 */
+    src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
+    font-weight: normal; /* 선택: 굵기 */
+    font-style: normal; /* 선택: 스타일 */
 }
 
 /* 외할머니 글씨 (한글) */
-.korean-font {
+.point-font {
     font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
-    font-weight: 600;
+}
+
+/* 본문 글씨 */
+.korean-font {
+    font-family: 'basicfont', sans-serif;
+    font-weight: 500;
 }
 
 /* Marcellus (영어) */
@@ -16,18 +22,27 @@
     font-family: 'Marcellus', serif;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'NanumOeHarMeoNiGeurSsi', Arial, sans-serif; /* 폰트 충돌 방지 */
+    font-family: 'basicfont', Arial, sans-serif; /* 폰트 충돌 방지 */
     background-color: #F2EDEC;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     height: 100vh;
     margin: 0;
 }
 
 /* 로그인 컨테이너 */
 .login-container {
+    display: inline-block;
+    position: absolute;
+    top: 45%; /*세로 중앙 */
+    left: 50%; /* 가로 중앙 */
+    transform: translate(-50%, -50%); /* 가운데 정렬 보정 */
     background-color: white;
     padding: 30px;
     border-radius: 8px;
@@ -41,7 +56,7 @@ body {
 h2 {
     margin-bottom: 20px;
     color: #333;
-    font-family: 'NanumOeHarMeoNiGeurSsi', serif; /* 제목에 NanumOeHarMeoNiGeurSsi 폰트 적용 */
+    font-family: 'basicfont', serif; /* 제목에 NanumOeHarMeoNiGeurSsi 폰트 적용 */
     font-size: 35px;
 }
 
@@ -84,6 +99,7 @@ button.submit-btn {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
     transition: background-color 0.3s, box-shadow 0.3s; /* 부드러운 변환 효과 추가 */
+    margin-bottom: 10px;
 }
 
 /* 버튼 텍스트 폰트 적용: 한국어는 외할머니, 영어는 Marcellus */
@@ -92,7 +108,7 @@ button.submit-btn {
 }
 
 button.submit-btn:lang(ko) {
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif; /* 버튼 텍스트가 한국어일 때 외할머니 글씨 */
+    font-family: 'basicfont', sans-serif; /* 버튼 텍스트가 한국어일 때 외할머니 글씨 */
 }
 
 button.submit-btn:hover {
@@ -103,13 +119,13 @@ button.submit-btn:hover {
 
 /* 회원가입 링크 */
 p {
-    margin-top: 12px;
-    font-weight: bold;
+    display: inline;
 }
 
 .signup-link {
     text-decoration: none;
-    color: #042c57;
+    font-weight: bold;
+    color: black;
 }
 
 .signup-link:hover {
@@ -133,7 +149,7 @@ p {
     box-sizing: border-box; /* padding 포함 크기 계산 */
     margin-top: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-    font-family: 'NanumOeHarMeoNiGeurSsi', serif; /* 소셜 로그인 버튼 폰트 NanumOeHarMeoNiGeurSsi로 설정 */
+    font-family: 'basicfont', serif; /* 소셜 로그인 버튼 폰트 NanumOeHarMeoNiGeurSsi로 설정 */
 }
 
 /* 소셜 버튼 색상 */
