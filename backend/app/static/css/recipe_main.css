@@ -1,0 +1,144 @@
+body {
+  background-color: #F2EDEC;
+  margin: 0;
+  padding: 0;
+  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+}
+
+/* 로고 텍스트 스타일 */
+.main-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #042C57;
+  font-family: 'Marcellus', serif;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* 네비게이션 바 */
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.navigation a {
+  font-size: 20px;
+  margin: 0 15px;
+  text-decoration: none;
+  color: #042C57;
+}
+
+.navigation a.active {
+  font-weight: bold;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: #cccccc;
+}
+
+/* 콘텐츠 영역 */
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* 검색바 */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-bar input {
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  width: 70%; /* 검색창 가로 길이 증가 */
+}
+
+.search-bar .search-btn {
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  background-color: #042C57;
+  color: white;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-bar .search-btn:hover {
+  background-color: #bea2a1;
+}
+
+/* 인기 태그 */
+.popular-tags {
+  margin: 10px 0;
+}
+
+.popular-tags span {
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* 레시피 카드 */
+#recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  background-color: white;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #042C57;
+  cursor: pointer;
+}
+
+.card h3:hover {
+  text-decoration: underline;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .search-bar input {
+      width: 60%; /* 작은 화면에서 검색창 길이 줄임 */
+  }
+
+  #recipe-grid {
+      grid-template-columns: 1fr;
+  }
+}

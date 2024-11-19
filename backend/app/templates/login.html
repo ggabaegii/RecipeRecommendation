@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/login.css') }}">
+
+    <!-- Marcellus 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <h2>로그인</h2>
+        <form action="{{ url_for('login') }}" method="post">
+            <div class="input-group">
+                <label for="username">아이디</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="submit-btn">로그인</button>
+        </form>
+        <p>계정이 없으신가요? <a href="{{ url_for('signup') }}" class="signup-link">회원가입</a></p>
+
+        <!-- 소셜 로그인 버튼들 -->
+        <div class="social-login-buttons">
+            <button class="social-btn google-btn">구글 로그인</button>
+            <button class="social-btn naver-btn">네이버 로그인</button>
+            <button class="social-btn kakao-btn">카카오톡 로그인</button>
+        </div>
+    </div>
+</body>
+</html>

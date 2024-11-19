@@ -19,7 +19,7 @@
         <input type="text" id="ingredient-search" placeholder="재료를 입력하세요">
         <button class="clear-btn1" onclick="clearInput('ingredient-search')">×</button>
         <button class="search-btn" onclick="submitSearch()">&#128269;</button>
-        <button class="camera-btn" onclick="window.location.href='/search_camera'">&#128247;</button>
+        <button class="camera-btn" onclick="openCameraOrFile()">&#128247;</button>
     </div>
 
     <label for="excluded-ingredient" class="input-label">제외 재료</label>
@@ -33,6 +33,14 @@
         <div id="recent-ingredients"></div>
     </div>
 </div>
+
+    <!-- 인식된 재료 결과 표시 // 추후 아래 코드 삭제-->
+    <div id="recognized-ingredients">
+        <h2>인식된 재료:</h2>
+        <ul id="ingredient-list"></ul>
+    </div>
+</div>
+
 <div class="tip-section">
     <h1>오늘의 꿀팁</h1>
 </div>

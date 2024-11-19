@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피 목록</title>
+
+    <!-- 폰트 추가 -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_main.css') }}">
+</head>
+<body>
+    <!-- 상단 내비게이션 -->
+    <header>
+        <h1 class="korean-font main-title">
+            <a href="/" style="text-decoration: none; color: inherit;">요리의 정원</a>
+        </h1>
+        <nav class="menu">
+            <div class="navigation">
+                <a href="/recipe_main" class="active korean-font">모든 레시피</a>
+                <div class="divider"></div>
+                <a href="/popular_recipes" class="korean-font">화제의 레시피</a>
+                <div class="divider"></div>
+                <a href="/searecpage" class="korean-font">제철 레시피</a>
+                <div class="divider"></div>
+                <a href="/local_recipe" class="korean-font">특색 레시피</a>
+                <div class="divider"></div>
+                <a href="/recipe_register" class="korean-font">레시피 등록</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2 class="korean-font">레시피 목록</h2>
+
+        <!-- 레시피 검색 -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="레시피 검색">
+            <button id="searchBtn" class="search-btn">🔍</button>
+        </div>
+
+        <!-- 인기 태그 -->
+        <div class="popular-tags">
+            <span class="korean-font">#해시태그</span>
+            <span class="korean-font">#레시피</span>
+            <span class="korean-font">#요리꿀팁</span>
+        </div>
+
+        <!-- 레시피 리스트 -->
+        <div id="recipe-grid">
+            <!-- 동적으로 추가될 레시피 카드 -->
+        </div>
+    </div>
+
+    <script>
+        const recipes = [
+            { name: "김치찌개", searchCount: 120, url: "kimchi.html" },
+            { name: "된장찌개", searchCount: 80, url: "doenjang.html" },
+            { name: "비빔밥", searchCount: 120, url: "bibimbap.html" },
+            { name: "불고기", searchCount: 90, url: "bulgogi.html" }
+        ];
+
+        function displayRecipes() {
+            const recipeGrid = document.querySelector('#recipe-grid');
+            recipeGrid.innerHTML = ""; // 기존 레시피 초기화
+
+            recipes.forEach(recipe => {
+                const recipeCard = document.createElement('div');
+                recipeCard.classList.add('card');
+
+                const img = document.createElement('img');
+                img.src = "recipe-image-placeholder.jpg";
+                img.alt = `${recipe.name} 사진`;
+                img.addEventListener('click', () => {
+                    window.location.href = recipe.url;
+                });
+
+                const name = document.createElement('h3');
+                name.textContent = recipe.name;
+                name.classList.add('korean-font');
+                name.addEventListener('click', () => {
+                    window.location.href = recipe.url;
+                });
+
+                recipeCard.appendChild(img);
+                recipeCard.appendChild(name);
+                recipeGrid.appendChild(recipeCard);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', displayRecipes);
+    </script>
+</body>
+</html>

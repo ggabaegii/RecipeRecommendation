@@ -1,0 +1,263 @@
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 폰트 스타일 */
+.korean-font {
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-weight: 600;
+}
+.english-font {
+    font-family: 'Marcellus', serif;
+}
+
+body {
+    background-color: #F2EDEC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow-y: auto;
+    font-family: 'NanumOeHarMeoNiGeurSsi', Arial, sans-serif;
+}
+
+.signup-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
+    min-height: 400px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 30px;
+}
+
+/* 입력 그룹을 Flex로 설정하여 항목 간 간격을 맞추고 정렬 */
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-right: 8px;
+    font-size: 18px;
+    color: #555;
+    width: 25%; /* 동일한 너비로 설정 */
+    min-width: 80px;
+    display: inline-block;
+}
+
+.input-group input {
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    width: 70%; /* 동일한 너비로 설정 */
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #042c57;
+    outline: none;
+}
+
+/* 성별 체크박스를 수평으로 배치하고 간격을 일정하게 유지 */
+.gender-group {
+    display: flex;
+    gap: 20px; /* 체크박스와 텍스트 간의 간격 */
+    align-items: center;
+    width: 70%; /* 입력 칸과 동일한 너비로 설정 */
+}
+
+/* 성별 항목의 레이블과 체크박스의 크기를 조정 */
+.gender-group label {
+    font-size: 16px;
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+.gender-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* 프로필 사진 미리보기 */
+/* 프로필 사진과 이미지 업로드 텍스트를 감싸는 부모 요소 */
+.profile-picture-container {
+    display: flex;  /* 수평 정렬 */
+    align-items: center;  /* 세로로 가운데 정렬 */
+    justify-content: center;  /* 가로로 가운데 정렬 */
+    gap: 80px;  /* 이미지와 텍스트 간의 간격 */
+    margin-bottom: 20px;  /* 아래쪽 여백 */
+    margin-left: 40px; /* 오른쪽으로 이동하는 효과 추가 */
+}
+
+/* 프로필 사진 미리보기 원형 */
+.profile-picture-preview {
+    width: 250px;  /* 원하는 크기 조정 (너비) */
+    height: 250px; /* 원하는 크기 조정 (높이) */
+    border-radius: 50%;  /* 원형으로 만들기 */
+    object-fit: cover;   /* 이미지 비율 유지하며 크기 맞추기 */
+    overflow: hidden;    /* 원형 안으로 이미지를 잘라내기 */
+    border: 2px solid #ccc;  /* 테두리 (선택사항) */
+}
+
+/* 프로필 사진을 감싸는 컨테이너 */
+.profile-picture-preview-wrapper {
+    width: 300px;   /* 부모 컨테이너 크기 (너비) */
+    height: 300px;  /* 부모 컨테이너 크기 (높이) */
+    border-radius: 50%;  /* 원형으로 만들기 */
+    overflow: hidden;    /* 원형 안으로 이미지를 잘라내기 */
+    display: flex;   /* Flexbox로 중앙 정렬 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 업로드 버튼 컨테이너 */
+.upload-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* 업로드 버튼 텍스트 */
+.upload-text {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 파일 입력 스타일 숨기기 */
+#profile-picture {
+    display: none;  /* 실제 input[type="file"]은 숨기고 label로 클릭 가능 */
+}
+
+.upload-text:hover {
+    text-decoration: underline;  /* 마우스를 올렸을 때 언더라인 추가 */
+}
+
+.upload-text-container input[type="file"] {
+    position: absolute;  /* 파일 선택 창을 위치시킬 수 있도록 설정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* 투명하게 만들어 파일 입력 칸을 표시하지 않음 */
+    cursor: pointer;
+    z-index: 1; /* 파일 선택 요소가 텍스트보다 뒤에 위치하도록 설정 */
+}
+
+/* 보안 질문 1, 2 길이 맞추기 */
+.input-group-horizontal select {
+    /*flex: 2; /* 질문 필드의 너비 비율 */
+    min-width: 235px; /* 질문 필드의 최소 너비를 설정 */
+    width: auto; /* 내용에 맞춰 크기 자동 조정 */
+    margin-left: -20px; /* 왼쪽 여백을 줄여서 왼쪽으로 이동 */
+}
+
+/* 답변 칸 길이 오른쪽 끝에 맞추기 */
+.input-group-horizontal input[type="text"] {
+    /*flex: 3; /* 답변 필드의 너비 비율 */
+    width: 180px; /* 답변 칸이 남은 공간을 채우도록 설정 */
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+/* 질문 칸이 긴 경우에도 답변 칸 크기가 그에 맞게 조정 */
+.input-group-horizontal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px; /* 질문과 답변 간 간격 */
+}
+
+/* 입력 그룹 스타일 */
+.input-group {
+    margin-bottom: 20px;
+}
+/* 닉네임과 입력 칸 사이의 간격을 줄임 */
+.input-group label {
+    font-weight: bold;
+    margin-right: 4px; /* 기존 8px에서 4px로 줄임 */
+    font-size: 18px;
+    color: #555;
+    width: 25%; /* 동일한 너비로 설정 */
+    min-width: 80px;
+    display: inline-block;
+}
+
+/* 입력 칸은 기존 스타일 그대로 두고, 간격만 줄이기 */
+.input-group input {
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    width: 70%;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #042c57;
+    outline: none;
+}
+
+/* 파일 입력 스타일 */
+.input-group input[type="file"] {
+    padding: 1px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+/* 버튼 스타일 */
+button {
+    background-color: #bea2a1;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    width: 50%; /* 버튼 너비 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* display:block으로 변경 */
+    margin: 10px auto; /* 가로로 가운데 정렬 */
+}
+
+button:hover {
+    background-color: #9b8584;
+}
+
+/* 하단 로그인 링크 스타일 */
+p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 17px;
+}
+p a {
+    color: #042c57;
+    text-decoration: none;
+    font-weight: bold;
+}
+p a:hover {
+    text-decoration: underline;
+}
