@@ -97,7 +97,26 @@
                 <span class="icon share" onclick="shareRecipe()">🔗</span>
             </div>
         </section>
+        <section class="comments">
+            <h3>댓글</h3>
+            <ul class="comment-list">
+                <li>
+                    <span class="comment-author">홍길동:</span>
+                    <span class="comment-text">이 레시피 정말 좋아요!</span>
+                </li>
+                <li>
+                    <span class="comment-author">김영희:</span>
+                    <span class="comment-text">다음에는 다른 재료로도 해볼게요.</span>
+                </li>
+            </ul>
+        
+            <div class="comment-input-section">
+                <input type="text" class="comment-input" placeholder="댓글을 입력하세요..." />
+                <button class="comment-submit-button">댓글 추가</button>
+            </div>
+        </section>
     </div>
+    
 
     <script src="{{ url_for('static', filename='js/recipe_detail.js') }}"></script>
     {% endblock %}

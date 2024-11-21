@@ -83,7 +83,7 @@ h2 {
     font-size: 14px;
     border: none;
     border-bottom: 2px solid #ccc;
-    width: 70%; /* 동일한 너비로 설정 */
+    width: 50%;
     transition: border-color 0.3s ease;
 }
 
@@ -95,9 +95,9 @@ h2 {
 /* 성별 체크박스를 수평으로 배치하고 간격을 일정하게 유지 */
 .gender-group {
     display: flex;
-    gap: 15px; /* 체크박스와 텍스트 간의 간격 */
+    gap: 10px; /* 체크박스와 텍스트 간의 간격 */
     align-items: center;
-    width: 70%; /* 입력 칸과 동일한 너비로 설정 */
+    width: 100%; /* 입력 칸과 동일한 너비로 설정 */
 }
 
 /* 성별 항목의 레이블과 체크박스의 크기를 조정 */
@@ -106,6 +106,18 @@ h2 {
     margin-left: 10px;
     font-weight: normal;
 }
+
+input[type="checkbox"] {
+    width: auto; /* 자동 크기로 설정 */
+    height: auto; /* 자동 크기로 설정 */
+    margin: 0; /* 여백 제거 */
+    padding: 0; /* 내부 여백 제거 */
+}
+
+/* .gender-group input{
+    font-size: 10px;
+    display: inline-flex;
+} */
 
 .gender-option {
     display: flex;
@@ -270,7 +282,6 @@ button:hover {
 /* 하단 로그인 링크 스타일 */
 p {
     text-align: center;
-    margin-top: 20px;
     font-size: 17px;
 }
 p a {
@@ -280,4 +291,16 @@ p a {
 }
 p a:hover {
     text-decoration: underline;
+}
+
+.ask{
+    display: flex;
+    justify-content: center;
+}
+
+.login-link {
+    font-size: 17px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
 }
