@@ -39,7 +39,34 @@ def predict_from_image(image_file, api_url, api_key):
         print("Roboflow Response:", data)
         predictions = data.get("predictions", [])
         ingredients = [pred["class"] for pred in predictions]
+
+
+        #응답 데이터 확인
+        if "predictions" not in data:
+            raise ValueError("API 응답에 'predictions' 필드가 없습니다.")
+        
+        #예측 결과 확인
+        predictions = data.get("predictions", [])
+        ingredients = [
+            map_class_to_material((pred["class"]))  # 클래스 ID를 재료 이름으로 변환
+            for pred in predictions if pred.get("confidence", 0) > 0.5  # 신뢰도 50% 이상만 사용
+        ]
+
+        print(ingredients)
+        print(pred)
+        if not ingredients:
+            raise ValueError("재료를 인식하지 못했습니다.")
+
+
         return {"ingredients": ingredients}
-    except requests.exceptions.RequestException as e:
-        print("API Request Error:", e)
+   
+
+    except ValueError as ve:
+        print("Value Error:", ve)
+        raise
+    except requests.exceptions.RequestException as re:
+        print("Request Error:", re)
+        raise
+    except Exception as e:
+        print("Unexpected Error:", e)
         raise

@@ -54,6 +54,14 @@
     <div class="card"><a href="/recipe4">레시피 4</a></div>
 </div>
 
+<!-- 팝업창 -->
+<div id="material-popup" style="display: none; border: 1px solid #ccc; padding: 20px; background: #fff; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0px 0px 10px rgba(0,0,0,0.3); border-radius: 5px; width: 400px;">
+    <h2>검출된 재료 확인</h2>
+    <p id="popup-message"></p>
+    <ul id="popup-materials"></ul>
+    <button onclick="document.getElementById('material-popup').style.display='none';" style="margin-top: 10px; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">닫기</button>
+</div>
+
 <!-- JavaScript 파일 불러오기 -->
 <script src="{{ url_for('static', filename='js/mainpage.js') }}"></script>
 {% endblock %}
