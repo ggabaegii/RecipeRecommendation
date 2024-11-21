@@ -142,6 +142,7 @@ async function processImageWithServer(file) {
         const result = await response.json();
         if (result && result.ingredients) {
             displayRecognizedIngredients(result.ingredients);
+            openMaterialPopup(result.ingredient)
         } else {
             alert("이미지에서 재료를 인식하지 못했습니다.");
         }
