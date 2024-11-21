@@ -89,6 +89,7 @@ def create_app():
     @app.route('/searecpage')
     def searecpage():
         return render_template('searecpage.html')
+
     
     @app.route('/login')
     def login():
@@ -97,30 +98,5 @@ def create_app():
     @app.route('/signup')
     def signup():
         return render_template('signup.html')
-    
-    @app.route('/userinfo_edit')
-    def userinfo_edit():
-        return render_template('userinfo_edit.html')
-
-    @app.route("/update_user_info", methods=["POST"])
-    def update_user_info():
-        data = request.get_json()
-        user_id = session.get("user_id")  # 로그인한 사용자의 ID를 세션에서 가져옴
-
-        if not user_id:
-            return jsonify({"error": "로그인이 필요합니다."}), 403
-
-        # DB 업데이트 로직
-        user = User.query.get(user_id)
-        if user:
-            user.user_name = data.get("user_name")
-            user.user_email = data.get("user_email")
-            user.allergies = data.get("allergies")
-            user.vegetarian_preference = data.get("vegetarian_preference", False)
-            db.session.commit()
-            return jsonify({"message": "사용자 정보가 업데이트되었습니다."}), 200
-        return jsonify({"error": "사용자를 찾을 수 없습니다."}), 404
-
 
     return app
-
