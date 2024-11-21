@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 정보 수정</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userinfo_edit.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1 class="korean-font main-title">
+            <a href="/" style="text-decoration: none; color: inherit;">요리의 정원</a>
+        </h1>
+    </header>
+
+    <div class="container">
+        <h1 class="korean-font">사용자 정보 수정</h1>
+        <form id="edit-user-form">
+            <label for="nickname">닉네임</label>
+            <div class="nickname-container">
+                <input type="text" id="nickname" name="nickname" value="{{ nickname }}" required>
+                <button type="button" class="random-btn" onclick="generateRandomNickname()">랜덤 생성</button>
+            </div>
+
+            <label for="user_name">이름</label>
+            <input type="text" id="user_name" name="user_name" value="{{ user_name }}" required>
+
+            <label for="user_email">이메일</label>
+            <input type="email" id="user_email" name="user_email" value="{{ user_email }}" required>
+
+            <label for="phone">전화번호</label>
+            <input type="text" id="phone" name="phone" value="{{ phone }}" placeholder="000-000-0000" required>
+            <span id="phone-error" class="error-message" style="display: none;">전화번호 형식이 올바르지 않습니다.</span>
+
+            <label for="gender">성별</label>
+            <div class="gender-options">
+                <label>
+                    <input type="radio" name="gender" value="male" {% if gender == 'male' %}checked{% endif %}>
+                    남성
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="female" {% if gender == 'female' %}checked{% endif %}>
+                    여성
+                </label>
+            </div>
+
+            <label for="allergies">알레르기 정보</label>
+            <textarea id="allergies" name="allergies" placeholder="쉼표로 구분하여 입력">{{ allergies }}</textarea>
+
+            <button type="submit" class="save-btn">저장하기</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/userinfo_edit.js') }}"></script>
+</body>
+</html>
