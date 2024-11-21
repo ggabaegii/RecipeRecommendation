@@ -1,4 +1,6 @@
-/* 기본 스타일 초기화 */
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+
+/* 기본 스타일 */
 @font-face {
     font-family: 'basicfont'; /* 사용할 글꼴 이름 */
     src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
@@ -8,12 +10,12 @@
 
 /* 외할머니 글씨 (한글) */
 .point-font {
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-family: 'basicfont', sans-serif;
 }
 
 /* 본문 글씨 */
 .korean-font {
-    font-family: 'basicfont', sans-serif;
+    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     font-weight: 500;
 }
 
@@ -29,7 +31,7 @@
 }
 
 body {
-    font-family: 'basicfont', Arial, sans-serif; /* 폰트 충돌 방지 */
+    
     background-color: #F2EDEC;
     position: relative;
     height: 100vh;
@@ -56,7 +58,6 @@ body {
 h2 {
     margin-bottom: 20px;
     color: #333;
-    font-family: 'basicfont', serif; /* 제목에 NanumOeHarMeoNiGeurSsi 폰트 적용 */
     font-size: 35px;
 }
 
@@ -103,13 +104,13 @@ button.submit-btn {
 }
 
 /* 버튼 텍스트 폰트 적용: 한국어는 외할머니, 영어는 Marcellus */
-button.submit-btn {
-    font-family: 'Marcellus', serif; /* 기본 폰트는 영어로 설정 */
+/* button.submit-btn {
+    font-family: 'Marcellus', serif; 
 }
 
 button.submit-btn:lang(ko) {
-    font-family: 'basicfont', sans-serif; /* 버튼 텍스트가 한국어일 때 외할머니 글씨 */
-}
+    font-family: 'basicfont', sans-serif; 
+} */
 
 button.submit-btn:hover {
     background-color: #bea2a1;
@@ -149,7 +150,7 @@ p {
     box-sizing: border-box; /* padding 포함 크기 계산 */
     margin-top: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-    font-family: 'basicfont', serif; /* 소셜 로그인 버튼 폰트 NanumOeHarMeoNiGeurSsi로 설정 */
+    
 }
 
 /* 소셜 버튼 색상 */

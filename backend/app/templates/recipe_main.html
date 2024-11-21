@@ -7,7 +7,9 @@
 
     <!-- 폰트 추가 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_main.css') }}">
 </head>
 {% extends "layout.html" %}
@@ -16,13 +18,9 @@
     <header>  
         <div class="navigation">
             <a href="/recipe_main" class="active korean-font">모든 레시피</a>
-            <div class="divider"></div>
             <a href="/popular_recipes" class="korean-font">화제의 레시피</a>
-            <div class="divider"></div>
             <a href="/searecpage" class="korean-font">제철 레시피</a>
-            <div class="divider"></div>
             <a href="/local_recipe" class="korean-font">특색 레시피</a>
-            <div class="divider"></div>
             <a href="/recipe_register" class="korean-font">레시피 등록</a>
         </div>
     </header>

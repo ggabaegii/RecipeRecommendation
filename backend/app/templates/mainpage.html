@@ -6,7 +6,9 @@
     <title>{% block title %}요리의 정원{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mainpage.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
 </head>
 
 {% extends "layout.html" %}
@@ -32,14 +34,16 @@
         <p>최근 검색어</p>
         <div id="recent-ingredients"></div>
     </div>
-</div>
 
     <!-- 인식된 재료 결과 표시 // 추후 아래 코드 삭제-->
-    <div id="recognized-ingredients">
-        <h2>인식된 재료:</h2>
+    <div class="recognized-ingredients">
+        <p>인식된 재료:</p>
         <ul id="ingredient-list"></ul>
     </div>
 </div>
+
+    
+
 
 <div class="tip-section">
     <h1>오늘의 꿀팁</h1>

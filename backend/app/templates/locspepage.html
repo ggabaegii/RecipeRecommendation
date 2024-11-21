@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/locspepage.css') }}">
     <!-- Marcellus 폰트 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
     <!-- 카카오맵 API 불러오기 -->
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=47caa90b3b1c9bb5a87ba018dd6a480c"></script>
 </head>
@@ -16,10 +17,8 @@
 
 {% block content %}
     
-    
-    <div class="top-bar">
+    <div class="navigation">
         <a href="#" class="active">특산물</a>
-        <div class="divider"></div> <!-- 구분선 추가 -->
         <a href="./cooktip">요리꿀팁</a>
     </div> 
     

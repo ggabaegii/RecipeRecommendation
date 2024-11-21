@@ -6,14 +6,16 @@
     <title>{% block title %}요리의 정원{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ingrespage.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
 </head>
 
 {% extends "layout.html" %}
 
 {% block content %}
 <div class="search-results-container">
-    <h2 class="title">재료로 찾는 레시피</h2>
+    <p class="title">재료로 찾는 레시피</p>
     <button class="selected-ingredient">토마토</button>
     <p class="instruction">재료를 누르면 선택 취소/선택이 가능합니다</p>
 

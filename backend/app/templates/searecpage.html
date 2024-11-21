@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/searecpage.css') }}">
     <!-- 폰트 및 아이콘 추가 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
 </head>
 {% extends "layout.html" %}
 
@@ -16,13 +18,9 @@
     <!-- 네비게이션 바 -->
     <nav class="navigation">
         <a href="/recipe_main">모든 레시피</a>
-        <span class="divider"></span>
         <a href="/popular_recipes">화제의 레시피</a>
-        <span class="divider"></span>
         <a href="/searecpage" class="active">제철 레시피</a>
-        <span class="divider"></span>
         <a href="/local_recipe">특색 레시피</a>
-        <span class="divider"></span>
         <a href="/recipe_register">레시피 등록</a>
     </nav>
 

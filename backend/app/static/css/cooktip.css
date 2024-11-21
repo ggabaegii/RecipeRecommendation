@@ -1,5 +1,6 @@
-/* 기본 스타일 */
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
 
+/* 기본 스타일 */
 @font-face {
     font-family: 'basicfont'; /* 사용할 글꼴 이름 */
     src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
@@ -9,12 +10,12 @@
 
 /* 외할머니 글씨 (한글) */
 .point-font {
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-family: 'basicfont', sans-serif;
 }
 
 /* 본문 글씨 */
 .korean-font {
-    font-family: 'basicfont', sans-serif;
+    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     font-weight: 500;
 }
 
@@ -76,29 +77,31 @@ header {
 
 .navigation{
     display: flex;
-    justify-content: center; /* 가로 방향 가운데 정렬 */
-    align-items: center; /* 세로 방향 가운데 정렬 */
-    /* margin-left: 100px; */
-}
-
-/* 세로 구분선 스타일 */
-.divider {
-    width: 1px;
-    height: 40px; /* 세로선 길이 */
-    background-color: #cccccc;
-    margin: 0 10px; /* 좌우 간격 */
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+    /* background-color: #cccccc; */
 }
 
 .navigation a {
-    font-size: 23px;
-    margin-right: 30px;
-    margin-left: 30px;
+    padding: 10px 20px;
+    /* background-color: lightblue; */
     text-decoration: none;
     color: #042C57;
+    font-weight: bold;
+    position: relative;
+    font-size: 23px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
-.navigation a.active {
-    font-weight: bold;
+.navigation a:not(:last-child)::after {
+    content: ""; /* 의사 요소 생성 */
+    position: absolute;
+    right: 0; /* 오른쪽에 구분선 추가 */
+    top: 0;
+    height: 100%; /* 세로로 구분선 */
+    width: 1px; /* 구분선 두께 */
+    background-color: #cccccc;; /* 구분선 색상 */
 }
 
 .category-tabs {

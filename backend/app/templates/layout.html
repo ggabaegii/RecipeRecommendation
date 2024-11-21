@@ -6,13 +6,15 @@
     <title>{% block title %}요리의 정원{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
 </head>
 <body>
     <!-- 메뉴 아이콘 -->
     <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
     <header>
-        <div class="title" onclick="window.location.href='/'">요리의 정원</div>
+        <div class="point-font title" onclick="window.location.href='/'">요리의 정원</div>
     </header>
 
 
@@ -22,7 +24,7 @@
     <!-- 프로필 섹션 -->
     <div class="profile">
         <img src="프로필_이미지_URL" alt="프로필 사진">
-        <span class="korean-font">닉네임</span>
+        <span>닉네임</span>
     </div>
         <!-- 최근 본 레시피, 즐겨찾기, 레시피 작성은 로그인 안 되어 있을시 클릭하면 로그인 페이지로 넘어가도록 구현-->
         <div class="menu-basictag">
@@ -31,7 +33,6 @@
                 <a href="/recipe_main">레시피</a>
                 <a href="/recent">최근 본 레시피</a> <!--아직 어떻게 할지 모름-->
                 <a href="/favorites">즐겨찾기</a> <!--아직 어떻게 할지 모름-->
-                <a href="/board">게시판</a> 
                 <a href="/cooktip">정보</a>
                 <a href="/recipe_register">레시피 작성</a>
             {% else %}
@@ -39,7 +40,6 @@
                 <a href="/recipe_main">레시피</a>
                 <a href="/login">최근 본 레시피</a> <!--아직 어떻게 할지 모름-->
                 <a href="/login">즐겨찾기</a> <!--아직 어떻게 할지 모름-->
-                <a href="/board">게시판</a> 
                 <a href="/cooktip">정보</a>
                 <a href="/login">레시피 작성</a>
             {% endif %}

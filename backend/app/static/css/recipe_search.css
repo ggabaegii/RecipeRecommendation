@@ -1,28 +1,30 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+
+/* 기본 스타일 */
 @font-face {
-  font-family: 'basicfont'; /* 사용할 글꼴 이름 */
-  src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
-  font-weight: normal; /* 선택: 굵기 */
-  font-style: normal; /* 선택: 스타일 */
+    font-family: 'basicfont'; /* 사용할 글꼴 이름 */
+    src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
+    font-weight: normal; /* 선택: 굵기 */
+    font-style: normal; /* 선택: 스타일 */
 }
 
 /* 외할머니 글씨 (한글) */
 .point-font {
-  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-family: 'basicfont', sans-serif;
 }
 
 /* 본문 글씨 */
 .korean-font {
-  font-family: 'basicfont', sans-serif;
-  font-weight: 500;
+    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-weight: 500;
 }
 
 /* Marcellus (영어) */
 .english-font {
-  font-family: 'Marcellus', serif;
+    font-family: 'Marcellus', serif;
 }
 
 body {
-  font-family: "basicfont", sans-serif;
   background-color: #f5f5f5;
   color: #333;
   text-align: center;

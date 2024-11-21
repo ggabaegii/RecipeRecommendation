@@ -1,31 +1,33 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+
+/* 기본 스타일 */
 @font-face {
-  font-family: 'basicfont'; /* 사용할 글꼴 이름 */
-  src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
-  font-weight: normal; /* 선택: 굵기 */
-  font-style: normal; /* 선택: 스타일 */
+    font-family: 'basicfont'; /* 사용할 글꼴 이름 */
+    src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
+    font-weight: normal; /* 선택: 굵기 */
+    font-style: normal; /* 선택: 스타일 */
 }
 
 /* 외할머니 글씨 (한글) */
 .point-font {
-  font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    font-family: 'basicfont', sans-serif;
 }
 
 /* 본문 글씨 */
 .korean-font {
-  font-family: 'basicfont', sans-serif;
-  font-weight: 500;
+    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-weight: 500;
 }
 
 /* Marcellus (영어) */
 .english-font {
-  font-family: 'Marcellus', serif;
+    font-family: 'Marcellus', serif;
 }
 
 body {
   background-color: #F2EDEC;
   margin: 0;
   padding: 0;
-  font-family: 'basicfont', sans-serif;
 }
 
 /* 로고 텍스트 스타일 */
@@ -33,29 +35,39 @@ body {
   font-size: 36px;
   font-weight: bold;
   color: #042C57;
-  font-family: 'Marcellus', serif;
   text-align: center;
   margin: 20px 0;
 }
 
-/* 네비게이션 바 */
-.navigation {
+.navigation{
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  /* background-color: #cccccc; */
 }
 
 .navigation a {
-  font-size: 20px;
-  margin: 0 15px;
+  padding: 10px 20px;
+  /* background-color: lightblue; */
   text-decoration: none;
   color: #042C57;
+  font-weight: bold;
+  position: relative;
+  font-size: 23px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
-.navigation a.active {
-  font-weight: bold;
+.navigation a:not(:last-child)::after {
+  content: ""; /* 의사 요소 생성 */
+  position: absolute;
+  right: 0; /* 오른쪽에 구분선 추가 */
+  top: 0;
+  height: 100%; /* 세로로 구분선 */
+  width: 1px; /* 구분선 두께 */
+  background-color: #cccccc;; /* 구분선 색상 */
 }
+
 
 .divider {
   width: 1px;
