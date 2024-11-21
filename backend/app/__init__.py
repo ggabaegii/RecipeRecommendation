@@ -1,8 +1,27 @@
-from flask import Flask, render_template,request,jsonify
+from flask import Flask, render_template, request, jsonify
+from flask_mysqldb import MySQL  # flask_mysqldb로 수정
+from app.auth.routes import auth_bp  # auth 블루프린트를 가져옵니다
+
+# MySQL 객체 초기화
+mysql = MySQL()
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
-    #app.secret_key = 'your_secret_key'
+
+    # MySQL 연결 설정
+    app.config['MYSQL_HOST'] = 'localhost'  # MySQL 서버 주소
+    app.config['MYSQL_USER'] = 'root'  # MySQL 사용자
+    app.config['MYSQL_PASSWORD'] = 'your_mysql_password'  # MySQL 비밀번호
+    app.config['MYSQL_DB'] = 'your_database_name'  # 사용할 데이터베이스 이름
+
+    # MySQL 객체와 Flask 앱 연결
+    mysql.init_app(app)
+
+    # 비밀 키 설정
+    app.config['SECRET_KEY'] = 'your_secret_key'  # 세션을 위한 비밀 키 설정
+
+    # 블루프린트를 '/auth' 접두어와 함께 등록
+    app.register_blueprint(auth_bp, url_prefix='/auth')
 
     # 라우트 정의
     @app.route('/')
