@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_mysqldb import MySQL  # flask_mysqldb로 수정
-from app.auth.routes import auth_bp  # auth 블루프린트를 가져옵니다
+from app.auth.login.routes import auth_bp  # auth 블루프린트를 가져옵니다
 
 # MySQL 객체 초기화
 mysql = MySQL()
