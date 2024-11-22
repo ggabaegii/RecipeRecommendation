@@ -234,6 +234,75 @@ body {
     font-size: 20px;
 }
 
+
+/* 팝업창 스타일 */
+#material-popup {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    width: 400px;
+    z-index: 1000;
+    text-align: center;
+}
+
+#material-popup h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#material-popup ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#material-popup ul li {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#material-popup ul li button {
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: #1A4B8C;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#material-popup ul li button:hover {
+    background-color: #2C63A2;
+}
+
+#material-popup button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#material-popup button:hover {
+    background-color: #0056b3;
+}
+
+
 /* 반응형 - 화면이 768px 이하일 때 1열로 변경 */
 @media (max-width: 768px) {
     .recipe-cards {

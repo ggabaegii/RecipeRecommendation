@@ -1,3 +1,4 @@
+//최근 검색어 추가 및 삭제 기능
 // X 버튼 클릭 시 동작: 검색되지 않고 로컬 스토리지에서만 삭제
 function removeRecentIngredient(ingredient) {
     let recentIngredients = JSON.parse(localStorage.getItem('recentIngredients')) || [];
@@ -108,6 +109,11 @@ function handleIngredientInput(event) {
     }
 }
 
+// 입력 필드 지우기 함수
+function clearInput(inputId) {
+    document.getElementById(inputId).value = '';
+}
+
 // 카메라 버튼 클릭 처리
 function openCameraOrFile() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -215,21 +221,34 @@ function searchFromPopup() {
         alert("재료를 추가하세요.");
         return;
     }
-
-    const url = `/ingr_sea?ingredients=${encodeURIComponent(ingredients.join(','))}`;
-    window.location.href = url;
+        const url = `/ingr_sea?ingredients=${encodeURIComponent(ingredients.join(','))}&excluded=`;
+        window.location.href = url;
+        saveRecentIngredients(ingredients);
 }
-// 인식된 재료 화면에 표시
-function displayRecognizedIngredients(ingredients) {
-    const ingredientList = document.getElementById("ingredient-list");
-    ingredientList.innerHTML = ""; // 기존 목록 초기화
 
-    ingredients.forEach(ingredient => {
-        const listItem = document.createElement("li");
-        listItem.textContent = ingredient;
-        ingredientList.appendChild(listItem);
-    });
+// 서버로부터 받은 재료 데이터 표시
+function processImageWithServer(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    fetch("/prdict", {
+        method: "POST",
+        body: formData
+    })
+        .then(response => response.json())
+        .then(result => {
+            if (result && result.ingredients) {
+                openMaterialPopup(result.ingredients); // 서버에서 받은 재료 표시
+            } else {
+                alert("이미지에서 재료를 인식하지 못했습니다.");
+            }
+        })
+        .catch(error => {
+            console.error("서버 호출 중 오류 발생:", error);
+            alert("이미지 처리 중 오류가 발생했습니다.");
+        });
 }
+
 
 // 인식된 재료를 백엔드로 전달
 function sendIngredientsToBackend(ingredients) {

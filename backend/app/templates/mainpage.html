@@ -34,13 +34,6 @@
     </div>
 </div>
 
-    <!-- 인식된 재료 결과 표시 // 추후 아래 코드 삭제-->
-    <div id="recognized-ingredients">
-        <h2>인식된 재료:</h2>
-        <ul id="ingredient-list"></ul>
-    </div>
-</div>
-
 <div class="tip-section">
     <h1>오늘의 꿀팁</h1>
 </div>
@@ -55,11 +48,14 @@
 </div>
 
 <!-- 팝업창 -->
-<div id="material-popup" style="display: none; border: 1px solid #ccc; padding: 20px; background: #fff; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0px 0px 10px rgba(0,0,0,0.3); border-radius: 5px; width: 400px;">
+<div id="material-popup">
     <h2>검출된 재료 확인</h2>
-    <p id="popup-message"></p>
+    <!-- 재료 목록 -->
     <ul id="popup-materials"></ul>
-    <button onclick="document.getElementById('material-popup').style.display='none';" style="margin-top: 10px; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">닫기</button>
+    <!-- 버튼 -->
+    <button onclick="addMaterialToPopup()">재료 추가</button>
+    <button onclick="searchFromPopup()">검색</button>
+    <button onclick="closeMaterialPopup()">닫기</button>
 </div>
 
 <!-- JavaScript 파일 불러오기 -->
