@@ -6,7 +6,9 @@
     <title>카메라 검색</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/search_camera.css') }}">
 </head>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
     <h1>재료 인식</h1>
     <p>사진을 찍거나 갤러리에서 사진을 선택하여 재료를 인식하세요.</p>
 
@@ -42,17 +44,22 @@
         // YOLO 모델로 이미지를 전송하여 재료 인식 요청
         function sendImageToYOLO(file) {
             const formData = new FormData();
-            formData.append('image', file);
+            formData.append('file', file);  // Flask 서버에서 'file' 키로 받도록 설정
 
             // 서버로 이미지 전송
-            fetch('/process_image', {  // 서버의 이미지 처리 엔드포인트 설정 필요
+            fetch('/predict', {  // Flask 엔드포인트를 '/predict'로 설정
                 method: 'POST',
                 body: formData
             })
             .then(response => response.json())
             .then(data => {
                 // YOLO 모델이 반환한 재료 인식 결과 표시
-                document.getElementById('ingredients').textContent = data.ingredients.join(', ');
+                if (data.predictions) {
+                    const ingredients = data.predictions.map(prediction => prediction.class).join(', ');
+                    document.getElementById('ingredients').textContent = ingredients;
+                } else {
+                    document.getElementById('ingredients').textContent = '인식된 재료가 없습니다.';
+                }
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -60,5 +67,5 @@
             });
         }
     </script>
-</body>
+    {% endblock %}
 </html>

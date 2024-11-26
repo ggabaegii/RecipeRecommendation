@@ -11,9 +11,13 @@
 
     <!-- 폰트 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
 </head>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
     <div class="signup-container">
         <h2 class="korean-font">개인정보 입력</h2>
         <form action="{{ url_for('signup') }}" method="post" enctype="multipart/form-data">
@@ -103,8 +107,9 @@
 
             <button type="submit" class="korean-font">회원가입</button>
         </form>
-
-        <p class="korean-font">이미 계정이 있으신가요? <a href="{{ url_for('login') }}">로그인</a></p>
+        <div class="ask">
+            <p>이미 계정이 있으신가요?</p>&nbsp;<a href="/login" class="login-link">로그인</a>
+        </div>
     </div>
 
     <!-- 이미지 미리보기 스크립트 -->
@@ -115,5 +120,5 @@
             preview.style.display = 'block';
         }
     </script>
-</body>
+    {% endblock %}
 </html>

@@ -1,0 +1,137 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+
+/* 기본 스타일 */
+@font-face {
+    font-family: 'basicfont'; /* 사용할 글꼴 이름 */
+    src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
+    font-weight: normal; /* 선택: 굵기 */
+    font-style: normal; /* 선택: 스타일 */
+}
+
+/* 외할머니 글씨 (한글) */
+.point-font {
+    font-family: 'basicfont', sans-serif;
+}
+
+/* 본문 글씨 */
+.korean-font {
+    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-weight: 500;
+}
+
+/* Marcellus (영어) */
+.english-font {
+    font-family: 'Marcellus', serif;
+}
+
+/* 기본 스타일 */
+body {
+  background-color: #F2EDEC;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation{
+  display: flex;
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  /* background-color: #cccccc; */
+}
+
+.navigation a {
+  padding: 10px 20px;
+  /* background-color: lightblue; */
+  text-decoration: none;
+  color: #042C57;
+  font-weight: bold;
+  position: relative;
+  font-size: 23px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.navigation a:not(:last-child)::after {
+  content: ""; /* 의사 요소 생성 */
+  position: absolute;
+  right: 0; /* 오른쪽에 구분선 추가 */
+  top: 0;
+  height: 100%; /* 세로로 구분선 */
+  width: 1px; /* 구분선 두께 */
+  background-color: #cccccc;; /* 구분선 색상 */
+}
+
+
+/* 로고 텍스트 스타일 */
+.logo-text {
+  font-size: 36px;
+  font-weight: bold;
+  color: #042C57;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+  padding-top: 20px;
+}
+
+/* 컨테이너 스타일 */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #FFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 메인 제목 스타일 */
+h1 {
+  font-size: 36px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* 폼 스타일 */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 폼 라벨 스타일 */
+label {
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"], textarea, input[type="file"] {
+  padding: 15px;
+  font-size: 1.1em;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* 제출 버튼 스타일 */
+button[type="submit"] {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #a8d5ba;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #86c1a9;
+}

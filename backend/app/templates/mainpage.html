@@ -6,7 +6,9 @@
     <title>{% block title %}요리의 정원{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mainpage.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
 </head>
 
 {% extends "layout.html" %}
@@ -19,21 +21,23 @@
         <input type="text" id="ingredient-search" placeholder="재료를 입력하세요">
         <button class="clear-btn1" onclick="clearInput('ingredient-search')">×</button>
         <button class="search-btn" onclick="submitSearch()">&#128269;</button>
-        <button class="camera-btn" onclick="window.location.href='/search_camera'">&#128247;</button>
+        <button class="camera-btn" onclick="openCameraOrFile()">&#128247;</button>
     </div>
 
-    <label for="excluded-ingredient" class="input-label">제외 재료</label>
+    <!--<label for="excluded-ingredient" class="input-label">제외 재료</label>
     <div class="search-bar excluded">
         <input type="text" id="excluded-ingredient" placeholder="제외할 재료 입력">
         <button class="clear-btn2" onclick="clearInput('excluded-ingredient')">×</button>
-    </div>
+    </div>-->
 
     <div class="search-recent">
         <p>최근 검색어</p>
         <div id="recent-ingredients"></div>
     </div>
 </div>
-<div class="tip-section">
+
+
+<!---- <div class="tip-section">
     <h1>오늘의 꿀팁</h1>
 </div>
 
@@ -44,6 +48,17 @@
     <div class="card"><a href="/recipe2">레시피 2</a></div>
     <div class="card"><a href="/recipe3">레시피 3</a></div>
     <div class="card"><a href="/recipe4">레시피 4</a></div>
+</div> -->
+
+<!-- 팝업창 -->
+<div id="material-popup">
+    <h2>검출된 재료 확인</h2>
+    <!-- 재료 목록 -->
+    <ul id="popup-materials"></ul>
+    <!-- 버튼 -->
+    <button onclick="addMaterialToPopup()">재료 추가</button>
+    <button onclick="searchFromPopup()">검색</button>
+    <button onclick="closeMaterialPopup()">닫기</button>
 </div>
 
 <!-- JavaScript 파일 불러오기 -->

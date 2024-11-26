@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 
+=======
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/login.css') }}">
+>>>>>>> 6c7271680a3c0c4a00217163e8af80f86b0f6547
     <!-- Marcellus 폰트 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <!-- 나눔글씨 외할머니글씨 폰트 불러오기 -->
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
 </head>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
     <div class="login-container">
         <h2>로그인</h2>
         <!-- login.html -->
@@ -27,8 +34,12 @@
             </div>
             <button type="submit" class="btn btn-primary">로그인</button>
         </form>
+<<<<<<< HEAD
+=======
+        <p>계정이 없으신가요? </p><a href="/signup" class="signup-link">회원가입</a>
+>>>>>>> 6c7271680a3c0c4a00217163e8af80f86b0f6547
 
         <p>계정이 없으신가요? <a href="{{ url_for('auth.signup') }}" class="signup-link">회원가입</a></p>
     </div>
-</body>
+    {% endblock %}
 </html>

@@ -7,17 +7,20 @@
 
     <!-- Google Fonts 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
 
     <!-- CSS 스타일 -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/recipelist.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_search.css') }}">
 </head>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
     <!-- 상단 내비게이션 -->
-    <header>
-        <button class="menu-toggle">☰</button>
+    <div class="recipesearch">
         <h1>레시피 검색</h1>
-    </header>
+    </div>
 
     <div class="search-container">
         <input type="text" placeholder="레시피 검색">
@@ -42,5 +45,5 @@
             {% endfor %}
         </table>
     </div>
-</body>
+    {% endblock %}
 </html>

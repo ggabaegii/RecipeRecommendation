@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_detail.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
 </head>
-<body>
-    <!-- 요리의 정원 로고 -->
+{% extends "layout.html" %}
+
+{% block content %}
+
     <header>
-        <a href="/" class="logo-text">요리의 정원</a>
         <h1 class="page-title">레시피 상세 페이지</h1> <!-- 중앙 정렬 -->
     </header>
 
@@ -34,6 +37,7 @@
         <section class="recipe-info">
             <h2>요리 이름: 스파게티</h2>
             <hr>
+            <p><strong>요리 카테고리:</strong> 이탈리아식</p>
             <p><strong>소요 시간:</strong> 30분</p>
             <p><strong>난이도:</strong> 중급</p>
         </section>
@@ -76,11 +80,11 @@
             </ol>
         </section>
 
-        <!-- 해시태그 -->
+        <!-- 해시태그 
         <section class="hashtags">
             <h3>해시태그</h3>
             <p>#이탈리안 #스파게티 #간단한요리</p>
-        </section>
+        </section>-->
 
         <!-- 사용자 정보 및 상호작용 아이콘 -->
         <section class="user-interaction">
@@ -94,8 +98,27 @@
                 <span class="icon share" onclick="shareRecipe()">🔗</span>
             </div>
         </section>
+        <!--<section class="comments">
+            <h3>댓글</h3>
+            <ul class="comment-list">
+                <li>
+                    <span class="comment-author">홍길동:</span>
+                    <span class="comment-text">이 레시피 정말 좋아요!</span>
+                </li>
+                <li>
+                    <span class="comment-author">김영희:</span>
+                    <span class="comment-text">다음에는 다른 재료로도 해볼게요.</span>
+                </li>
+            </ul>
+        
+            <div class="comment-input-section">
+                <input type="text" class="comment-input" placeholder="댓글을 입력하세요..." />
+                <button class="comment-submit-button">댓글 추가</button>
+            </div>
+        </section>-->
     </div>
+    
 
     <script src="{{ url_for('static', filename='js/recipe_detail.js') }}"></script>
-</body>
+    {% endblock %}
 </html>

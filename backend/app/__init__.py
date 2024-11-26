@@ -1,49 +1,74 @@
-from flask import Flask, render_template, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from app.auth.login.routes import auth_bp  # auth_bp 임포트
-from app.db import db  # db 객체 임포트
+from flask import Flask, render_template,request,jsonify
+import requests
+from .api import predict_from_image, get_recipes_from_gemini
+import traceback
+import os
+from dotenv import load_dotenv
 
-# SQLAlchemy 객체 초기화
-db = SQLAlchemy()
+load_dotenv()
+
+ROBOFLOW_API_URL = os.getenv("roboflow_API_URL")
+ROBOFLOW_API_KEY = os.getenv("roboflow_API_KEY")
+
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
+    
 
-    # SQLite 연결 설정
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database_name.db'  # SQLite로 변경
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # SQLAlchemy의 변경 추적 비활성화
-    app.config['SECRET_KEY'] = 'your_secret_key'  # 세션을 위한 비밀 키 설정
+   
+    # 라우트 정의
+    @app.route('/')
+    def home():
+        return render_template('mainpage.html')
 
-    # db 객체와 Flask 앱 연결
-    db.init_app(app)
-
-    # 블루프린트를 '/auth' 접두어와 함께 등록
-    app.register_blueprint(auth_bp)  # auth_bp 등록
-
-    # 라우트 정의 (기존 코드 그대로)
-    @app.route('/ingres')
+    @app.route('/ingr_sea')
     def ingredients_search():
         return render_template('ingrespage.html')
-
-    @app.route('/camera')
-    def camera():
-        return render_template('camera.html')
     
     @app.route('/cooktip')
     def cooktip():
         return render_template('cooktip.html')
     
-    @app.route('/process_image', methods=['POST'])
-    def process_image():
-        if 'image' not in request.files:
+
+    @app.route('/cooktip_detail')
+    def cooktip_detail():
+        return render_template('cooktip_detail.html')
+    
+
+    @app.route('/search_camera')
+    def camera():
+        return render_template('search_camera.html')
+
+    @app.route('/prdict', methods=['POST'])
+    def predict():
+        if 'file' not in request.files:
             return jsonify({'error': 'No image provided'}), 400
-        image_file = request.files['image']
-        # ingredients = detect_ingredients(image_file)  # YOLO 모델로 재료 인식
-        # return jsonify({'ingredients': ingredients})
+        
+        file = request.files['file']
+
+        try:
+            # API 호출 함수
+            yolo_result = predict_from_image(
+                file,
+                ROBOFLOW_API_URL,
+                ROBOFLOW_API_KEY
+            )
+            ingredients = yolo_result.get('ingredients', [])
+
+            recipes = get_recipes_from_gemini(ingredients)
+
+            return jsonify({'recipes': recipes})
+        
+        except Exception as e:
+            print("Error occurred:", traceback.format_exc())
+            return jsonify({'error': str(e)}), 500
+        
 
     @app.route('/locspepage')
     def locspepage():
         return render_template('locspepage.html')
+    
+
 
     @app.route('/mypagemain')
     def mypagemain():
@@ -57,17 +82,19 @@ def create_app():
     def recipe_detail():
         return render_template('recipe_detail.html')
 
+    @app.route('/recipe_main')
+    def recipe_main():
+        return render_template('recipe_main.html')
+    
+
     @app.route('/recipe_register')
     def recipe_register():
         return render_template('recipe_register.html')
-    
-    @app.route('/recipe_register2')
-    def recipe_register2():
-        return render_template('recipe_register2.html')
-    
-    @app.route('/recipe_list')
-    def recipe_list():
-        return render_template('recipe_list.html')
+
+
+    @app.route('/recipe_search')
+    def recipe_search():
+        return render_template('recipe_search.html')
 
     @app.route('/searecpage')
     def searecpage():
@@ -80,5 +107,10 @@ def create_app():
     @app.route('/signup')
     def signup():
         return render_template('signup.html')
+
+    # 사용자 정보 수정
+    @app.route('/userinfo_edit', methods=['GET', 'POST'])
+    def userinfo_edit():
+        return render_template('userinfo_edit.html')
 
     return app

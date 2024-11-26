@@ -69,3 +69,23 @@ function adjustTooltipPosition(tooltip) {
         tooltip.style.right = "10px";
     }
 }
+
+// 사용자가 댓글 입력창에 텍스트를 입력하고 "댓글 추가" 버튼을 클릭했을 때 댓글 목록에 새 댓글을 추가하는 JavaScript 코드
+
+document.querySelector('.comment-submit-button').addEventListener('click', function () {
+    const commentInput = document.querySelector('.comment-input');
+    const commentText = commentInput.value.trim();
+
+    if (commentText) {
+        const commentList = document.querySelector('.comment-list');
+        const newComment = document.createElement('li');
+        newComment.innerHTML = `<span class="comment-author">익명:</span> <span class="comment-text">${commentText}</span>`;
+        commentList.appendChild(newComment);
+
+        // 입력창 초기화
+        commentInput.value = '';
+    } else {
+        alert('댓글을 입력하세요.');
+    }
+});
+
