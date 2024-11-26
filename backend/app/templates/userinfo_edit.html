@@ -8,9 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
     <header>
-        <h1 class="korean-font main-title">정보 수정하기</h1>
+        <h1 class="korean-font title">정보 수정하기</h1>
     </header>
 
     <div class="container">
@@ -51,4 +53,5 @@
 
     <script src="{{ url_for('static', filename='js/userinfo_edit.js') }}"></script>
 </body>
+{% endblock %}
 </html>
