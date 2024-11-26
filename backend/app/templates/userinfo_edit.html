@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumOeHarMeoNiGeurSsi.css" rel="stylesheet">
 </head>
+{% extends "layout.html" %}
+
+{% block content %}
 <body>
     <header>
         <h1 class="korean-font main-title">정보 수정하기</h1>
@@ -26,11 +29,21 @@
             </div>
             <div class="form-group">
                 <label for="email">이메일</label>
-                <input type="email" id="email" name="email" value="example@example.com" required>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="example@example.com" 
+                    required>
             </div>
             <div class="form-group">
                 <label for="phone">전화번호</label>
-                <input type="text" id="phone" name="phone" value="010-1234-5678" required>
+                <input 
+                    type="text" 
+                    id="phone" 
+                    name="phone" 
+                    placeholder="010-1234-5678" 
+                    required>
                 <small class="input-tip">형식: 010-1234-5678</small>
             </div>
             <div class="form-group">
@@ -42,8 +55,8 @@
             </div>
             <!-- <div class="form-group">
                 <label for="allergies">알레르기 정보</label>
-                <input type="text" id="allergies" name="allergies" value="없음">
-                <small class="input-tip">쉼표(,)로 구분하여 입력</small>
+                <input type="text" id="allergies" name="allergies" placeholder="쉼표(,)로 구분하여 입력">
+                <small class="input-tip">쉼표(,)로 구분하여 입력하세요.</small>
             </div> -->
             <button type="submit" class="save-btn">저장하기</button>
         </form>
@@ -51,4 +64,5 @@
 
     <script src="{{ url_for('static', filename='js/userinfo_edit.js') }}"></script>
 </body>
+{% endblock %}
 </html>

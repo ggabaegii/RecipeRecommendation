@@ -10,6 +10,7 @@ document.getElementById('phone').addEventListener('input', function (event) {
     input.value = value;
 });
 
+
 // 형용사 및 동물 세트
 const adjectives = [
     '가냘픈', '가는', '가엾은', '가파른', '같은', '거센', '거친', '검은', '게으른', '고달픈', '고른', '고마운',
