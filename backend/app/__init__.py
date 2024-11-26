@@ -99,4 +99,9 @@ def create_app():
     def signup():
         return render_template('signup.html')
 
+    # 사용자 정보 수정
+    @app.route('/userinfo_edit', methods=['GET', 'POST'])
+    def userinfo_edit():
+        return render_template('userinfo_edit.html')
+
     return app
