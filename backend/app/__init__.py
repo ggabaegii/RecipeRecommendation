@@ -1,16 +1,21 @@
 from flask import Flask, render_template,request,jsonify
 import requests
-#from inference_sdk import InferenceHTTPClient
-from .api import predict_from_image
+from .api import predict_from_image, get_recipes_from_gemini
 import traceback
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+ROBOFLOW_API_URL = os.getenv("roboflow_API_URL")
+ROBOFLOW_API_KEY = os.getenv("roboflow_API_KEY")
+
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
     
-    app.config["ROBOFLOW_API_KEY"] = "5dKfVfDaRwE3ueqLOz9s"
-    app.config["ROBOFLOW_API_URL"] = "https://detect.roboflow.com/ingredients-detection-yolov8/2"
 
-    
+   
     # 라우트 정의
     @app.route('/')
     def home():
@@ -43,12 +48,17 @@ def create_app():
 
         try:
             # API 호출 함수
-            result = predict_from_image(
+            yolo_result = predict_from_image(
                 file,
-                app.config['ROBOFLOW_API_URL'],
-                app.config['ROBOFLOW_API_KEY']
+                ROBOFLOW_API_URL,
+                ROBOFLOW_API_KEY
             )
-            return jsonify(result)
+            ingredients = yolo_result.get('ingredients', [])
+
+            recipes = get_recipes_from_gemini(ingredients)
+
+            return jsonify({'recipes': recipes})
+        
         except Exception as e:
             print("Error occurred:", traceback.format_exc())
             return jsonify({'error': str(e)}), 500
