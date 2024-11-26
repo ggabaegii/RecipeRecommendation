@@ -34,15 +34,7 @@
         <p>최근 검색어</p>
         <div id="recent-ingredients"></div>
     </div>
-
-    <!-- 인식된 재료 결과 표시 // 추후 아래 코드 삭제-->
-    <div class="recognized-ingredients">
-        <p>인식된 재료:</p>
-        <ul id="ingredient-list"></ul>
-    </div>
 </div>
-
-    
 
 
 <div class="tip-section">
@@ -56,6 +48,17 @@
     <div class="card"><a href="/recipe2">레시피 2</a></div>
     <div class="card"><a href="/recipe3">레시피 3</a></div>
     <div class="card"><a href="/recipe4">레시피 4</a></div>
+</div>
+
+<!-- 팝업창 -->
+<div id="material-popup">
+    <h2>검출된 재료 확인</h2>
+    <!-- 재료 목록 -->
+    <ul id="popup-materials"></ul>
+    <!-- 버튼 -->
+    <button onclick="addMaterialToPopup()">재료 추가</button>
+    <button onclick="searchFromPopup()">검색</button>
+    <button onclick="closeMaterialPopup()">닫기</button>
 </div>
 
 <!-- JavaScript 파일 불러오기 -->

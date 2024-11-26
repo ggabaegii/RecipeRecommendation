@@ -1,6 +1,20 @@
 import base64
 import requests
 
+# 숫자-재료 매핑
+MATERIAL_MAPPING = {
+    '1': "소고기", '2': "양배추", '3': "당근", '4': "닭고기", '5': "고추",
+    '7': "오이", '8': "달걀", '9': "생선", '10': "마늘",
+    '11 0 0 0 1 1 1 1 0 0 0' : "사과",
+    '11': "생강", '13': "레몬", '14': "라임", '15': "우유",
+    '16': "버섯", '17': "면", '18': "양파", '19': "오렌지",
+    '21': "땅콩", '22': "돼지고기", '23': "감자", '24': "새우", '25': "밥",
+    '26': "대파", '28': "토마토"
+}
+
+def map_class_to_material(class_id):
+    return MATERIAL_MAPPING.get(class_id, "알 수 없음")
+
 def predict_from_image(image_file, api_url, api_key):
     """
     Roboflow API를 호출하여 이미지에서 재료를 예측합니다.
@@ -24,9 +38,33 @@ def predict_from_image(image_file, api_url, api_key):
         response.raise_for_status()
         data = response.json()
         print("Roboflow Response:", data)
+
+        #응답 데이터 확인
+        if "predictions" not in data:
+            raise ValueError("API 응답에 'predictions' 필드가 없습니다.")
+        
+        #예측 결과 확인
         predictions = data.get("predictions", [])
-        ingredients = [pred["class"] for pred in predictions]
+        ingredients = list({
+            map_class_to_material((pred["class"]))  # 클래스 ID를 재료 이름으로 변환
+            for pred in predictions if pred.get("confidence", 0) > 0.5  # 신뢰도 50% 이상만 사용
+        })
+        
+        print(ingredients)
+
+        if not ingredients:
+            raise ValueError("재료를 인식하지 못했습니다.")
+
+
         return {"ingredients": ingredients}
-    except requests.exceptions.RequestException as e:
-        print("API Request Error:", e)
+   
+
+    except ValueError as ve:
+        print("Value Error:", ve)
+        raise
+    except requests.exceptions.RequestException as re:
+        print("Request Error:", re)
+        raise
+    except Exception as e:
+        print("Unexpected Error:", e)
         raise
