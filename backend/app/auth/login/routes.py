@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from app import mysql  # db 객체가 아니라 mysql 객체 가져오기
-from app.auth.login.forms import LoginForm
 from werkzeug.security import check_password_hash
+from app.auth.login.forms import LoginForm
 from app.auth.login.models import User
+from app import db
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 

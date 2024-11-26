@@ -8,8 +8,8 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__, template_folder='templates')
 
-    # MySQL 연결 설정
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:your_mysql_password@localhost/your_database_name'
+    # SQLite 연결 설정
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database_name.db'  # SQLite로 변경
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # SQLAlchemy의 변경 추적 비활성화
     app.config['SECRET_KEY'] = 'your_secret_key'  # 세션을 위한 비밀 키 설정
 
