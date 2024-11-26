@@ -57,7 +57,7 @@ def predict_from_image(image_file, api_url, api_key):
 
 
         return {"ingredients": ingredients}
-   
+  
 
     except ValueError as ve:
         print("Value Error:", ve)
