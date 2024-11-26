@@ -13,10 +13,13 @@ def login():
     if form.validate_on_submit():
         # 데이터베이스에서 아이디로 사용자 조회
         user = User.query.filter_by(username=form.username.data).first()  # 아이디로 사용자 조회
-        if user and check_password_hash(user.password, form.password.data):
-            session['user_id'] = user.id  # 세션에 사용자 정보 저장
-            flash('로그인 성공!', 'success')  # 로그인 성공 메시지
-            return redirect(url_for('main.home'))  # 로그인 후 홈으로 리다이렉트
+        if user:
+            if check_password_hash(user.password, form.password.data):
+                session['user_id'] = user.id  # 세션에 사용자 정보 저장
+                flash('로그인 성공!', 'success')  # 로그인 성공 메시지
+                return redirect(url_for('main.home'))  # 로그인 후 홈으로 리다이렉트
+            else:
+                flash('잘못된 비밀번호입니다.', 'danger')  # 비밀번호 불일치 시 메시지
         else:
-            flash('잘못된 아이디 또는 비밀번호입니다.', 'danger')  # 실패 메시지
+            flash('잘못된 아이디입니다.', 'danger')  # 아이디 없음 메시지
     return render_template('login.html', form=form)

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from app.auth import auth_bp
+from app.auth import auth_bp  # auth_bp 임포트
+from app.db import db  # db 객체 임포트
 
 # SQLAlchemy 객체 초기화
 db = SQLAlchemy()
@@ -17,9 +18,9 @@ def create_app():
     db.init_app(app)
 
     # 블루프린트를 '/auth' 접두어와 함께 등록
-    app.register_blueprint(auth_bp)
+    app.register_blueprint(auth_bp)  # 이미 import된 auth_bp 사용
 
-    # 라우트 정의
+    # 라우트 정의 (기존 코드 그대로)
     @app.route('/')
     def home():
         return render_template('mainpage.html')
@@ -36,23 +37,18 @@ def create_app():
     def cooktip():
         return render_template('cooktip.html')
     
-    
     @app.route('/process_image', methods=['POST'])
     def process_image():
         if 'image' not in request.files:
             return jsonify({'error': 'No image provided'}), 400
-    
         image_file = request.files['image']
-        #ingredients = detect_ingredients(image_file)  # YOLO 모델로 재료 인식
-    
-        #return jsonify({'ingredients': ingredients})
+        # ingredients = detect_ingredients(image_file)  # YOLO 모델로 재료 인식
+        # return jsonify({'ingredients': ingredients})
 
     @app.route('/locspepage')
     def locspepage():
         return render_template('locspepage.html')
-    
 
-    
     @app.route('/mypagemain')
     def mypagemain():
         return render_template('mypagemain.html')
@@ -65,7 +61,6 @@ def create_app():
     def recipe_detail():
         return render_template('recipe_detail.html')
 
-    
     @app.route('/recipe_register')
     def recipe_register():
         return render_template('recipe_register.html')
@@ -82,7 +77,6 @@ def create_app():
     def searecpage():
         return render_template('searecpage.html')
 
-    
     @app.route('/login')
     def login():
         return render_template('login.html')

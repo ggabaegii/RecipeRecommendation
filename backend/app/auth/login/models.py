@@ -1,9 +1,12 @@
-from app import db
+# app/auth/login/models.py
+
+from app.db import db  # db 객체를 app.db에서 가져옵니다.
 
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(120), unique=True, nullable=False)  # email 대신 username
-    password = db.Column(db.String(200), nullable=False)
+    __tablename__ = 'users'  # 테이블 이름 설정
 
-    def __repr__(self):
-        return f'<User {self.username}>'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(120), nullable=False)
+
+    # 기타 필드와 메서드를 추가할 수 있습니다.
