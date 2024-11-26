@@ -1,5 +1,10 @@
 import base64
 import requests
+import google.generativeai as genai
+import json
+import os
+import re
+from dotenv import load_dotenv
 
 # 숫자-재료 매핑
 MATERIAL_MAPPING = {
@@ -67,4 +72,72 @@ def predict_from_image(image_file, api_url, api_key):
         raise
     except Exception as e:
         print("Unexpected Error:", e)
+        raise
+
+
+#제미나이 API
+############################################
+load_dotenv()
+google_api_key = os.getenv("genai_api_key")
+genai.configure(api_key=google_api_key)
+model = genai.GenerativeModel(
+    'gemini-1.5-flash',
+    system_instruction="""
+        You are Korean. You are a chef. Please respond with structured JSON data.                    
+    """
+    )
+
+def get_recipes_from_gemini(ingredients):
+    '''
+    제미나이 API를 호출하여 재료로 만들 수 있는 레시피를 JSON형식으로 추천받는다.
+    :param ingredients: YOLO 모델에서 검출된 재료 리스트
+    :return: 추천받은 레시피 데이터 (JSON 형태)
+    ''' 
+    prompt = f"""
+    아래 재료를 활용하여 3개의 요리 레시피를 추천해 주세요
+    {', '.join(ingredients)}
+
+    각 레시피는 다음 정보를 포함해야 합니다.
+    1. 레시피 번호
+    2. 요리 이름
+    3. 한식, 양식, 중식 등의 카테고리
+    4. 요리에 대한 간단한 설명
+    5. 필요한 재료 목록
+    6. 대체 가능한 재료 목록
+    7. 조리 방법 (단계별 설명)
+    8. 조리 시간
+    9. 요리 난이도 ( 쉬움, 보통, 어려움 중 하나)
+    10. 요리 이미지 URL
+    """
+
+    try:
+        response = model.generate_content(
+            prompt,
+            generation_config=genai.types.GenerationConfig(
+                candidate_count=1,
+                temperature=1.0,
+                response_mime_type="application/json"
+            )
+        )
+        
+        try:
+            # JSON 응답 파싱
+            change_response = json.loads(response.text)
+            print("JSON 데이터 타입:", type(change_response))
+
+            response_data={
+                "message": "성공",
+                "gemini_answer":change_response
+            }
+            print("응답 데이터:", response_data)
+
+            
+        except json.JSONDecodeError as e:
+            print("JSON 파싱 실패:", e)
+
+    except json.JSONDecodeError:
+        print("OpenAI 응답 JSON 파싱 실패.")
+        raise Exception("Gemini 응답 파싱 실패")
+    except Exception as e:
+        print(f"Gemini API 호출 중 오류 발생: {e}")
         raise
