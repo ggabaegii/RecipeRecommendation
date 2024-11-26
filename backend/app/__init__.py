@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from app.auth import auth_bp  # auth_bp 임포트
+from app.auth.login.routes import auth_bp  # auth_bp 임포트
 from app.db import db  # db 객체 임포트
 
 # SQLAlchemy 객체 초기화
@@ -18,13 +18,9 @@ def create_app():
     db.init_app(app)
 
     # 블루프린트를 '/auth' 접두어와 함께 등록
-    app.register_blueprint(auth_bp)  # 이미 import된 auth_bp 사용
+    app.register_blueprint(auth_bp)  # auth_bp 등록
 
     # 라우트 정의 (기존 코드 그대로)
-    @app.route('/')
-    def home():
-        return render_template('mainpage.html')
-
     @app.route('/ingres')
     def ingredients_search():
         return render_template('ingrespage.html')
