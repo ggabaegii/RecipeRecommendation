@@ -17,7 +17,7 @@ def create_recipes_table():
         description TEXT,
         ingredients TEXT,
         substitutes TEXT,
-        cooking_steps TEXT,
+        instructions TEXT,
         cooking_time TEXT,
         difficulty TEXT,
         image_url TEXT,
