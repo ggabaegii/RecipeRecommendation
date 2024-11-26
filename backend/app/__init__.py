@@ -4,6 +4,7 @@ from .api import predict_from_image, get_recipes_from_gemini
 import traceback
 import os
 from dotenv import load_dotenv
+from app.auth.login import auth_bp  # auth_bp import
 
 load_dotenv()
 
@@ -13,9 +14,10 @@ ROBOFLOW_API_KEY = os.getenv("roboflow_API_KEY")
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
-    
 
-   
+    # 블루프린트 등록
+    app.register_blueprint(auth_bp)  # auth_bp 블루프린트 등록
+       
     # 라우트 정의
     @app.route('/')
     def home():

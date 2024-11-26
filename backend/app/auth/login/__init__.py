@@ -1,8 +1,15 @@
-# backend/app/auth/login/__init__.py
-from flask import Blueprint
+# app/auth/login/__init__.py
+from flask import Blueprint, render_template, request, redirect, url_for
 
-# 로그인 관련 블루프린트 정의 (auth_bp는 /auth/login 경로를 처리)
-login_bp = Blueprint('login', __name__, url_prefix='/login')
+# Blueprint 생성
+auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-# routes.py에 정의된 라우트들을 임포트
-from app.auth.login import routes
+# 로그인 페이지 라우트
+@auth_bp.route('/login', methods=['GET', 'POST'])
+def login():
+    return render_template('login.html')  # 로그인 페이지로 렌더링
+
+# 회원가입 페이지 라우트
+@auth_bp.route('/signup', methods=['GET', 'POST'])
+def signup():
+    return render_template('signup.html')  # 회원가입 페이지로 렌더링
