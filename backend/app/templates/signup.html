@@ -18,6 +18,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div class="container-for-signup">
     <div class="signup-container">
         <h2 class="korean-font">개인정보 입력</h2>
         <form action="{{ url_for('signup') }}" method="post" enctype="multipart/form-data">
@@ -111,6 +112,7 @@
             <p>이미 계정이 있으신가요?</p>&nbsp;<a href="/login" class="login-link">로그인</a>
         </div>
     </div>
+</div>
 
     <!-- 이미지 미리보기 스크립트 -->
     <script>

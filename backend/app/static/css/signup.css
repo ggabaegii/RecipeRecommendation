@@ -30,21 +30,30 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     background-color: #F2EDEC;
-    position: relative;
+    position: relative; 
     justify-content: center;
     align-items: center;
     height: 100vh;
     overflow-y: auto;
+} */
+
+/* 기본 스타일 */
+body {
+    background-color: #F2EDEC; /* 배경 색상 */
+    margin: 0;
+    padding: 0;
+    
+}
+
+.container-for-signup{
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .signup-container {
-    display: inline-block;
-    position: absolute;
-    top: 75%; /* 세로 중앙 */
-    left: 50%; /* 가로 중앙 */
-    transform: translate(-50%, -50%); /* 가운데 정렬 보정 */
     background-color: white;
     padding: 40px;
     border-radius: 8px;
@@ -52,7 +61,6 @@ body {
     width: 100%;
     max-width: 700px;
     text-align: left;
-    /* min-height: 400px; */
 }
 
 h2 {

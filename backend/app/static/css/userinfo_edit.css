@@ -1,8 +1,33 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+
+/* 기본 스타일 */
+@font-face {
+    font-family: 'basicfont'; /* 사용할 글꼴 이름 */
+    src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
+    font-weight: normal; /* 선택: 굵기 */
+    font-style: normal; /* 선택: 스타일 */
+}
+
+/* 외할머니 글씨 (한글) */
+.point-font {
+    font-family: 'basicfont', sans-serif;
+}
+
+/* 본문 글씨 */
+.korean-font {
+    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-weight: 500;
+}
+
+/* Marcellus (영어) */
+.english-font {
+    font-family: 'Marcellus', serif;
+}
+
 body {
     background-color: #F2EDEC;
     margin: 0;
     padding: 0;
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
 }
 
 header {
@@ -10,10 +35,14 @@ header {
     margin-top: 20px;
 }
 
-.main-title {
-    font-size: 28px;
-    color: #042C57;
-    font-family: 'Marcellus', serif;
+/* 페이지 제목 */
+.title {
+    font-size: 35px;
+    text-align: center;
+    margin-top: 0;
+    color: #1A4B8C;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .container {
@@ -43,7 +72,6 @@ input[type="email"] {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
-    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
 }
 
 .nickname-container {
