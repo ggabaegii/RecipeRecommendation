@@ -131,6 +131,7 @@ def get_recipes_from_gemini(ingredients):
             }
             print("응답 데이터:", response_data)
 
+            return response_data  # 결과 반환
             
         except json.JSONDecodeError as e:
             print("JSON 파싱 실패:", e)

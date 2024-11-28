@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request,jsonify
 import requests
 from .api import predict_from_image, get_recipes_from_gemini
+from .database_operations import insert_recipes_to_db
 import traceback
 import os
 from dotenv import load_dotenv
@@ -55,7 +56,17 @@ def create_app():
             )
             ingredients = yolo_result.get('ingredients', [])
 
-            recipes = get_recipes_from_gemini(ingredients)
+            recipes_data = get_recipes_from_gemini(ingredients)
+            print("recipes_data 타입:",type(recipes_data))
+            print("recipes_data 내용:", recipes_data)
+             
+            recipes = recipes_data.get('gemini_answer', {}).get('recipes', [])
+
+
+
+            if recipes:
+                insert_recipes_to_db(recipes)
+
 
             return jsonify({'recipes': recipes})
         
