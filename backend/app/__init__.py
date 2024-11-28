@@ -1,9 +1,15 @@
-from flask import Flask, render_template,request,jsonify
+from flask import Flask, render_template,request,jsonify,redirect, url_for, flash
 import requests
 from .api import predict_from_image, get_recipes_from_gemini
 import traceback
 import os
 from dotenv import load_dotenv
+
+#회원가입 로그인 구현시 사용
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from database_setup import User, Base
+from werkzeug.security import generate_password_hash
 
 load_dotenv()
 
