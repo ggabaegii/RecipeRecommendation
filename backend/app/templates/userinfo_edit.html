@@ -18,15 +18,7 @@
 
     <div class="container">
         <form id="editForm" action="/update_userinfo" method="POST">
-            <div class="form-group">
-                <label for="nickname">닉네임</label>
-                <div class="nickname-container">
-                    <input type="text" id="nickname" name="nickname" maxlength="20" placeholder="닉네임을 입력하세요" required>
-                    <button type="button" id="generateNickname" class="nickname-btn">랜덤 생성</button>
-                    <button type="button" id="checkNickname" class="nickname-btn">중복 체크</button>
-                </div>
-                <small class="input-tip">20자 이내로 입력하세요.</small>
-            </div>
+            <!-- 이메일 -->
             <div class="form-group">
                 <label for="email">이메일</label>
                 <input 
@@ -36,6 +28,8 @@
                     placeholder="example@example.com" 
                     required>
             </div>
+
+            <!-- 전화번호 -->
             <div class="form-group">
                 <label for="phone">전화번호</label>
                 <input 
@@ -46,6 +40,8 @@
                     required>
                 <small class="input-tip">형식: 010-1234-5678</small>
             </div>
+
+            <!-- 성별 -->
             <div class="form-group">
                 <label>성별</label>
                 <div>
@@ -53,11 +49,72 @@
                     <label><input type="radio" name="gender" value="female"> 여성</label>
                 </div>
             </div>
-            <!-- <div class="form-group">
-                <label for="allergies">알레르기 정보</label>
-                <input type="text" id="allergies" name="allergies" placeholder="쉼표(,)로 구분하여 입력">
-                <small class="input-tip">쉼표(,)로 구분하여 입력하세요.</small>
-            </div> -->
+
+            <!-- 생년월일 -->
+            <div class="form-group">
+                <label for="birth_date">생년월일</label>
+                <input 
+                    type="date" 
+                    id="birth_date" 
+                    name="birth_date" 
+                    required>
+            </div>
+
+            <!-- 보안 질문 1 -->
+            <div class="form-group">
+                <label for="security_question_1">보안 질문 1</label>
+                <select id="security_question_1" name="security_question_1" required>
+                    <option value="" disabled selected>보안 질문을 선택하세요</option>
+                    <option value="mother_maiden">어머니의 성은?</option>
+                    <option value="father_maiden">아버지의 성은?</option>
+                    <option value="birth_city">태어난 도시는?</option>
+                    <option value="best_friend">어릴 적 가장 친했던 친구의 이름은?</option>
+                </select>
+                <input type="text" id="security_answer_1" name="security_answer_1" required placeholder="답변">
+            </div>
+
+            <!-- 보안 질문 2 -->
+            <div class="form-group">
+                <label for="security_question_2">보안 질문 2</label>
+                <select id="security_question_2" name="security_question_2" required>
+                    <option value="" disabled selected>보안 질문을 선택하세요</option>
+                    <option value="first_school">첫 학교의 이름은?</option>
+                    <option value="favorite_teacher">가장 좋아하는 선생님의 성함은?</option>
+                    <option value="favorite_movie">가장 좋아하는 영화는?</option>
+                    <option value="first_trip">처음 여행을 간 장소는?</option>
+                </select>
+                <input type="text" id="security_answer_2" name="security_answer_2" required placeholder="답변">
+            </div>
+
+            <!-- 비밀번호 수정 -->
+            <div class="form-group">
+                <label for="password">새 비밀번호</label>
+                <div class="password-container">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="비밀번호를 입력하세요" 
+                        required>
+                    <button type="button" class="toggle-password" data-target="password">👁</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">비밀번호 확인</label>
+                <div class="password-container">
+                    <input 
+                        type="password" 
+                        id="confirm_password" 
+                        name="confirm_password" 
+                        placeholder="비밀번호를 다시 입력하세요" 
+                        required>
+                    <button type="button" class="toggle-password" data-target="confirm_password">👁</button>
+                </div>
+                <small class="input-tip">비밀번호는 8자 이상 입력해야 합니다.</small>
+            </div>
+
+            <!-- 저장 버튼 -->
             <button type="submit" class="save-btn">저장하기</button>
         </form>
     </div>
