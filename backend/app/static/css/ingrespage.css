@@ -32,23 +32,6 @@ body {
     padding: 0;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding-top: 20px;
-}
-
-/* 메뉴 아이콘 */
-.menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 2;
-}
-
-
 
 /* 검색 결과 컨테이너 스타일 */
 .search-results-container {
@@ -60,103 +43,71 @@ body {
 
 /* 페이지 제목 */
 .title {
-    font-size: 20px;
+    font-size: 35px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 0;
     color: #1A4B8C;
-}
-
-.selected-ingredient {
-    font-size: 16px;
-    color: white;
-    background-color: #1A4B8C;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 12px;
-    cursor: pointer;
-    display: inline-block;
-    margin-top: 5px;
-}
-
-.instruction {
-    font-size: 14px;
-    color: #666;
-    margin-top: 5px;
-}
-
-/* 필터 버튼 스타일 */
-.filter-categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.filter-btn {
-    background-color: #e0e0e0;
-    color: #1A4B8C;
-    border: none;
-    border-radius: 15px;
-    padding: 8px 15px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.filter-btn.active {
-    background-color: #1A4B8C;
-    color: white;
-}
-
-/* 레시피 리스트 스타일 */
-.recipe-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.recipe-item {
-    display: flex;
-    align-items: center;
-    background-color: white;
+/* 선택된 재료 표시 스타일 */
+.selected-ingredients {
+    font-size: 20px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#selected-ingredients-list {
+    font-weight: 500;
+    color: #333;
+}
+
+.content {
+    padding: 20px;
+}
+
+.category-content {
+    display: none;
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* gap: 20px;
+    margin-top: 20px; */
+}
+
+#preparation {
+    display: block; /* 손질법을 기본으로 보이도록 설정 */
+}
+  
+.item-box {
     border: 1px solid #ddd;
+    padding: 15px;
     border-radius: 8px;
-    padding: 10px;
+    text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
 
-.recipe-item:hover {
-    transform: scale(1.02);
+.item-box:hover {
+    transform: scale(1.05);
 }
 
-.recipe-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
+.item-box img {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
     object-fit: cover;
-    margin-right: 15px;
+    border-radius: 5px;
 }
 
-.recipe-info {
-    display: flex;
-    flex-direction: column;
+/* 이미지와 제목 사이의 선 */
+.item-box hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
 }
 
-.recipe-title {
+.item-box h3 {
+    margin-top: 10px;
     font-size: 18px;
-    color: #1A4B8C;
-    font-weight: bold;
-    margin: 0;
-}
-
-.recipe-author {
-    font-size: 14px;
-    color: #555;
-    margin: 5px 0;
-}
-
-.recipe-rating {
-    font-size: 14px;
-    color: #888;
 }

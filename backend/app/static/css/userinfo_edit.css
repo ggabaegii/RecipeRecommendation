@@ -1,0 +1,136 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+
+/* 기본 스타일 */
+@font-face {
+    font-family: 'basicfont'; /* 사용할 글꼴 이름 */
+    src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
+    font-weight: normal; /* 선택: 굵기 */
+    font-style: normal; /* 선택: 스타일 */
+}
+
+/* 외할머니 글씨 (한글) */
+.point-font {
+    font-family: 'basicfont', sans-serif;
+}
+
+/* 본문 글씨 */
+.korean-font {
+    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-weight: 500;
+}
+
+/* Marcellus (영어) */
+.english-font {
+    font-family: 'Marcellus', serif;
+}
+
+body {
+    background-color: #F2EDEC;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 페이지 제목 */
+.title {
+    font-size: 35px;
+    text-align: center;
+    margin-top: 0;
+    color: #1A4B8C;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: #042C57;
+    font-size: 25px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 20px); /* 좌우 여백 추가 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: 'NanumOeHarMeoNiGeurSsi', sans-serif;
+    margin-right: 10px; /* 오른쪽 여백 */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #bea2a1;
+    outline: none;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #042C57;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #bea2a1;
+}
+
+.input-tip {
+    font-size: 18px;
+    color: #777;
+}
+
+/* 비밀번호 엿보기 버튼 */
+.toggle-password {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #888;
+}
+
+.toggle-password:hover {
+    color: #042C57;
+}
+
+/* 비밀번호 입력 필드 컨테이너 */
+.password-container {
+    position: relative;
+}
+
+/* 성별 선택 스타일 */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label > input[type="radio"] + span {
+    margin-right: 15px;
+}

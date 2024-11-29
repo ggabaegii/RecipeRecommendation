@@ -14,7 +14,7 @@
     <!-- 메뉴 아이콘 -->
     <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
     <header>
-        <div class="point-font title" onclick="window.location.href='/'">요리의 정원</div>
+        <div class="point-font main-title" onclick="window.location.href='/'">요리의 정원</div>
     </header>
 
 
@@ -31,17 +31,17 @@
             {% if session['user_logged_in'] %}
                 <a href="/">Home</a>
                 <a href="/recipe_main">레시피</a>
-                <a href="/recent">최근 본 레시피</a> <!--아직 어떻게 할지 모름-->
-                <a href="/favorites">즐겨찾기</a> <!--아직 어떻게 할지 모름-->
+                <a href="/recent">최근 본 레시피</a> 
+                <a href="/favorites">즐겨찾기</a> 
                 <a href="/cooktip">정보</a>
                 <a href="/recipe_register">레시피 작성</a>
             {% else %}
                 <a href="/">Home</a>
                 <a href="/recipe_main">레시피</a>
-                <a href="/login">최근 본 레시피</a> <!--아직 어떻게 할지 모름-->
-                <a href="/login">즐겨찾기</a> <!--아직 어떻게 할지 모름-->
+                <a href="/recent">최근 본 레시피</a> 
+                <a href="/favorites">즐겨찾기</a> 
                 <a href="/cooktip">정보</a>
-                <a href="/login">레시피 작성</a>
+                <a href="/recipe_register">레시피 작성</a>
             {% endif %}
         </div>
 

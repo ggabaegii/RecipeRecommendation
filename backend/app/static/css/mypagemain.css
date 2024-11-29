@@ -150,6 +150,10 @@ header {
     margin-top: 10px;
 }
 
+.info-btn{
+    width: 120px;
+}
+
 /* 정보 수정하기 버튼 스타일 */
 .edit-info-button {
     display: inline-block;
@@ -180,6 +184,9 @@ header {
 .recipe-sections {
     display: flex;
     gap: 20px;
+    /* width: 80%; */
+    margin-right: 100px;
+    margin-left: 100px;
     margin-top: 20px;
     padding: 0 20px;
 }

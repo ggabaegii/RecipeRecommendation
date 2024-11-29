@@ -1,17 +1,25 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
+from flask import Flask, render_template,request,jsonify
+import requests
+#from inference_sdk import InferenceHTTPClient
+from .api import predict_from_image
 import traceback
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+ROBOFLOW_API_URL = os.getenv("roboflow_API_URL")
+ROBOFLOW_API_KEY = os.getenv("roboflow_API_KEY")
+
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
     app.config['SECRET_KEY'] = 'your_secret_key'  # 플래시 메시지용 비밀 키
     
-    # API 키 및 URL 설정
     app.config["ROBOFLOW_API_KEY"] = "5dKfVfDaRwE3ueqLOz9s"
     app.config["ROBOFLOW_API_URL"] = "https://detect.roboflow.com/ingredients-detection-yolov8/2"
 
-    # 임시 사용자 데이터 저장소
-    users = []
-
+    
     # 라우트 정의
     @app.route('/')
     def home():
@@ -42,12 +50,27 @@ def create_app():
 
         try:
             # API 호출 함수
-            result = predict_from_image(
+            yolo_result = predict_from_image(
                 file,
-                app.config['ROBOFLOW_API_URL'],
-                app.config['ROBOFLOW_API_KEY']
+                ROBOFLOW_API_URL,
+                ROBOFLOW_API_KEY
             )
-            return jsonify(result)
+            ingredients = yolo_result.get('ingredients', [])
+
+            recipes_data = get_recipes_from_gemini(ingredients)
+            print("recipes_data 타입:",type(recipes_data))
+            print("recipes_data 내용:", recipes_data)
+             
+            recipes = recipes_data.get('gemini_answer', {}).get('recipes', [])
+
+
+
+            if recipes:
+                insert_recipes_to_db(recipes)
+
+
+            return jsonify({'recipes': recipes})
+        
         except Exception as e:
             print("Error occurred:", traceback.format_exc())
             return jsonify({'error': str(e)}), 500
@@ -121,5 +144,10 @@ def create_app():
             return redirect(url_for('login'))
 
         return render_template('signup.html')
+
+    # 사용자 정보 수정
+    @app.route('/userinfo_edit', methods=['GET', 'POST'])
+    def userinfo_edit():
+        return render_template('userinfo_edit.html')
 
     return app
