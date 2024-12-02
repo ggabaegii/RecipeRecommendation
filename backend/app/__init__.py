@@ -1,16 +1,16 @@
-from flask import Flask, render_template,request,jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
+from werkzeug.security import generate_password_hash
 import requests
-#from inference_sdk import InferenceHTTPClient
-from .api import predict_from_image
 import traceback
 import os
 from dotenv import load_dotenv
+from .database_operations import insert_user_to_db  # 데이터베이스 연동 함수
+from .api import predict_from_image  # YOLO 예측 함수
 
 load_dotenv()
 
 ROBOFLOW_API_URL = os.getenv("roboflow_API_URL")
 ROBOFLOW_API_KEY = os.getenv("roboflow_API_KEY")
-
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
@@ -19,7 +19,6 @@ def create_app():
     app.config["ROBOFLOW_API_KEY"] = "5dKfVfDaRwE3ueqLOz9s"
     app.config["ROBOFLOW_API_URL"] = "https://detect.roboflow.com/ingredients-detection-yolov8/2"
 
-    
     # 라우트 정의
     @app.route('/')
     def home():
@@ -49,25 +48,16 @@ def create_app():
         file = request.files['file']
 
         try:
-            # API 호출 함수
             yolo_result = predict_from_image(
                 file,
-                ROBOFLOW_API_URL,
-                ROBOFLOW_API_KEY
+                app.config["ROBOFLOW_API_URL"],
+                app.config["ROBOFLOW_API_KEY"]
             )
             ingredients = yolo_result.get('ingredients', [])
-
-            recipes_data = get_recipes_from_gemini(ingredients)
-            print("recipes_data 타입:",type(recipes_data))
-            print("recipes_data 내용:", recipes_data)
-             
-            recipes = recipes_data.get('gemini_answer', {}).get('recipes', [])
-
-
+            recipes = yolo_result.get('recipes', [])
 
             if recipes:
-                insert_recipes_to_db(recipes)
-
+                insert_recipes_to_db(recipes)  # 레시피 DB 저장
 
             return jsonify({'recipes': recipes})
         
@@ -115,37 +105,36 @@ def create_app():
     @app.route('/signup', methods=['GET', 'POST'])
     def signup():
         if request.method == 'POST':
-            # 사용자 데이터 수집
-            user_data = {
-                "nickname": request.form.get('nickname'),
-                "name": request.form.get('name'),
-                "gender": request.form.get('gender'),
-                "birthdate": request.form.get('birthdate'),
-                "phone": request.form.get('phone'),
-                "email": request.form.get('email'),
-                "username": request.form.get('username'),
-                "password": request.form.get('password'),
-                "security_question1": request.form.get('security_question1'),
-                "answer1": request.form.get('answer1'),
-                "security_question2": request.form.get('security_question2'),
-                "answer2": request.form.get('answer2'),
-            }
+            try:
+                user_data = {
+                    "real_name": request.form.get('name'),
+                    "gender": request.form.get('gender'),
+                    "birthdate": request.form.get('birthdate'),
+                    "phone_number": request.form.get('phone'),
+                    "email": request.form.get('email'),
+                    "username": request.form.get('username'),
+                    "password": generate_password_hash(request.form.get('password')),
+                    "security_question_1": request.form.get('security_question1'),
+                    "security_answer_1": request.form.get('answer1'),
+                    "security_question_2": request.form.get('security_question2'),
+                    "security_answer_2": request.form.get('answer2')
+                }
 
-            # 비밀번호 확인
-            if request.form.get('password') != request.form.get('confirm_password'):
-                flash("비밀번호가 일치하지 않습니다.", "error")
-                return render_template('signup.html')
+                if request.form.get('password') != request.form.get('confirm_password'):
+                    flash("비밀번호가 일치하지 않습니다.", "error")
+                    return render_template('signup.html')
 
-            # 사용자 데이터 저장
-            users.append(user_data)
+                insert_user_to_db(user_data)
 
-            # 성공 시 로그인 페이지로 리다이렉트
-            flash("회원가입이 완료되었습니다! 로그인하세요.", "success")
-            return redirect(url_for('login'))
+                flash("회원가입이 완료되었습니다! 로그인하세요.", "success")
+                return redirect(url_for('login'))
+
+            except Exception as e:
+                print("Error during signup:", traceback.format_exc())
+                flash("회원가입 중 오류가 발생했습니다. 다시 시도하세요.", "error")
 
         return render_template('signup.html')
 
-    # 사용자 정보 수정
     @app.route('/userinfo_edit', methods=['GET', 'POST'])
     def userinfo_edit():
         return render_template('userinfo_edit.html')
