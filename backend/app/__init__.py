@@ -37,7 +37,8 @@ def create_app():
         # 이름만 추출하여 템플릿에 전달
         recipe_names = [recipe[1] for recipe in recipes]  # recipe[1]은 이름
         recipe_descriptions = [recipe[3] for recipe in recipes]
-        return render_template("ingrespage.html", recipe_names=recipe_names, recipe_descriptions=recipe_descriptions)
+        recipe_ids = [recipe[0] for recipe in recipes]
+        return render_template("ingrespage.html", recipe_names=recipe_names, recipe_descriptions=recipe_descriptions, recipe_ids=recipe_ids)
            
     
     
@@ -103,22 +104,22 @@ def create_app():
         return render_template('mypagesub.html')
     
     # 상세 페이지 라우트
-    # @app.route("/recipe_detail/<int:recipe_id>")
-    # def recipe_detail(recipe_id):
-    #     conn = sqlite3.connect("C:/RecipeRecommendation/backend/app/database.db")  # DB 파일 이름
-    #     cursor = conn.cursor()
-    #     cursor.execute("SELECT * FROM recipes WHERE id = ?", (recipe_id,))
-    #     recipe = cursor.fetchone()
-    #     conn.close()
+    @app.route("/recipe_detail/<int:recipe_id>")
+    def recipe_detail(recipe_id):
+        conn = sqlite3.connect("C:/RecipeRecommendation/backend/app/database.db")  # DB 파일 이름
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM recipes WHERE recipe_id = ?", (recipe_id,))
+        recipe = cursor.fetchone()
+        conn.close()
 
-    #     if recipe:
-    #         return render_template("recipe_detail.html", name=recipe[0], description=recipe[1])
-    #     else:
-    #         return "Recipe not found", 404
+        if recipe:
+            return render_template("recipe_detail.html", name=recipe[1], category = recipe[2], description=recipe[3], cook_time = recipe[7], difficulty=recipe[8])
+        else:
+            return "Recipe not found", 404
     
-    @app.route('/recipe_detail')
-    def recipe_detail():
-        return render_template('recipe_detail.html')
+    # @app.route('/recipe_detail')
+    # def recipe_detail():
+    #     return render_template('recipe_detail.html')
 
     @app.route('/recipe_main')
     def recipe_main():

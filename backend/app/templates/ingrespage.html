@@ -27,21 +27,21 @@
    <div class="content">
     <div id="preparation" class="category-content">
         <div class="row">
-            <div class="col-lg-4 mb-4">
-                <div class="item-box p-3 text-center">
-                    <h3>{{recipe_names[0]}}</h3>
-                    <hr style="border: 1px solid; color:rgba(190,162,161)">
-                    <p class="description">{{recipe_descriptions[0]}}</p>
-                </div>
+            <div class="col-lg-4 mb-4" onclick="window.location.href='{{ url_for('recipe_detail', recipe_id=recipe_ids[0]) }}'">
+                    <div class="item-box p-3 text-center">
+                        <h3>{{recipe_names[0]}}</h3>
+                        <hr style="border: 1px solid; color:rgba(190,162,161)">
+                        <p class="description">{{recipe_descriptions[0]}}</p>
+                    </div>
             </div>
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-4 mb-4" onclick="window.location.href='{{ url_for('recipe_detail', recipe_id=recipe_ids[1]) }}'">
                 <div class="item-box p-3 text-center">
                     <h3>{{recipe_names[1]}}</h3>
                     <hr style="border: 1px solid; color:rgba(190,162,161)">
                     <p class="description">{{recipe_descriptions[1]}}</p>
                 </div>
             </div>
-            <div class="col-lg-4 mb-4">
+            <div class="col-lg-4 mb-4" onclick="window.location.href='{{ url_for('recipe_detail', recipe_id=recipe_ids[2]) }}'">
                 <div class="item-box p-3 text-center">
                     <h3>{{recipe_names[2]}}</h3>
                     <hr style="border: 1px solid; color:rgba(190,162,161)">
