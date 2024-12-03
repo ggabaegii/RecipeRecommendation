@@ -1,3 +1,4 @@
+'''
 # app/auth/login/models.py
 from app.db import db  # db 객체 임포트
 
@@ -8,3 +9,4 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
+'''

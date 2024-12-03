@@ -1,3 +1,4 @@
+'''
 # app/auth/login/__init__.py
 from flask import Blueprint, render_template, request, redirect, url_for
 
@@ -13,3 +14,4 @@ def login():
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
     return render_template('signup.html')  # 회원가입 페이지로 렌더링
+'''

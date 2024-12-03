@@ -1,3 +1,4 @@
+'''
 from flask import render_template, redirect, url_for, flash, request, session
 from werkzeug.security import check_password_hash
 from flask import Blueprint
@@ -24,3 +25,4 @@ def login():
             flash('잘못된 아이디 또는 비밀번호입니다.', 'danger')  # 실패 메시지
 
     return render_template('login.html', form=form)  # 폼을 템플릿에 전달
+'''
