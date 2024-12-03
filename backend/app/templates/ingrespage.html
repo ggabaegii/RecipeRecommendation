@@ -28,65 +28,29 @@
     <div id="preparation" class="category-content">
         <div class="row">
             <div class="col-lg-4 mb-4">
-                <div class="item-box border p-3 text-center">
-                    <img src="{{ url_for('static', filename='images/prep1.jpg') }}" alt="레시피 1" class="img-fluid">
-                    <hr>
-                    <h3>레시피 1</h3>
+                <div class="item-box p-3 text-center">
+                    <h3>{{recipe_names[0]}}</h3>
+                    <hr style="border: 1px solid; color:rgba(190,162,161)">
+                    <p class="description">{{recipe_descriptions[0]}}</p>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
-                <div class="item-box border p-3 text-center">
-                    <img src="{{ url_for('static', filename='images/prep2.jpg') }}" alt="레시피 2" class="img-fluid">
-                    <hr>
-                    <h3>레시피 2</h3>
+                <div class="item-box p-3 text-center">
+                    <h3>{{recipe_names[1]}}</h3>
+                    <hr style="border: 1px solid; color:rgba(190,162,161)">
+                    <p class="description">{{recipe_descriptions[1]}}</p>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
-                <div class="item-box border p-3 text-center">
-                    <img src="{{ url_for('static', filename='images/prep3.jpg') }}" alt="레시피 3" class="img-fluid">
-                    <hr>
-                    <h3>레시피 3</h3>
+                <div class="item-box p-3 text-center">
+                    <h3>{{recipe_names[2]}}</h3>
+                    <hr style="border: 1px solid; color:rgba(190,162,161)">
+                    <p class="description">{{recipe_descriptions[2]}}</p>
                 </div>
             </div>
         </div>
     </div>
     </div>
-  
-    <!--
-    <button class="selected-ingredient">토마토</button>
-    <p class="instruction">재료를 누르면 선택 취소/선택이 가능합니다</p>
-
-   
-    <div class="filter-categories">
-        <button class="filter-btn active">전체 (3,951)</button>
-        <button class="filter-btn">토마토달걀볶음 (67)</button>
-        <button class="filter-btn">토마토주스 (61)</button>
-        <button class="filter-btn">라따뚜이 (47)</button>
-        <button class="filter-btn">샌드위치 (46)</button>
-        <button class="filter-btn">과일샐러드 (44)</button>
-        
-    </div>-->
-
-    <!--
-    <div class="recipe-list">
-        <div class="recipe-item">
-            <img src="이미지_URL" alt="레시피 이미지" class="recipe-img">
-            <div class="recipe-info">
-                <h3 class="recipe-title">바삭바삭하고 촉촉한 감자치즈전</h3>
-                <p class="recipe-author">닉네임</p>
-            </div>
-        </div>
-        
-        <div class="recipe-item">
-            <img src="이미지_URL" alt="레시피 이미지" class="recipe-img">
-            <div class="recipe-info">
-                <h3 class="recipe-title">다이어트용식 닭가슴살 토마토 계란볶음 저탄고지식단</h3>
-                <p class="recipe-author">배고픈엄마</p>
-            </div>
-        </div>
-
-
-    </div>-->
 </div>
 
 {% endblock %}

@@ -5,6 +5,7 @@ from .database_operations import insert_recipes_to_db
 import traceback
 import os
 from dotenv import load_dotenv
+import sqlite3
 
 load_dotenv()
 
@@ -15,7 +16,13 @@ ROBOFLOW_API_KEY = os.getenv("roboflow_API_KEY")
 def create_app():
     app = Flask(__name__, template_folder='templates')
     
-
+    def fetch_all_recipes():
+        conn = sqlite3.connect("C:/RecipeRecommendation/backend/app/database.db")  # DB 파일 이름
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM recipes")  # 레시피 이름과 이미지 경로 가져오기
+        recipes = cursor.fetchall()  # [(name1, image_path1), (name2, image_path2), ...]
+        conn.close()
+        return recipes
    
     # 라우트 정의
     @app.route('/')
@@ -24,7 +31,15 @@ def create_app():
 
     @app.route('/ingr_sea')
     def ingredients_search():
-        return render_template('ingrespage.html')
+        # DB에서 레시피 데이터를 가져옴
+        recipes = fetch_all_recipes()
+        # ingredients = predict() ##선택된 재료 보여주려면 yolo로 받아온 ingredients 받아와야됨 어떻게??
+        # 이름만 추출하여 템플릿에 전달
+        recipe_names = [recipe[1] for recipe in recipes]  # recipe[1]은 이름
+        recipe_descriptions = [recipe[3] for recipe in recipes]
+        return render_template("ingrespage.html", recipe_names=recipe_names, recipe_descriptions=recipe_descriptions)
+           
+    
     
     @app.route('/cooktip')
     def cooktip():
@@ -39,7 +54,7 @@ def create_app():
     @app.route('/search_camera')
     def camera():
         return render_template('search_camera.html')
-
+                    
     @app.route('/prdict', methods=['POST'])
     def predict():
         if 'file' not in request.files:
@@ -61,8 +76,6 @@ def create_app():
             print("recipes_data 내용:", recipes_data)
              
             recipes = recipes_data.get('gemini_answer', {}).get('recipes', [])
-
-
 
             if recipes:
                 insert_recipes_to_db(recipes)
@@ -88,6 +101,20 @@ def create_app():
     @app.route('/mypagesub')
     def mypagesub():
         return render_template('mypagesub.html')
+    
+    # 상세 페이지 라우트
+    # @app.route("/recipe_detail/<int:recipe_id>")
+    # def recipe_detail(recipe_id):
+    #     conn = sqlite3.connect("C:/RecipeRecommendation/backend/app/database.db")  # DB 파일 이름
+    #     cursor = conn.cursor()
+    #     cursor.execute("SELECT * FROM recipes WHERE id = ?", (recipe_id,))
+    #     recipe = cursor.fetchone()
+    #     conn.close()
+
+    #     if recipe:
+    #         return render_template("recipe_detail.html", name=recipe[0], description=recipe[1])
+    #     else:
+    #         return "Recipe not found", 404
     
     @app.route('/recipe_detail')
     def recipe_detail():
