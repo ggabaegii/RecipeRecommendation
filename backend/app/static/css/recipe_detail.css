@@ -26,6 +26,7 @@
 
 /* 기본 스타일 */
 body {
+    background-color: #F2EDEC; /* 배경 색상 */
     margin: 0;
     padding: 0;
 }
@@ -173,26 +174,21 @@ body {
 
 /* 말풍선 스타일 */
 .tooltip {
+    display: none;
     position: absolute;
     background-color: #042C57;
-    color: #fff;
-    padding: 8px;
-    border-radius: 5px;
-    font-size: 14px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    max-width: 200px;
-    top: -35px;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
+    color: #fff; /* 흰색 글자 */
+    padding: 2px 6px; /* 말풍선 패딩 */
+    border-radius: 5px; /* 둥근 모서리 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    font-size: 14px; /* 글씨 크기 */
+    z-index: 1000;
+    top: -5px; 
+    left: 35%;
+    transform: translateX(-30%);
+    white-space: nowrap; /* 줄바꿈 방지 */
 }
 
-/* 체크박스와 말풍선 간격 조절 */
-.ingredient-checkbox {
-    margin-left: 10px;
-    flex-shrink: 0;
-}
 
 /* 사용자 정보 및 상호작용 아이콘 */
 .user-interaction {

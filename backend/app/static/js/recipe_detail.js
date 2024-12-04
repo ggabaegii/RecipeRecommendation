@@ -70,6 +70,7 @@ function adjustTooltipPosition(tooltip) {
     }
 }
 
+
 // 사용자가 댓글 입력창에 텍스트를 입력하고 "댓글 추가" 버튼을 클릭했을 때 댓글 목록에 새 댓글을 추가하는 JavaScript 코드
 
 document.querySelector('.comment-submit-button').addEventListener('click', function () {
