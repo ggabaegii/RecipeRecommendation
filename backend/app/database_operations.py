@@ -5,7 +5,8 @@ def insert_recipes_to_db(recipes):
     """
     JSON 데이터를 SQLite DB의 recipes 테이블에 삽입합니다.
     """
-    db_path = os.path.join(os.path.dirname(__file__), "C:/RecipeRecommendation/backend/app/database.db")
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    db_path = os.path.join(BASE_DIR, 'database.db')
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
@@ -41,7 +42,8 @@ def insert_user_to_db(user_data):
     """
     사용자 데이터를 DB에 삽입
     """
-    db_path = os.path.join(os.path.dirname(__file__), "C:/RecipeRecommendation/backend/app/database.db")
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    db_path = os.path.join(BASE_DIR, 'database.db')
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 

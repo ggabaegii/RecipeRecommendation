@@ -5,8 +5,8 @@ def create_recipes_table():
     """
     SQLite DB에 레시피 테이블 생성
     """
-    db_path = os.path.join(os.path.dirname(__file__), "C:/RecipeRecommendation/backend/app/database.db")
-
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    db_path = os.path.join(BASE_DIR, 'database.db')
     if not os.path.exists(db_path):
         print("데이터베이스가 존재하지 않습니다. 새로 생성합니다.")
         conn = sqlite3.connect(db_path)
@@ -36,7 +36,8 @@ def create_users_table():
     """
     SQLite DB에 사용자 테이블 생성
     """
-    db_path = os.path.join(os.path.dirname(__file__), "C:/RecipeRecommendation/backend/app/database.db")
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    db_path = os.path.join(BASE_DIR, 'database.db')
 
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
