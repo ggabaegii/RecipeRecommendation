@@ -120,7 +120,7 @@ function handleIngredientInput(event) {
     if (event.key === "Enter") {
         const ingredientInput = document.getElementById('ingredient-search').value.trim();
         //검색 함수 호출
-        submitSearch(ingredientInput, excludedInput);
+        submitSearch(ingredientInput);
         event.preventDefault(); // 폼 제출 방지
     }
 }
