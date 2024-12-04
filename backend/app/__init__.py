@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,jsonify
+from flask import Flask, render_template,request,jsonify,json
 import requests
 from .api import predict_from_image, get_recipes_from_gemini
 from .database_operations import insert_recipes_to_db
@@ -6,6 +6,8 @@ import traceback
 import os
 from dotenv import load_dotenv
 import sqlite3
+import ast  # 문자열 데이터를 안전하게 리스트로 변환
+
 
 load_dotenv()
 
@@ -111,9 +113,14 @@ def create_app():
         cursor.execute("SELECT * FROM recipes WHERE recipe_id = ?", (recipe_id,))
         recipe = cursor.fetchone()
         conn.close()
-
+        ingredients = ast.literal_eval(recipe[4])  # 문자열 -> 리스트로 변환
+        substitutes = ast.literal_eval(recipe[5])  # 문자열 -> 딕셔너리 변환
+        instructions = ast.literal_eval(recipe[6])  # 문자열 -> 리스트로 변환
+        # 재료 이름만 추출 (재료 이름은 첫 번째 공백 앞까지로 가정)
+        ingredient_names = [ingredient.split()[0] for ingredient in ingredients]
+        
         if recipe:
-            return render_template("recipe_detail.html", name=recipe[1], category = recipe[2], description=recipe[3], cook_time = recipe[7], difficulty=recipe[8])
+            return render_template("recipe_detail.html", name=recipe[1], category = recipe[2], description=recipe[3], ingredients=ingredients, ingredient_names=ingredient_names, substitutes=substitutes, instructions=instructions, cook_time = recipe[7], difficulty=recipe[8])
         else:
             return "Recipe not found", 404
     

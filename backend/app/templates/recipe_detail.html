@@ -46,26 +46,32 @@
         <section class="ingredients">
             <h3>재료</h3>
             <ul>
+                {% for ingredient in ingredients %}
                 <li>
-                    <span class="ingredient-name">스파게티 면</span>
-                    <span class="ingredient-amount">200g</span>
-                    <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 우동 면')">
+                    {% if ingredient in substitutes.keys() %}
+                        <p>대체: {{ substitutes[ingredient] }}</p>
+                        <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: {{ substitutes[ingredient] }}')">
+                    {% else %}
+                        <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 없음')">
+                    {% endif %}
+                        <span class="ingredient-name">{{ingredient}}</span>
                 </li>
-                <li>
+                {% endfor %}
+                <!--<li>
                     <span class="ingredient-name">마늘</span>
-                    <span class="ingredient-amount">3쪽</span>
+                    
                     <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 양파')">
                 </li>
                 <li>
                     <span class="ingredient-name">올리브 오일</span>
-                    <span class="ingredient-amount">2큰술</span>
+                    
                     <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 식용유')">
                 </li>
                 <li>
                     <span class="ingredient-name">소금</span>
-                    <span class="ingredient-amount">적당량</span>
+                    
                     <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 간장')">
-                </li>
+                </li>-->
             </ul>
         </section>
 
@@ -73,10 +79,9 @@
         <section class="cooking-steps">
             <h3>조리 방법</h3>
             <ol>
-                <li>스파게티 면을 소금물에 삶습니다.</li>
-                <li>마늘을 얇게 썰어 올리브 오일에 볶습니다.</li>
-                <li>삶은 면을 넣고 소금과 후추로 간합니다.</li>
-                <li>완성된 요리를 접시에 담습니다.</li>
+                {% for instruction in instructions %}
+                    <li>{{instruction}}</li>
+                {% endfor %}
             </ol>
         </section>
 
@@ -116,9 +121,7 @@
                 <button class="comment-submit-button">댓글 추가</button>
             </div>
         </section>-->
-    </div>
-    
-
+    </div>   
     <script src="{{ url_for('static', filename='js/recipe_detail.js') }}"></script>
     {% endblock %}
 </html>
