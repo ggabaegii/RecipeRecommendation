@@ -15,7 +15,7 @@ def create_recipes_table():
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS recipes (
             recipe_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            recipe_name TEXT NOT NULL UNIQUE,
+            recipe_name TEXT NOT NULL,
             category TEXT NOT NULL,
             description TEXT,
             ingredients TEXT NOT NULL,

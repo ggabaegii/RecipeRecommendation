@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 import sqlite3
 import ast  # 문자열 데이터를 안전하게 리스트로 변환
+import time
 
 
 load_dotenv()
@@ -44,7 +45,36 @@ def create_app():
         recipe_descriptions = [recipe[3] for recipe in recipes]
         recipe_ids = [recipe[0] for recipe in recipes]
         return render_template("ingrespage.html", recipe_names=recipe_names, recipe_descriptions=recipe_descriptions, recipe_ids=recipe_ids,selected_ingredients=selected_ingredients)
-           
+    
+    @app.route('/send_ingredients_to_gemini', methods=['POST'])
+    def send_ingredients_to_gemini():
+        start_time = time.time()
+        try:
+            # 프론트엔드에서 받은 재료
+            data = request.get_json()
+            ingredients = data.get('ingredients', [])
+            session['ingredients']=ingredients
+    
+            if not session['ingredients']:
+                return jsonify({'error': '재료가 제공되지 않았습니다.'}), 400
+        
+            # 제미나이 API 호출
+            recipes_data = get_recipes_from_gemini(session['ingredients'])
+        
+            # 레시피가 있는 경우 DB에 저장
+            recipes = recipes_data.get('gemini_answer', {}).get('recipes', [])
+            if recipes:
+                insert_recipes_to_db(recipes)
+
+            end_time = time.time()
+            print(f"제미나이 API 호출 소요 시간: {end_time - start_time:.2f}초")
+        
+            # 성공적으로 응답 반환
+            return jsonify({'recipes': recipes})
+
+        except Exception as e:
+            print("Error occurred:", traceback.format_exc())
+            return jsonify({'error': str(e)}), 500    
     
     
     @app.route('/cooktip')
@@ -57,9 +87,6 @@ def create_app():
         return render_template('cooktip_detail.html')
     
 
-    @app.route('/search_camera')
-    def camera():
-        return render_template('search_camera.html')
                     
     @app.route('/prdict', methods=['POST'])
     def predict():
@@ -81,9 +108,7 @@ def create_app():
             session['ingredients'] = ingredients
 
             recipes_data = get_recipes_from_gemini(ingredients)
-            print("recipes_data 타입:",type(recipes_data))
-            print("recipes_data 내용:", recipes_data)
-             
+
             recipes = recipes_data.get('gemini_answer', {}).get('recipes', [])
 
             if recipes:
@@ -124,11 +149,17 @@ def create_app():
         instructions = ast.literal_eval(recipe[6])  # 문자열 -> 리스트로 변환
         # 재료 이름만 추출 (재료 이름은 첫 번째 공백 앞까지로 가정)
         ingredient_names = [ingredient.split()[0] for ingredient in ingredients]
-        
+
+        print(ingredients)
+        print(substitutes)
+        print(instructions)
+
         if recipe:
             return render_template("recipe_detail.html", name=recipe[1], category = recipe[2], description=recipe[3], ingredients=ingredients, ingredient_names=ingredient_names, substitutes=substitutes, instructions=instructions, cook_time = recipe[7], difficulty=recipe[8])
         else:
             return "Recipe not found", 404
+        
+
     
     # @app.route('/recipe_detail')
     # def recipe_detail():

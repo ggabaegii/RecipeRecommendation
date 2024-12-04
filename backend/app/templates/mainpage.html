@@ -61,6 +61,14 @@
     <button onclick="closeMaterialPopup()">닫기</button>
 </div>
 
+<!-- 로딩창 -->
+<div id="loading-overlay" style="display: none;">
+    <div class="loading-content">
+        <span>레시피를 추천 중입니다...</span>
+        <div class="spinner"></div>
+    </div>
+</div>
+
 <!-- JavaScript 파일 불러오기 -->
 <script src="{{ url_for('static', filename='js/mainpage.js') }}"></script>
 {% endblock %}

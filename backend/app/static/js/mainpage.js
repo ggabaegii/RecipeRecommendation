@@ -17,36 +17,53 @@ function removeRecentIngredient(ingredient) {
 function searchWithIngredient(ingredient) {
     const ingredientInput = document.getElementById('ingredient-search');
     ingredientInput.value = ingredient;
-    submitSearch(ingredient, ''); // 제외 재료는 공란으로 전달
+    submitSearch(ingredient);
 }
 
 // 검색 버튼 클릭 시 검색 동작 수정
-function submitSearch(ingredientInput = '', excludedInput = '') {
+function submitSearch(ingredientInput = '') {
     // 사용자의 입력값을 가져오기
     ingredientInput = ingredientInput || document.getElementById('ingredient-search').value.trim();
-    excludedInput = excludedInput || document.getElementById('excluded-ingredient').value.trim();
-
-    if (!ingredientInput && !excludedInput) {
-        alert("사용할 재료 혹은 제외할 재료를 입력해 주세요.");
+    
+    if (!ingredientInput) {
+        alert("사용할 재료를 입력해 주세요.");
         return;
     }
 
-    // 재료와 제외 재료 배열 생성
+    // 재료 배열 생성
     const ingredientsArray = ingredientInput.split(' ').filter(item => item);
-    const excludedIngredients = excludedInput.split(' ').filter(item => item);
 
     // 입력 제한 체크
-    if (ingredientsArray.length > 3 || excludedIngredients.length > 3) {
+    if (ingredientsArray.length > 3) {
         alert("재료는 최대 3개까지만 입력가능합니다.");
         return;
     }
 
+    showLoading();
+
     // ingredient-search에 입력된 재료만 로컬 스토리지에 최근 검색어로 저장
     saveRecentIngredients(ingredientsArray);
 
-    // URL 파라미터로 전달하여 페이지 이동
-    const url = `/ingr_sea?ingredients=${encodeURIComponent(ingredientsArray.join(','))}&excluded=${encodeURIComponent(excludedIngredients.join(','))}`;
-    window.location.href = url;
+
+    // 재료 데이터를 백엔드로 전달
+    fetch('/send_ingredients_to_gemini', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ingredients: ingredientsArray })
+    })
+    .then(response => response.json())
+    .then(data => {
+        hideLoading();
+        // 예: 페이지를 이동하거나 UI 업데이트
+        window.location.href = '/ingr_sea';
+        }
+    )
+    .catch(error => {
+        hideLoading();
+        console.error("서버로 데이터 전송 중 오류:", error);
+    });
 }
 
 // X 버튼 추가
@@ -102,7 +119,6 @@ function loadRecentIngredients() {
 function handleIngredientInput(event) {
     if (event.key === "Enter") {
         const ingredientInput = document.getElementById('ingredient-search').value.trim();
-        const excludedInput = document.getElementById('excluded-ingredient').value.trim();
         //검색 함수 호출
         submitSearch(ingredientInput, excludedInput);
         event.preventDefault(); // 폼 제출 방지
@@ -138,6 +154,8 @@ async function processImageWithServer(file) {
     const formData = new FormData();
     formData.append("file", file);
 
+    showLoading();
+
     try {
         // 서버로 이미지 전송
         const response = await fetch("/prdict", {
@@ -146,57 +164,28 @@ async function processImageWithServer(file) {
         });
 
         const result = await response.json();
-        if (result && result.ingredients) {
-            displayRecognizedIngredients(result.ingredients);
-            openMaterialPopup(result.ingredient)
-        } else {
-            alert("이미지에서 재료를 인식하지 못했습니다.");
-        }
+
+        hideLoading();
+        window.location.href = '/ingr_sea';
+        
     } catch (error) {
         console.error("서버 호출 중 오류 발생:", error);
+        hideLoading();
         alert("이미지 처리 중 오류가 발생했습니다.");
     }
 }
 
 
-// 서버로부터 받은 재료 데이터 표시
-function processImageWithServer(file) {
-    const formData = new FormData();
-    formData.append("file", file);
-
-    fetch("/prdict", {
-        method: "POST",
-        body: formData
-    })
-        .then(response => response.json())
-        .then(result => {
-            if (result && result.ingredients) {
-                openMaterialPopup(result.ingredients); // 서버에서 받은 재료 표시
-            } else {
-                alert("이미지에서 재료를 인식하지 못했습니다.");
-            }
-        })
-        .catch(error => {
-            console.error("서버 호출 중 오류 발생:", error);
-            alert("이미지 처리 중 오류가 발생했습니다.");
-        });
+// 로딩창 표시
+function showLoading() {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = 'flex';
 }
 
-
-// 인식된 재료를 백엔드로 전달
-function sendIngredientsToBackend(ingredients) {
-    fetch("/process_ingredients", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ ingredients })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log("백엔드에서 처리된 결과:", data);
-    })
-    .catch(error => console.error("백엔드로 재료 전송 중 오류:", error));
+// 로딩창 숨김
+function hideLoading() {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = 'none';
 }
 
 // 페이지 로드 시 로컬 스토리지에서 최근 검색어 로드
@@ -204,7 +193,6 @@ window.addEventListener('DOMContentLoaded', loadRecentIngredients);
 
 // Enter 키 이벤트 리스너 및 검색 버튼 이벤트 리스너
 document.getElementById('ingredient-search').addEventListener('keydown', handleIngredientInput);
-document.getElementById('excluded-ingredient').addEventListener('keydown', handleIngredientInput);
 document.getElementById('search-button').addEventListener('click', function () {
     submitSearch();
 });

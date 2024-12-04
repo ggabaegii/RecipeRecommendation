@@ -55,13 +55,16 @@ def predict_from_image(image_file, api_url, api_key):
             for pred in predictions if pred.get("confidence", 0) > 0.5  # 신뢰도 50% 이상만 사용
         })
         
-        print(ingredients)
+        valid_ingredients = [ingredient for ingredient in ingredients if ingredient != "알 수 없음" ]
+        print(valid_ingredients)
 
-        if not ingredients:
+        if not valid_ingredients:
             raise ValueError("재료를 인식하지 못했습니다.")
+        
+        limited_ingredients = valid_ingredients[:3]
+        print("최종 인식된 재료:", limited_ingredients)
 
-
-        return {"ingredients": ingredients}
+        return {"ingredients": limited_ingredients}
    
 
     except ValueError as ve:
@@ -104,7 +107,7 @@ def get_recipes_from_gemini(ingredients):
     4. 요리에 대한 간단한 설명
     5. 필요한 재료 목록
     6. 대체 가능한 재료 목록
-    7. 조리 방법 (단계별 설명)
+    7. 조리 방법 (단계별 설명) json으로 전달 시, cooking_steps로 통일
     8. 조리 시간
     9. 요리 난이도 ( 쉬움, 보통, 어려움 중 하나)
     10. 요리 이미지 URL
