@@ -166,7 +166,12 @@ async function processImageWithServer(file) {
         const result = await response.json();
 
         hideLoading();
+        
+        if (result.success) {
         window.location.href = '/ingr_sea';
+    } else {
+        alert(result.message || "사진 인식에 실패했습니다. 다른 이미지를 시도해 주세요.");
+    }
         
     } catch (error) {
         console.error("서버 호출 중 오류 발생:", error);
