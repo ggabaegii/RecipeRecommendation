@@ -48,9 +48,9 @@
             <ul>
                 {% for ingredient in ingredients %}
                 <li>
-                    {% if ingredient in substitutes.keys() %}
-                        <p>대체: {{ substitutes[ingredient] }}</p>
-                        <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: {{ substitutes[ingredient] }}')">
+                    {% if ingredient_names[loop.index0] in substitutes %}
+                        
+                        <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: {{ substitutes[ingredient_names[loop.index0]] }}')">
                     {% else %}
                         <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체 재료: 없음')">
                     {% endif %}
@@ -92,17 +92,17 @@
         </section>-->
 
         <!-- 사용자 정보 및 상호작용 아이콘 -->
-        <!--<section class="user-interaction">
-            <div class="profile">
+        <section class="user-interaction">
+            <!--<div class="profile">
                 <img src="{{ url_for('static', filename='images/default-profile.png') }}" alt="작성자 프로필 사진">
                 <span>작성자: 홍길동</span>
-            </div>
+            </div>-->
             <div class="icons">
-                <span class="icon like" onclick="toggleLike()">💘</span>
-                <span class="icon scrap" onclick="toggleScrap()">💾</span>
+                <!--<span class="icon like" onclick="toggleLike()">💘</span>
+                <span class="icon scrap" onclick="toggleScrap()">💾</span>-->
                 <span class="icon share" onclick="shareRecipe()">🔗</span>
             </div>
-        </section>-->
+        </section>
         <!--<section class="comments">
             <h3>댓글</h3>
             <ul class="comment-list">

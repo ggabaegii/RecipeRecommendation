@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,jsonify,json
+from flask import Flask, render_template,request,jsonify,json, session
 import requests
 from .api import predict_from_image, get_recipes_from_gemini
 from .database_operations import insert_recipes_to_db
@@ -15,8 +15,10 @@ ROBOFLOW_API_URL = os.getenv("roboflow_API_URL")
 ROBOFLOW_API_KEY = os.getenv("roboflow_API_KEY")
 
 
+
 def create_app():
     app = Flask(__name__, template_folder='templates')
+    app.secret_key = 'your_secret_key'  # 세션 사용을 위한 비밀키 설정
     
     def fetch_all_recipes():
         conn = sqlite3.connect("C:/RecipeRecommendation/backend/app/database.db")  # DB 파일 이름
@@ -35,12 +37,13 @@ def create_app():
     def ingredients_search():
         # DB에서 레시피 데이터를 가져옴
         recipes = fetch_all_recipes()
-        # ingredients = predict() ##선택된 재료 보여주려면 yolo로 받아온 ingredients 받아와야됨 어떻게??
+        # 세션에서 선택된 재료 가져오기
+        selected_ingredients = session.get('ingredients', [])
         # 이름만 추출하여 템플릿에 전달
         recipe_names = [recipe[1] for recipe in recipes]  # recipe[1]은 이름
         recipe_descriptions = [recipe[3] for recipe in recipes]
         recipe_ids = [recipe[0] for recipe in recipes]
-        return render_template("ingrespage.html", recipe_names=recipe_names, recipe_descriptions=recipe_descriptions, recipe_ids=recipe_ids)
+        return render_template("ingrespage.html", recipe_names=recipe_names, recipe_descriptions=recipe_descriptions, recipe_ids=recipe_ids,selected_ingredients=selected_ingredients)
            
     
     
@@ -73,6 +76,9 @@ def create_app():
                 ROBOFLOW_API_KEY
             )
             ingredients = yolo_result.get('ingredients', [])
+            
+            # 선택된 재료를 세션에 저장
+            session['ingredients'] = ingredients
 
             recipes_data = get_recipes_from_gemini(ingredients)
             print("recipes_data 타입:",type(recipes_data))

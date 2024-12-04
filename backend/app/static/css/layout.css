@@ -18,7 +18,7 @@
 /* .korean-font {
     font-family: 'basicfont', sans-serif;
     font-weight: 500;
-} */
+}  */
 
 /* Marcellus (영어) */
 .english-font {
@@ -29,7 +29,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-family: "Wanted Sans Variable", "Wanted Sans", sans-serif;
 }
 
 .main-title {
