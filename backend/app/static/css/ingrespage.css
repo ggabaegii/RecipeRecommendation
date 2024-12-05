@@ -52,6 +52,11 @@ body {
     margin-bottom: 20px;
 }
 
+.ingredients_class{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
 /* 선택된 재료 표시 스타일 */
 .selected-ingredients {
     font-size: 20px;
@@ -60,9 +65,11 @@ body {
     margin-bottom: 20px;
 }
 
-#selected-ingredients-list {
-    font-weight: 500;
+.selected-ingredients-list {
+    font-size: 20px;
+    font-weight: 600;
     color: #333;
+    text-align: center;
 }
 
 .description{

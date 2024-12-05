@@ -40,11 +40,13 @@ def create_app():
         recipes = fetch_all_recipes()
         # 세션에서 선택된 재료 가져오기
         selected_ingredients = session.get('ingredients', [])
+        # 선택된 재료를 콤마로 구분된 문자열로 변환
+        selected_ingredients_str = ", ".join(selected_ingredients)
         # 이름만 추출하여 템플릿에 전달
         recipe_names = [recipe[1] for recipe in recipes]  # recipe[1]은 이름
         recipe_descriptions = [recipe[3] for recipe in recipes]
         recipe_ids = [recipe[0] for recipe in recipes]
-        return render_template("ingrespage.html", recipe_names=recipe_names, recipe_descriptions=recipe_descriptions, recipe_ids=recipe_ids,selected_ingredients=selected_ingredients)
+        return render_template("ingrespage.html", recipe_names=recipe_names, recipe_descriptions=recipe_descriptions, recipe_ids=recipe_ids,selected_ingredients=selected_ingredients_str)
     
     @app.route('/send_ingredients_to_gemini', methods=['POST'])
     def send_ingredients_to_gemini():
