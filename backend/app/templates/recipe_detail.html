@@ -15,19 +15,14 @@
 
 {% block content %}
 
-    <header>
+    <!--<header>
+        <h1 class="page-title">레시피 상세 페이지</h1>
+    </header> -->
+
+    <div class="recipe-content col-6">
+
         <h1 class="page-title">레시피 상세 페이지</h1> <!-- 중앙 정렬 -->
-    </header>
 
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <div id="menu" class="menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>
-        <a href="/">홈</a>
-        <a href="/mypagemain">마이 페이지</a>
-        <a href="/recipes">레시피</a>
-    </div>
-
-    <div class="content">
         <!-- 레시피 사진 -->
         <!--<section class="recipe-image">
             <img src="{{ url_for('static', filename='images/recipe-image.png') }}" alt="레시피 사진">
@@ -35,7 +30,7 @@
 
         <!-- 레시피 기본 정보 -->
         <section class="recipe-info">
-            <h2>요리 이름: {{name}}</h2>
+            <h2 class="dish-name">요리 이름: {{name}}</h2>
             <hr>
             <p><strong>요리 카테고리:</strong> {{category}}</p>
             <p><strong>소요 시간:</strong> {{cook_time}}</p>

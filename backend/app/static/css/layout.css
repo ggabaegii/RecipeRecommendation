@@ -25,12 +25,55 @@
     font-family: 'Marcellus', serif;
 }
 
-/* 기본 스타일 */
-body {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* 기본 스타일 */
+body {
+    height: 100%; /* 화면 전체 높이 */
+    /* background-image: url('/static/images/background_image.png');
+    background-size: contain; */
+    /* display: flex; */
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    /* margin: 0;
+    padding: 0; */
     font-family: "Wanted Sans Variable", "Wanted Sans", sans-serif;
 }
+
+/* Background Section */
+.background-container {
+    background-image: url('/static/images/background_image.png'); /* 배경 이미지 경로 */
+    background-size: cover; /* 이미지를 요소에 맞게 덮음 */
+    background-position: center; /* 이미지의 중심을 기준으로 배치 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px; */
+  }
+
+.wrapper {
+    /* flex: 1; 콘텐츠 영역이 가변적으로 확장 */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-bottom: 20px;
+}
+
+.content {
+    flex: 1; /* 나머지 공간을 차지 */
+    /* padding: 20px; */
+    /* text-align: center; */
+  }
 
 .main-title {
     font-size: 45px;
@@ -38,7 +81,8 @@ body {
     margin-top: 80px;
     margin-bottom: 80px;
     font-weight: 700;
-    color: #1A4B8C;
+    color: whitesmoke;
+    /* color: #1A4B8C; */
 }
 
 .menu-icon {
@@ -150,4 +194,42 @@ body {
 .menu-buttons button:hover {
     background-color: #1A4B8C;
     color: white;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: rgb(29, 102, 0);
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    
+}
+
+.footer-container {
+    height: auto;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-logo {
+    width: 80px; /* 로고 너비 */
+    height: 50px; /* 로고 높이 */
+    object-fit: cover; /* 이미지 비율 유지 */
+}
+
+.fairy{
+    padding: 0 0 0 0;
+    margin-bottom: 5px;
+}
+
+.footer-a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-a:hover {
+    color: #ffd700;
 }
