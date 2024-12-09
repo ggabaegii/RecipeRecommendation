@@ -50,7 +50,8 @@ body {
 /* Background Section */
 .background-container {
     background-image: url('/static/images/background_image.png'); /* 배경 이미지 경로 */
-    background-size: cover; /* 이미지를 요소에 맞게 덮음 */
+    /* background-size: cover;  */
+    background-size: 100% 100%;
     background-position: center; /* 이미지의 중심을 기준으로 배치 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
     /* display: flex;

@@ -68,7 +68,8 @@ body {
     padding: 20px;
     /* display: block; */
     text-align: left;
-    background-color: #FFF;
+    background-color: rgb(240,250,255);
+    opacity: 0.95; /* 투명도 설정 (0.5는 50% 투명) */
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }

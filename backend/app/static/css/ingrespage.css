@@ -29,7 +29,7 @@
 
 /* 기본 스타일 */
 body {
-    background-color: #F2EDEC; /* 배경 색상 */
+    background-color: #F2EDEC; /*#F2EDEC 배경 색상 */
     margin: 0;
     padding: 0;
 }
@@ -43,7 +43,9 @@ body {
     align-items: center;
     width: 80%;
     margin: 0 auto;
-    background-color: #F2EDEC;
+    background-color: rgb(210, 240, 230);
+    opacity: 0.93; /* 투명도 설정 (0.5는 50% 투명) */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
 }
 
@@ -109,7 +111,7 @@ body {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
-    background-color: rgb(215, 246, 225);
+     background-color: rgb(220, 245, 225); /*rgb(215, 246, 225) */
 }
 
 .item-box:hover {
