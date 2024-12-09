@@ -32,37 +32,27 @@
     font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }  */
 
-/* 페이지 제목 */
-.title {
-    font-size: 36px;
-    text-align: center;
-    margin-top: 40px;
-    font-weight: bold;
-    color: #000000;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.title:hover {
-    color: #1A4B8C;
-}
 
 .second_title{
-    color: white;
-    text-shadow: 2px 2px 4px rgb(48,48,48);
+    color: #002e6a;
+    /* text-shadow: 2px 2px 4px rgb(48,48,48); */
 }
 
 .search-containter {
     position:relative;
     width: 50%;
     margin: 20px auto;
+    background-color: #FEFAE0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .input-label{
     font-size: 20px;
     font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 4px rgb(48,48,48);
+    color:#002e6a;
+    /* text-shadow: 2px 2px 4px rgb(48,48,48); */
     margin-bottom: 5px;
     display: block;
 }
@@ -88,7 +78,7 @@
     padding: 15px;
     font-size: 18px;
     border: none;
-    background-color: #1A4B8C;
+    background-color: #002e6a;
     color: white;
     cursor: pointer;
     border-radius: 0 4px 4px 0;
@@ -105,7 +95,7 @@
 
 .clear-btn1{
     position: absolute;
-    right: 120px;
+    right: 140px;
     background: #ddd;
     border: none;
     border-radius: 50%;
@@ -145,7 +135,7 @@
 .search-recent {
     margin: 15px 0;
     font-size: 20px;
-    color: #1A4B8C;
+    color: #002e6a;
 }
 
 #recent-ingredients {
@@ -187,147 +177,8 @@
 }
 
 
-/* 해시태그 스타일 */
-.trending {
-    position: absolute;
-    bottom: -35px;
-    left: 0px;
-    font-size: 16px;
-    color: #1A4B8C;
-}
-
-.trending ul {
-    list-style: none;
-    margin-right: 10px;
-}
-
-.trending li {
-    display: inline;
-    margin-right: 15px;
-}
-
-.trending a {
-    color: #1A4B8C;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.trending a:hover {
-    text-decoration: underline;
-}
-
-/* 오늘의 꿀팁 섹션 */
-.tip-section {
-    background-color: #E2F7D3;
-    padding: 20px;
-    text-align: center;
-    margin: 30px auto;
-    width: 60%;
-    border-radius: 8px;
-    font-size: 24px;
-    color: #1A4B8C;
-    font-weight: bold;
-}
-
-/* 인기 레시피 카드 */
-.recipe-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
-    gap: 20px;
-    width: 80%;
-    margin: 20px auto;
-}
-
-.recipe-cards .card {
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 12px; /* 둥근 모서리 */
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-    font-size: 18px;
-    color: #1A4B8C;
-}
-
-.recipe-cards .card:hover {
-    transform: scale(1.05);
-}
-
-.recipe-cards .card a {
-    color: #1A4B8C;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 20px;
-}
 
 
-/* 팝업창 스타일 */
-#material-popup {
-    display: none;
-    border: 1px solid #ccc;
-    padding: 20px;
-    background: white;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    width: 400px;
-    z-index: 1000;
-    text-align: center;
-}
-
-#material-popup h2 {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-#material-popup ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-}
-
-#material-popup ul li {
-    font-size: 16px;
-    color: #555;
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#material-popup ul li button {
-    font-size: 14px;
-    padding: 5px 10px;
-    background-color: #1A4B8C;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#material-popup ul li button:hover {
-    background-color: #2C63A2;
-}
-
-#material-popup button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 5px;
-}
-
-#material-popup button:hover {
-    background-color: #0056b3;
-}
 
 /* 로딩창 전체 화면 */
 #loading-overlay {

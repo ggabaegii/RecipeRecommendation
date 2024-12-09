@@ -79,11 +79,21 @@ body {
 .main-title {
     font-size: 45px;
     text-align: center;
-    margin-top: 80px;
-    margin-bottom: 80px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 22%;
     font-weight: 700;
     color: whitesmoke;
     /* color: #1A4B8C; */
+    cursor: pointer;
+    
+    background-size: cover;
+    width: 966px;
+    height: 350px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .menu-icon {
@@ -93,7 +103,7 @@ body {
     top: 20px;
     left: 20px;
     z-index: 1001;
-    color: #000000;
+    color: #fff;
 }
 
 .menu {

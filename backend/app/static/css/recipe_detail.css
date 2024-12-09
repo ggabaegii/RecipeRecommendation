@@ -68,8 +68,8 @@ body {
     padding: 20px;
     /* display: block; */
     text-align: left;
-    background-color: rgb(240,250,255);
-    opacity: 0.95; /* 투명도 설정 (0.5는 50% 투명) */
+    background-color: #fff;
+    opacity: 1; /* 투명도 설정 (0.5는 50% 투명) */
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -149,8 +149,8 @@ body {
 .tooltip {
     display: none;
     position: absolute;
-    background-color: #042C57;
-    color: #fff; /* 흰색 글자 */
+    background-color: #ede8dc;
+    color: #000; /* 흰색 글자 */
     padding: 2px 6px; /* 말풍선 패딩 */
     border-radius: 5px; /* 둥근 모서리 */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
