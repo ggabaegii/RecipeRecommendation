@@ -147,17 +147,18 @@ body {
 
 /* 말풍선 스타일 */
 .tooltip {
+    opacity: 0.8 !important; /* `opacity: 0`를 덮어씁니다 */
     display: none;
     position: absolute;
-    background-color: #ede8dc;
-    color: #000; /* 흰색 글자 */
+    background-color: black;
+    color: white; /* 흰색 글자 */
     padding: 2px 6px; /* 말풍선 패딩 */
     border-radius: 5px; /* 둥근 모서리 */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
     font-size: 14px; /* 글씨 크기 */
     z-index: 1000;
     top: -5px; 
-    left: 35%;
+    left: 40%;
     transform: translateX(-30%);
     white-space: nowrap; /* 줄바꿈 방지 */
 }
