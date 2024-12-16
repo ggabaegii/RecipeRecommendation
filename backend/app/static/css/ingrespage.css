@@ -1,5 +1,7 @@
 @import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
 
+
+
 /* 기본 스타일 */
 @font-face {
     font-family: 'basicfont'; /* 사용할 글꼴 이름 */
@@ -27,7 +29,7 @@
 
 /* 기본 스타일 */
 body {
-    background-color: #F2EDEC; /* 배경 색상 */
+    background-color: #F2EDEC; /*#F2EDEC 배경 색상 */
     margin: 0;
     padding: 0;
 }
@@ -35,23 +37,34 @@ body {
 
 /* 검색 결과 컨테이너 스타일 */
 .search-results-container {
+    display:flex;
+    flex-direction: column; /* 가로 정렬 */
+    justify-content: center;
+    align-items: center;
     width: 80%;
     margin: 0 auto;
-    /* padding: 20px; */
-    background-color: #F2EDEC;
+    background-color: #fefae0;
+    /* background-color: rgb(210, 240, 230); */
+    opacity: 1; /* 투명도 설정 (0.5는 50% 투명) */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
 }
 
 /* 페이지 제목 */
-.title {
+.ingre-title {
     font-size: 35px;
     font-weight: 600;
     text-align: center;
-    margin-top: 0;
-    color: #1A4B8C;
+    color: #002e6a;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
+.ingredients_class{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
 /* 선택된 재료 표시 스타일 */
 .selected-ingredients {
     font-size: 20px;
@@ -60,9 +73,11 @@ body {
     margin-bottom: 20px;
 }
 
-#selected-ingredients-list {
-    font-weight: 500;
+.selected-ingredients-list {
+    font-size: 20px;
+    font-weight: 600;
     color: #333;
+    text-align: center;
 }
 
 .description{
@@ -71,7 +86,7 @@ body {
 }
 
 .content {
-    padding: 20px;
+    padding: 30px;
 }
 
 .recipe_name{
@@ -97,7 +112,8 @@ body {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
-    background-color: rgb(215, 246, 225);
+    background-color: #fbe8bc;
+     /* background-color: rgb(220, 245, 225); rgb(215, 246, 225) */
 }
 
 .item-box:hover {

@@ -4,8 +4,6 @@
 @font-face {
     font-family: 'basicfont'; /* 사용할 글꼴 이름 */
     src: url('../fonts/HakgyoansimBareonbatangR.ttf') format('truetype'); /* 파일 경로와 형식 */
-    font-weight: normal; /* 선택: 굵기 */
-    font-style: normal; /* 선택: 스타일 */
 }
 
 /* 외할머니 글씨 (한글) */
@@ -14,10 +12,9 @@
 }
 
 /* 본문 글씨 */
-.korean-font {
-    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    /* font-weight: 500; */
-}
+/* .korean-font {
+    font-family: "Wanted Sans Variable", "Wanted Sans", sans-serif;
+} */
 
 /* Marcellus (영어) */
 .english-font {
@@ -26,7 +23,7 @@
 
 /* 기본 스타일 */
 body {
-    background-color: #F2EDEC; /* 배경 색상 */
+    font-family: "Wanted Sans Variable", "Wanted Sans", sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -34,9 +31,14 @@ body {
 /* 페이지 제목 스타일 */
 .page-title {
     text-align: center;
-    font-size: 28px;
+    font-size: 30px;
     color: #042C57;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+
+.dish-name{
+    font-weight: 500!;
 }
 
 /* 메뉴 아이콘 스타일 */
@@ -46,36 +48,6 @@ body {
     position: absolute;
     top: 15px;
     left: 15px;
-}
-
-/* 슬라이드 메뉴 스타일 */
-.menu {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #042C57;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    z-index: 1000;
-}
-
-.menu a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 20px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-}
-
-.menu .closebtn {
-    position: absolute;
-    top: 0;
-    right: 15px;
-    font-size: 36px;
 }
 
 /* 로고 텍스트 스타일 */
@@ -90,13 +62,14 @@ body {
 }
 
 /* 콘텐츠 영역 */
-.content {
-    max-width: 900px;
+.recipe-content {
+    /* width: 50%; */
     margin: 0 auto;
     padding: 20px;
-    display: block;
+    /* display: block; */
     text-align: left;
-    background-color: #FFF;
+    background-color: #fff;
+    opacity: 1; /* 투명도 설정 (0.5는 50% 투명) */
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -176,8 +149,8 @@ body {
 .tooltip {
     display: none;
     position: absolute;
-    background-color: #042C57;
-    color: #fff; /* 흰색 글자 */
+    background-color: #ede8dc;
+    color: #000; /* 흰색 글자 */
     padding: 2px 6px; /* 말풍선 패딩 */
     border-radius: 5px; /* 둥근 모서리 */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */

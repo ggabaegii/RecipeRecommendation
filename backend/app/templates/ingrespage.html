@@ -17,12 +17,13 @@
 
 {% block content %}
 <div class="search-results-container">
-    <p class="title">재료로 찾는 레시피</p>
+    <p class="ingre-title">재료로 찾는 레시피</p>
 
     <!-- 선택된 재료 표시 -->
-    <p class="selected-ingredients">선택된 재료: 
-        <span id="selected-ingredients-list">{{ selected_ingredients }}</span>
-    </p>
+     <div class="ingredients_class">
+        <p class="selected-ingredients">선택된 재료:&nbsp; </p>
+        <p class="selected-ingredients-list">{{ selected_ingredients }}</p>  
+    </div
 
    <!-- 카테고리별 내용 -->
    <div class="content">

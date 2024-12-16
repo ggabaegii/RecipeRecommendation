@@ -15,7 +15,7 @@
 
 {% block content %}
 <div class="search-containter">
-    <h1>재료로 레시피 찾기</h1>
+    <h1 class="second_title">재료로 레시피 찾기</h1>
     <label for="ingredient-input" class="input-label">여러 개의 재료 입력 시에 각 재료는 띄어쓰기로 구분해주십시오.</label>
     <div class="search-bar">
         <input type="text" id="ingredient-search" placeholder="재료를 입력하세요">
@@ -50,16 +50,6 @@
     <div class="card"><a href="/recipe4">레시피 4</a></div>
 </div> -->
 
-<!-- 팝업창 -->
-<div id="material-popup">
-    <h2>검출된 재료 확인</h2>
-    <!-- 재료 목록 -->
-    <ul id="popup-materials"></ul>
-    <!-- 버튼 -->
-    <button onclick="addMaterialToPopup()">재료 추가</button>
-    <button onclick="searchFromPopup()">검색</button>
-    <button onclick="closeMaterialPopup()">닫기</button>
-</div>
 
 <!-- 로딩창 -->
 <div id="loading-overlay" style="display: none;">

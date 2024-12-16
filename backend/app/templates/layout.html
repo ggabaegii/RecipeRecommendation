@@ -7,61 +7,83 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
-    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
+    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" /> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />   
+    <!-- 부트스트랩 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="background-container">
     <!-- 메뉴 아이콘 -->
-    <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
-    <header>
-        <div class="point-font main-title" onclick="window.location.href='/'">요리의 정원</div>
-    </header>
+        <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">☰</div>
+        <header>
+            <div class="point-font main-title" onclick="window.location.href='/'">요리의 정원</div>
+        </header>
 
-
-    <!-- 슬라이드 메뉴 (왼쪽에서 슬라이드) -->
-    <div id="menu" class="menu">
-    <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>   
-    <!-- 프로필 섹션 -->
-    <div class="profile">
-        <span>Guest</span>
-    </div>
-        <!-- 최근 본 레시피, 즐겨찾기, 레시피 작성은 로그인 안 되어 있을시 클릭하면 로그인 페이지로 넘어가도록 구현-->
-        <div class="menu-basictag">
-            {% if session['user_logged_in'] %}
-                <a href="/">Home</a>
-                <a href="/recipe_main">레시피</a>
-                <a href="/recent">최근 본 레시피</a> 
-                <a href="/favorites">즐겨찾기</a> 
-                <a href="/cooktip">정보</a>
-                <a href="/recipe_register">레시피 작성</a>
-            {% else %}
-                <a href="/">Home</a>
-                <a href="/recipe_main">레시피</a>
-                <a href="/recent">최근 본 레시피</a> 
-                <a href="/favorites">즐겨찾기</a> 
-                <a href="/cooktip">정보</a>
-                <a href="/recipe_register">레시피 작성</a>
-            {% endif %}
+        <!-- 슬라이드 메뉴 (왼쪽에서 슬라이드) -->
+        <div id="menu" class="menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">×</a>   
+        <!-- 프로필 섹션 -->
+        <div class="profile">
+            <span>Guest</span>
         </div>
+            <!-- 최근 본 레시피, 즐겨찾기, 레시피 작성은 로그인 안 되어 있을시 클릭하면 로그인 페이지로 넘어가도록 구현-->
+            <div class="menu-basictag">
+                {% if session['user_logged_in'] %}
+                    <a href="/">Home</a>
+                    <a href="/recipe_main">레시피</a>
+                    <a href="/recent">최근 본 레시피</a> 
+                    <a href="/favorites">즐겨찾기</a> 
+                    <a href="/cooktip">정보</a>
+                    <a href="/recipe_register">레시피 작성</a>
+                {% else %}
+                    <a href="/">Home</a>
+                    <a href="/recipe_main">레시피</a>
+                    <a href="/recent">최근 본 레시피</a> 
+                    <a href="/favorites">즐겨찾기</a> 
+                    <a href="/cooktip">정보</a>
+                    <a href="/recipe_register">레시피 작성</a>
+                {% endif %}
+            </div>
 
-        <!-- 로그인 상태에 따른 버튼 형식 메뉴 -->
-        <div class="menu-buttons">
-            {% if session['user_logged_in'] %}
-                <button onclick="window.location.href='/mypage'">마이페이지</button>
-                <button onclick="window.location.href='/logout'">로그아웃</button>
-            {% else %}
-                <button onclick="window.location.href='/login'">로그인</button>
-                <button onclick="window.location.href='/signup'">회원가입</button>
-            {% endif %}
+            <!-- 로그인 상태에 따른 버튼 형식 메뉴 -->
+            <div class="menu-buttons">
+                {% if session['user_logged_in'] %}
+                    <button onclick="window.location.href='/mypage'">마이페이지</button>
+                    <button onclick="window.location.href='/logout'">로그아웃</button>
+                {% else %}
+                    <button onclick="window.location.href='/login'">로그인</button>
+                    <button onclick="window.location.href='/signup'">회원가입</button>
+                {% endif %}
+            </div>
         </div>
-    </div>
 
     <!-- 메인 콘텐츠 영역 -->
-    <main>
-        {% block content %}{% endblock %}
+        <main class="wrapper">
+            <div class="content">
+            {% block content %}{% endblock %}
+            </div>
+    </div>
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="container footer-container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">
+                        <!-- 로고 이미지 추가 -->
+                        <img src="/static/images/smartbusan_logo.png" alt="digital smart busan logo" class="footer-logo">
+                        <a class="footer-a" href="https://github.com/ggabaegii/RecipeRecommendation" target="_blank">&nbsp;&nbsp;Github</a>
+                        <p class="fairy"> Fairies 김소희 권주회 임수현 조승일 황예민 </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 d-flex flex-column justify-content-center">
+                        <p class="fairy"> 요리의 정원 </p>
+                        <p class="fairy"> 2024 By fairies </p>
+                    </div>
+                <div class="row">
+            </div>
+        </footer>
+        <script src="{{ url_for('static', filename='js/toggleMenu.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/fonts.js') }}"></script>
     </main>
-
-    <script src="{{ url_for('static', filename='js/toggleMenu.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/fonts.js') }}"></script>
 </body>
+
 </html>
