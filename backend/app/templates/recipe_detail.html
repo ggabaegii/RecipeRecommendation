@@ -57,11 +57,9 @@
         <!-- 조리 방법 -->
         <section class="cooking-steps">
             <h3>조리 방법</h3>
-            <ol>
                 {% for instruction in instructions %}
-                    <li>{{instruction}}</li>
+                    <p>{{instruction}}</p>
                 {% endfor %}
-            </ol>
         </section>
 
         <!-- 해시태그 

@@ -9,4 +9,3 @@ if __name__ == "__main__":
 
     #flask 앱 실행
     app.run(debug=True)
-
