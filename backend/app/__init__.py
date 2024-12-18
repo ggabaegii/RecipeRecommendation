@@ -166,7 +166,7 @@ def create_app():
         recipe = cursor.fetchone()
         conn.close()
         ingredients = ast.literal_eval(recipe[4])  # 문자열 -> 리스트로 변환
-        substitutes = parse_to_dict(recipe[5])  # 문자열 -> 딕셔너리 변환
+        substitutes = ast.literal_eval(recipe[5])  # 문자열 -> 딕셔너리 변환
         instructions = ast.literal_eval(recipe[6])  # 문자열 -> 리스트로 변환
         # 재료 이름만 추출 (재료 이름은 첫 번째 공백 앞까지로 가정)
         ingredient_names = [ingredient.split()[0] for ingredient in ingredients]

@@ -45,7 +45,7 @@
                     <li>
                         {% if ingredient_names[loop.index0] in substitutes %} 
                             <input type="checkbox" class="ingredient-checkbox" 
-                                onclick="toggleTooltip(event, '대체재료: {{ substitutes[ingredient_names[loop.index0]] | join(', ') }}')">
+                                onclick="toggleTooltip(event, '대체재료: {{ substitutes[ingredient_names[loop.index0]] | join(', ') if substitutes[ingredient_names[loop.index0]] is iterable else substitutes[ingredient_names[loop.index0]] }}')">
                         {% else %}
                             <input type="checkbox" class="ingredient-checkbox" 
                                 onclick="toggleTooltip(event, '대체재료: 없음')">
