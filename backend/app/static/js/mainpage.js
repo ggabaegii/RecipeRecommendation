@@ -20,52 +20,6 @@ function searchWithIngredient(ingredient) {
     submitSearch(ingredient);
 }
 
-// 검색 버튼 클릭 시 검색 동작 수정
-function submitSearch(ingredientInput = '') {
-    // 사용자의 입력값을 가져오기
-    ingredientInput = ingredientInput || document.getElementById('ingredient-search').value.trim();
-    
-    if (!ingredientInput) {
-        alert("사용할 재료를 입력해 주세요.");
-        return;
-    }
-
-    // 재료 배열 생성
-    const ingredientsArray = ingredientInput.split(' ').filter(item => item);
-
-    // 입력 제한 체크
-    if (ingredientsArray.length > 3) {
-        alert("재료는 최대 3개까지만 입력가능합니다.");
-        return;
-    }
-
-    showLoading();
-
-    // ingredient-search에 입력된 재료만 로컬 스토리지에 최근 검색어로 저장
-    saveRecentIngredients(ingredientsArray);
-
-
-    // 재료 데이터를 백엔드로 전달
-    fetch('/send_ingredients_to_gemini', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ ingredients: ingredientsArray })
-    })
-    .then(response => response.json())
-    .then(data => {
-        hideLoading();
-        // 예: 페이지를 이동하거나 UI 업데이트
-        window.location.href = '/ingr_sea';
-        }
-    )
-    .catch(error => {
-        hideLoading();
-        console.error("서버로 데이터 전송 중 오류:", error);
-    });
-}
-
 // X 버튼 추가
 function addRecentIngredient(ingredient) {
     const recentIngredientsContainer = document.getElementById("recent-ingredients");
@@ -130,6 +84,52 @@ function clearInput(inputId) {
     document.getElementById(inputId).value = '';
 }
 
+// 검색 버튼 클릭 시 검색 동작 수정
+function submitSearch(ingredientInput = '') {
+    // 사용자의 입력값을 가져오기
+    ingredientInput = ingredientInput || document.getElementById('ingredient-search').value.trim();
+    
+    if (!ingredientInput) {
+        alert("사용할 재료를 입력해 주세요.");
+        return;
+    }
+
+    // 재료 배열 생성
+    const ingredientsArray = ingredientInput.split(' ').filter(item => item);
+
+    // 입력 제한 체크
+    if (ingredientsArray.length > 3) {
+        alert("재료는 최대 3개까지만 입력가능합니다.");
+        return;
+    }
+
+    showLoading();
+
+    // ingredient-search에 입력된 재료만 로컬 스토리지에 최근 검색어로 저장
+    saveRecentIngredients(ingredientsArray);
+
+
+    // 재료 데이터를 백엔드로 전달
+    fetch('/send_ingredients_to_gemini', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ingredients: ingredientsArray })
+    })
+    .then(response => response.json())
+    .then(data => {
+        hideLoading();
+        // 예: 페이지를 이동하거나 UI 업데이트
+        window.location.href = '/ingr_sea';
+        }
+    )
+    .catch(error => {
+        hideLoading();
+        console.error("서버로 데이터 전송 중 오류:", error);
+    });
+}
+
 // 카메라 버튼 클릭 처리
 function openCameraOrFile() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -149,7 +149,7 @@ function openCameraOrFile() {
     input.click();
 }
 
-// 서버로 이미지를 전송하여 Roboflow API 호출을 처리
+// 서버로 이미지를 전송
 async function processImageWithServer(file) {
     const formData = new FormData();
     formData.append("file", file);
