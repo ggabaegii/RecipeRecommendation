@@ -40,18 +40,20 @@
         <!-- 재료 목록 -->
         <section class="ingredients">
             <h3>재료</h3>
-            <ul>
-                {% for ingredient in ingredients %}
-                <li>
-                    {% if ingredient_names[loop.index0] in substitutes %} 
-                        <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체재료: {{ substitutes[ingredient_names[loop.index0]] }}')">
-                    {% else %}
-                        <input type="checkbox" class="ingredient-checkbox" onclick="toggleTooltip(event, '대체재료: 없음')">
-                    {% endif %}
-                        <span class="ingredient-name">{{ingredient}}</span>
-                </li>
-                {% endfor %}              
-            </ul>
+                <ul>
+                    {% for ingredient in ingredients %}
+                    <li>
+                        {% if ingredient_names[loop.index0] in substitutes %} 
+                            <input type="checkbox" class="ingredient-checkbox" 
+                                onclick="toggleTooltip(event, '대체재료: {{ substitutes[ingredient_names[loop.index0]] | join(', ') }}')">
+                        {% else %}
+                            <input type="checkbox" class="ingredient-checkbox" 
+                                onclick="toggleTooltip(event, '대체재료: 없음')">
+                        {% endif %}
+                        <span class="ingredient-name">{{ ingredient }}</span>
+                    </li>
+                    {% endfor %}              
+                </ul>
         </section>
 
         <!-- 조리 방법 -->
