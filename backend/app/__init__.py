@@ -15,7 +15,26 @@ load_dotenv()
 ROBOFLOW_API_URL = os.getenv("roboflow_API_URL")
 ROBOFLOW_API_KEY = os.getenv("roboflow_API_KEY")
 
+def parse_to_dict(value):
+    try:
+        # 문자열을 Python 객체로 변환
+        parsed = ast.literal_eval(value)
 
+        # 변환된 객체가 리스트인 경우, 각 항목이 문자열로 표현된 딕셔너리라면 변환
+        if isinstance(parsed, list):
+            return [ast.literal_eval(item) if isinstance(item, str) else item for item in parsed]
+        
+        # 변환된 객체가 딕셔너리인 경우 그대로 반환
+        elif isinstance(parsed, dict):
+            return parsed
+        
+        # 그 외의 경우는 원본 반환
+        else:
+            return parsed
+    
+    except (ValueError, SyntaxError):
+        # 변환에 실패하면 원본 문자열 반환
+        return value
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
@@ -147,7 +166,7 @@ def create_app():
         recipe = cursor.fetchone()
         conn.close()
         ingredients = ast.literal_eval(recipe[4])  # 문자열 -> 리스트로 변환
-        substitutes = ast.literal_eval(recipe[5])  # 문자열 -> 딕셔너리 변환
+        substitutes = parse_to_dict(recipe[5])  # 문자열 -> 딕셔너리 변환
         instructions = ast.literal_eval(recipe[6])  # 문자열 -> 리스트로 변환
         # 재료 이름만 추출 (재료 이름은 첫 번째 공백 앞까지로 가정)
         ingredient_names = [ingredient.split()[0] for ingredient in ingredients]
