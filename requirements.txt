@@ -26,4 +26,4 @@ sql==2022.4.0
 SQLAlchemy==2.0.36
 watchdog==5.0.3
 websocket-client==1.8.0
-
+python-dotenv==1.0.1
