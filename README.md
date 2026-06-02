@@ -251,7 +251,6 @@ http://127.0.0.1:5000
 | ERD | [ERD](docs/design/erd.xlsx) | 데이터베이스 테이블 구조와 관계도 |
 | 화면 정의서 | [화면 정의서](docs/requirements/screen-definition.pdf) | 페이지별 화면 구성과 기능 정의 |
 | 요구사항 정의서 | [요구사항 정의서](docs/requirements/requirements.xlsx) | 요구사항 정의 |
-| 서비스 요구사항 | [서비스 요구사항](docs/requirements/service-requirements.pdf) | 서비스 기능 요구사항 발표 자료 |
 | WBS | [WBS](docs/planning/wbs.xlsx) | 프로젝트 일정 및 작업 분해 구조 |
 | 타당성 조사서 | [타당성 조사서](docs/planning/feasibility-study.pdf) | 서비스 필요성과 구현 가능성 검토 |
 | 포스터 | [포스터](docs/presentation/poster.pdf) | 프로젝트 요약 포스터 |
